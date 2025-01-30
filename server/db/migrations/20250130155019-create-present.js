@@ -1,37 +1,21 @@
-/* eslint-disable no-unused-vars */
-
 'use strict';
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('Presents', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      wishId: {
         type: Sequelize.INTEGER,
-      },
-      name: {
         allowNull: false,
-        type: Sequelize.STRING,
       },
-      phoneNumber: {
+      userId: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        type: Sequelize.STRING,
-        unique: true,
-      },
-      password: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      birthday: {
-        allowNull: true,
-        type: Sequelize.DATEONLY,
-      },
-      avatar: {
-        allowNull: true,
-        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
@@ -42,10 +26,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('NOW'),
-      },
+      }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
-  },
+    await queryInterface.dropTable('Presents');
+  }
 };

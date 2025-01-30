@@ -7,13 +7,13 @@ const generateTokens = require('../utils/generateTokens');
 const cookieConfig = require('../configs/cookie.config');
 
 authRouter.post('/register', async (req, res) => {
-  const { email, name, password } = req.body;
-  if (!email || !name || !password) {
+  const { phoneNumber, name, password } = req.body;
+  if (!phoneNumber || !name || !password) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
   try {
     const [user, created] = await User.findOrCreate({
-      where: { email },
+      where: { phoneNumber },
       defaults: { name, password: await bcrypt.hash(password, 10) },
     });
     if (!created) {
@@ -34,13 +34,13 @@ authRouter.post('/register', async (req, res) => {
 });
 
 authRouter.post('/login', async (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
+  const { phoneNumber, password } = req.body;
+  if (!phoneNumber || !password) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
   try {
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({ where: { phoneNumber } });
     if (!user) {
       return res.status(400).json({ error: 'Не верный логин или пароль' });
     }
