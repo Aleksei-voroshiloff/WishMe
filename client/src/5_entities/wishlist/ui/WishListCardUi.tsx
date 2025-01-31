@@ -1,6 +1,7 @@
 import React from 'react';
 import type { WishListObjectType } from '../types/types';
-import { CardMeta, CardHeader, CardContent, Card, Icon } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
+import style from '../../../2_pages/WishListPage/WishListPage.module.scss';
 
 type Props = {
   list: WishListObjectType;
@@ -8,17 +9,22 @@ type Props = {
 
 export default function WishListCardUi({ list }: Props): React.JSX.Element {
   return (
-    <Card>
+    <div >
       {/* <Image src={list.img} wrapped ui={false} /> */}
-      <CardContent>
-        <CardHeader>{list.title}</CardHeader>
-        <CardMeta>
-          <span className="date">{list.date}</span>
-        </CardMeta>
-      </CardContent>
-      <CardContent extra>
-        <Icon name="share" color="purple" />
-      </CardContent>
-    </Card>
+      <div className={style.topRight}>
+      <Icon name="pencil alternate" color="black" />
+      </div>
+        <h3>
+            {list.title}    
+            <Icon name="share" color="purple" />
+            </h3>
+        
+          <span >Дата мероприятия:<br/>{list.date}</span>
+        
+      
+      
+        
+      
+    </div>
   );
 }
