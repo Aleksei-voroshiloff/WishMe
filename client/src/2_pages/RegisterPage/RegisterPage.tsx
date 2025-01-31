@@ -39,11 +39,11 @@ export default function RegisterPage(): React.JSX.Element {
 
         <input
           className={styles.input}
-          type="email"
-          {...register('email')}
+          type="tel"
+          {...register('phoneNumber')}
           placeholder="example@example.com"
         />
-        {errors.email && <p className={styles.text}>{errors.email.message}</p>}
+        {errors.phoneNumber && <p className={styles.text}>{errors.phoneNumber.message}</p>}
 
         <input
           className={styles.input}

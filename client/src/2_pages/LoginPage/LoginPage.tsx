@@ -32,11 +32,11 @@ export default function LoginPage(): React.JSX.Element {
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <input
           className={styles.input}
-          type="email"
-          {...register('email')}
-          placeholder="example@example.com"
+          type="tel"
+          {...register('phoneNumber')}
+          placeholder="89123456789"
         />
-        {errors.email && <p className={styles.text}>{errors.email.message}</p>}
+        {errors.phoneNumber && <p className={styles.text}>{errors.phoneNumber.message}</p>}
 
         <input
           className={styles.input}

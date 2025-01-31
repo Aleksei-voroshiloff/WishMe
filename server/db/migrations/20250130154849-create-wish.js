@@ -1,37 +1,42 @@
-/* eslint-disable no-unused-vars */
-
 'use strict';
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('Wishes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
-      name: {
-        allowNull: false,
+      title: {
         type: Sequelize.STRING,
-      },
-      phoneNumber: {
         allowNull: false,
-        type: Sequelize.STRING,
-        unique: true,
       },
-      password: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      birthday: {
-        allowNull: true,
-        type: Sequelize.DATEONLY,
-      },
-      avatar: {
-        allowNull: true,
+      file: {
         type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      wishUrl: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      price: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      wishListId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Wishlists',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+      },
+      isArchived: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
@@ -42,10 +47,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('NOW'),
-      },
+      }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
-  },
+    await queryInterface.dropTable('Wishes');
+  }
 };
