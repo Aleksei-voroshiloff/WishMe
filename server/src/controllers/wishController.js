@@ -6,8 +6,19 @@ const wishService = require('../services/wishServices');
 class WishController {
   getAllWish = async (req, res) => {
     try {
-      const allWish = await wishService.getAllWish();
+      const allWish = await wishService.findAllWish();
       res.json(allWish);
+    } catch (error) {
+      res.status(500).json({ message: 'Ошибка сервера get' });
+      console.log(error);
+    }
+  };
+
+  getOneWish = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const oneWish = await wishService.findOneWish(id);
+      res.json(oneWish);
     } catch (error) {
       res.status(500).json({ message: 'Ошибка сервера get' });
       console.log(error);

@@ -9,6 +9,10 @@ class WishService {
     return this.model.Wish.findAll({ order: [['id', 'DESC']] });
   }
 
+  findOneWish(id) {
+    return this.model.Wish.findByPk(id);
+  }
+
   async createWish({ title, file, wishUrl, price, wishListId }) {
     if (!title || !file || !wishUrl || !price || !wishListId) {
       throw new Error('Не все поля заполнены');
