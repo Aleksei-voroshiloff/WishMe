@@ -4,6 +4,14 @@ class FriendService {
   constructor(model) {
     this.model = model;
   }
+
+  findAllFriend(userId) {
+    return this.model.Friend.findAll({ where: { userId }, include: this.model.User });
+  }
+
+  async destroyFriend(id) {
+    await this.model.Friend.destroy({ where: { friendId: id } });
+  }
 }
 
 const friendService = new FriendService(allModels);
