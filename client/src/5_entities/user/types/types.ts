@@ -19,14 +19,14 @@ export type AuthResponse = {
 
 export const registerSchema = z.object({
   name: z.string().min(1, 'Имя должно быть больше 1 символа'),
-  email: z.string().email('Не корректный email'),
+  phoneNumber: z.string(),
   password: z.string().min(6, 'Пароль должен содержать 6 символов'),
 });
 
 export type RegisterFormData = z.infer<typeof registerSchema>;
 
 export const loginSchema = z.object({
-  email: z.string().email('Не корректный email'),
+  phoneNumber: z.string(),
   password: z.string().min(6, 'Пароль должен содержать 6 символов'),
 });
 
