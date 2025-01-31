@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Wishlist, Wish }) {
       this.hasMany(Wishlist, { foreignKey: 'userId' });
       this.belongsToMany(User, {
-        as: 'Friends',
+        as: 'Friend',
         through: 'Friends',
         foreignKey: 'userId',
         otherKey: 'friendId',
