@@ -1,6 +1,5 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import Layout from '../../2_pages/Layout';
-import StartPage from '../../2_pages/StartPage/StartPage';
 import RegisterPage from '../../2_pages/RegisterPage/RegisterPage';
 import LoginPage from '../../2_pages/LoginPage/LoginPage';
 import ProtectedRoute from './ProtectedRoute';
@@ -13,15 +12,6 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: '/', element: <Navigate to="/home" /> },
-      {
-        element: <ProtectedRoute allowedStatuses={['logged']} redirectTo="/login" />,
-        children: [
-          {
-            path: '/home',
-            element: <StartPage />,
-          },
-        ],
-      },
       {
         element: <ProtectedRoute allowedStatuses={['logged']} redirectTo="/login" />,
         children: [

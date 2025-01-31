@@ -9,22 +9,21 @@ type Props = {
 
 export default function WishListCardUi({ list }: Props): React.JSX.Element {
   return (
-    <div >
+    <div className={style.card1}  >
       {/* <Image src={list.img} wrapped ui={false} /> */}
       <div className={style.topRight}>
-      <Icon name="pencil alternate" color="black" />
+        <Icon name="pencil alternate" color="black" />
       </div>
-        <h3>
-            {list.title}    
-            <Icon name="share" color="purple" />
-            </h3>
-        
-          <span >Дата мероприятия:<br/>{list.date}</span>
-        
-      
-      
-        
-      
+      <h3>
+        {list.title}
+        <Icon name="share" color="purple" />
+      </h3>
+
+      <span>
+        Дата мероприятия:
+        <br />
+        {list.date}
+      </span>
     </div>
   );
 }
