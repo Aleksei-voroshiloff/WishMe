@@ -5,7 +5,7 @@ const wishlistRouter = express.Router();
 
 wishlistRouter
   .route('/')
-  .get(wishlistController.getAllWl)
+  .get(verifyAccessToken,wishlistController.getAllWl)
   .post(verifyAccessToken, wishlistController.postWl);
 
 wishlistRouter

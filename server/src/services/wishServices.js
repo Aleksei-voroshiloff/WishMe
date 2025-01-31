@@ -5,8 +5,8 @@ class WishService {
     this.model = model;
   }
 
-  findAllWish() {
-    return this.model.Wish.findAll({ order: [['id', 'DESC']] });
+  findAllWish(wishListId) {
+    return this.model.Wish.findAll({ order: [['id', 'DESC']], where: { wishListId } });
   }
 
   findOneWish(id) {

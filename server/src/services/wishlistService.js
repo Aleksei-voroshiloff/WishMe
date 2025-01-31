@@ -5,8 +5,8 @@ class WishlistService {
     this.model = model;
   }
 
-  getAllWishlist() {
-    return this.model.Wishlist.findAll({ order: [['id', 'DESC']] });
+  getAllWishlist(userId) {
+    return this.model.Wishlist.findAll({ order: [['id', 'DESC']], where: { userId } });
   }
 
   async postWishlist({ title, date, userId }) {

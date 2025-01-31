@@ -3,23 +3,27 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import type { UpdatewishForm, WishObjectType } from '../types/types';
 import { WishObjectSchema, WishSchema } from '../types/types';
+import axiosInstance from '../../../6_shared/api/axiosInstance';
 
-export const getWish = createAsyncThunk('wish/getWish', async (_, { rejectWithValue }) => {
-  try {
-    const { data } = await axios.get(`/api/wish`);
-    console.log(data);
+export const getWish = createAsyncThunk(
+  'wish/getWish',
+  async (wishListId: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get<WishObjectType[]>(`/api/wish`, { params: { wishListId } });
+      console.log(data);
 
-    return WishSchema.parse(data);
-  } catch (error) {
-    return rejectWithValue(error instanceof Error ? error.message : 'Что-то пошло не так');
-  }
-});
+      return WishSchema.parse(data);
+    } catch (error) {
+      return rejectWithValue(error instanceof Error ? error.message : 'Что-то пошло не так');
+    }
+  },
+);
 
 export const addWish = createAsyncThunk(
   'wish/addWish',
   async (bookData: Omit<WishObjectType, 'id'>, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(`/api/wish`, bookData);
+      const { data } = await axiosInstance.post(`/wish`, bookData);
       console.log('Wish created:', data);
 
       return WishObjectSchema.parse(data);
