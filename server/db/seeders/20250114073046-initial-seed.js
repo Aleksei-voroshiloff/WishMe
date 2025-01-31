@@ -17,6 +17,17 @@ module.exports = {
       ],
       {},
     );
+    await queryInterface.bulkInsert(
+      'Wishlists',
+      [
+        {
+          title: 'Подарки ДР',
+          date: 2025.02.7,
+          password: bcrypt.hashSync('123456', 10),
+        },
+      ],
+      {},
+    );
   },
 
   async down(queryInterface, Sequelize) {
