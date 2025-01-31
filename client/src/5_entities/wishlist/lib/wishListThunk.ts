@@ -3,10 +3,11 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import type { UpdatewishListForm, WishListObjectType } from '../types/types';
 import { WishListObjectSchema, WishListSchema } from '../types/types';
+import axiosInstance from '../../../6_shared/api/axiosInstance';
 
 export const getWishList = createAsyncThunk('list/getWishList', async (_, { rejectWithValue }) => {
   try {
-    const { data } = await axios.get(`/api/wishlist`);
+    const { data } = await axiosInstance.get(`/wishlist`);
     console.log(data);
 
     return WishListSchema.parse(data);

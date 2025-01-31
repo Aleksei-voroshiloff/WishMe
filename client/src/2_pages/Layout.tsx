@@ -5,8 +5,11 @@ import NavBar from '../3_widgets/NavBar/NavBar';
 export default function Layout(): React.JSX.Element {
   return (
     <div>
-      <NavBar />
-      <Outlet />
+      <h1>WishME</h1>
+      <div>
+        <NavBar />
+        <Outlet />
+      </div>
     </div>
   );
 }
