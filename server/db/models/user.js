@@ -16,15 +16,15 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId',
         otherKey: 'friendId',
       });
-      this.belongsToMany(Wish, {
-        through: 'Archives',
-        foreignKey: 'userId',
-        as: 'wishAuthor',
-      });
+      // this.belongsToMany(Wish, {
+      //   through: 'Archives',
+      //   foreignKey: 'userId',
+      //   as: 'wishAuthor',
+      // });
       this.belongsToMany(Wish, {
         through: 'Presents',
         foreignKey: 'userId',
-        as: 'wishGiver',
+        as: 'wishGivers',
       });
     }
   }

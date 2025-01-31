@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ User, Wishlist }) {
       this.belongsTo(Wishlist, { foreignKey: 'wishListId' });
-      this.belongsToMany(User, {
-        through: 'Archives',
-        foreignKey: 'wishId',
-        as: 'userArchived',
-      });
+      // this.belongsToMany(User, {
+      //   through: 'Archives',
+      //   foreignKey: 'wishId',
+      //   as: 'userArchived',
+      // });
       this.belongsToMany(User, {
         through: 'Presents',
         foreignKey: 'wishId',
@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       wishUrl: DataTypes.TEXT,
       wishListId: DataTypes.INTEGER,
       price: DataTypes.INTEGER,
+      isArchived: DataTypes.BOOLEAN,
     },
     {
       sequelize,

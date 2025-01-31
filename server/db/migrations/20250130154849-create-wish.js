@@ -33,6 +33,11 @@ module.exports = {
         },
         onDelete: 'CASCADE',
       },
+      isArchived: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
