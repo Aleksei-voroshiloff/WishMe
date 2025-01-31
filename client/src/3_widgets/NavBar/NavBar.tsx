@@ -22,17 +22,31 @@ export default function NavBar(): React.JSX.Element {
             </MenuItem>
             <MenuItem
               as={Link}
-              to="/home"
-              name="Home"
-              active={activeItem === 'Home'}
-              onClick={() => dispatch(setActiveItem('Home'))}
+              to="/myList"
+              name="Мои вишлисты"
+              active={activeItem === 'Мои вишлисты'}
+              onClick={() => dispatch(setActiveItem('Мои вишлисты'))}
             />
             <MenuItem
               as={Link}
               to="/home"
-              name="Добавьте вашу вкладку"
-              active={activeItem === 'Добавьте вашу вкладку'}
-              onClick={() => dispatch(setActiveItem('Добавьте вашу вкладку'))}
+              name="Подарки друзьям"
+              active={activeItem === 'Подарки друзьям'}
+              onClick={() => dispatch(setActiveItem('Подарки друзьям'))}
+            />
+            <MenuItem
+              as={Link}
+              to="/home"
+              name="Друзья"
+              active={activeItem === 'Друзья'}
+              onClick={() => dispatch(setActiveItem('Друзья'))}
+            />
+            <MenuItem
+              as={Link}
+              to="/home"
+              name="Архив"
+              active={activeItem === 'Архив'}
+              onClick={() => dispatch(setActiveItem('Архив'))}
             />
             <MenuItem onClick={() => logoutHandler()} name="Выход" />
           </>
