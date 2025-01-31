@@ -1,0 +1,31 @@
+.razmap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 200px 0 0 50px;
+    gap: 15px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card1 {
+    position: relative;
+    padding: 4%;
+    width: 200px;
+    min-height: 35vh;
+    border-radius: 25%;
+    border: 2px solid black;
+    background-color: #f9f9f941; // Цвет фона карточки
+    transition: transform 0.3s, box-shadow 0.3s; // Плавный переход
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Тень для карточки
+  
+    &:hover {
+      transform: scale(1.05); // Увеличение карточки при наведении
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); // Увеличенная тень при наведении
+    }
+  }
+
+  .topRight {
+    position: absolute;
+    top: 26%;
+    right: 20px;
+  }
