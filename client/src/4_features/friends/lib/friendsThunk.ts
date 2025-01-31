@@ -8,6 +8,7 @@ export const getAllFriends = createAsyncThunk(
   async (_, {rejectWithValue}) => {
     try {
       const response = await axiosInstance.get('/friend');
+      console.log(response)
       const data = friendsSchema.parse(response.data);
       return data
     } catch (error) {

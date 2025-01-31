@@ -10,7 +10,7 @@ export default function FriendCardWrapper(): React.JSX.Element {
   useEffect(() => {
     void dispatch(getAllFriends());
   }, [dispatch]);
-
+console.log(friends)
   return (
     <div>
       {friends.map((friend) => (

@@ -17,7 +17,6 @@ const initialState: FriendsStateType = {
 
 export const friendsSlice = createSlice({
   name: 'friends',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {},
   extraReducers: (builder) => {
