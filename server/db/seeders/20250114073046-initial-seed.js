@@ -192,6 +192,16 @@ module.exports = {
           friendId: 1,
           status: 'accepted',
         },
+        {
+          userId: 1,
+          friendId: 3,
+          status: 'accepted',
+        },
+        {
+          userId: 3,
+          friendId: 1,
+          status: 'accepted',
+        },
       ],
       {},
     );

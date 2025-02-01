@@ -7,7 +7,7 @@ class FriendService {
 
   findAllFriend(userId) {
     return this.model.Friend.findAll({
-      where: { userId },
+      where: { userId, status: 'accepted' },
       include: [
         {
           model: this.model.User,

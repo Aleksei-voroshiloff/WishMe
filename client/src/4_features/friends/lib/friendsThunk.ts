@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../../../6_shared/api/axiosInstance';
-import { friendsSchema, oneFriendSchema } from '../types/types';
+import { oneFriendSchema, receivefriendsSchema } from '../types/types';
 
 export const getAllFriends = createAsyncThunk(
   'friend/getAllFriends',
@@ -8,9 +8,8 @@ export const getAllFriends = createAsyncThunk(
   async (_, {rejectWithValue}) => {
     try {
       const response = await axiosInstance.get('/friend');
-      console.log(response)
-      const data = friendsSchema.parse(response.data);
-      return data
+      const data = receivefriendsSchema.parse(response.data);
+      return data.map((item) => item.Receiver)
     } catch (error) {
       return rejectWithValue((error as Error).message);
     }

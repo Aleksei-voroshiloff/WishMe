@@ -9,10 +9,7 @@ class FriendController {
   getAllFriend = async (req, res) => {
     try {
       const userId = res.locals.user.id
-      console.log(userId)
       const allFriend = await this.service.findAllFriend(userId);
-      // console.log(allFriend[1].Receiver);
-      console.log(JSON.parse(JSON.stringify(allFriend)))
       res.json(allFriend);
     } catch (error) {
       res.json({ message: 'Ошибка при выведении друзей' });
