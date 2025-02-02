@@ -16,6 +16,20 @@ export const getWishList = createAsyncThunk('list/getWishList', async (_, { reje
   }
 });
 
+
+
+export const getOneWishList = createAsyncThunk(
+  'list/getOneWishList',
+  async (listId: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.get(`/wishlist/${String(listId)}`);
+      return WishListObjectSchema.parse(data);
+    } catch (error) {
+      return rejectWithValue(error instanceof Error ? error.message : 'Что-то пошло не так');
+    }
+  }
+);
+
 export const addWishList = createAsyncThunk(
   'list/addWishList',
   async (bookData: Omit<WishListObjectType, 'id'>, { rejectWithValue }) => {
