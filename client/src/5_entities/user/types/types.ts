@@ -21,7 +21,8 @@ export const UserPostShema = z.object({
   birthday: z.string(),
   file: z.string().nullable(),
 });
-export type UserPostType = z.infer<typeof UserPostShema>;
+export type UserDataPostType = z.infer<typeof UserPostShema>;
+export type 
 
 export type UserState = {
   status: 'loading' | 'logged' | 'guest';
