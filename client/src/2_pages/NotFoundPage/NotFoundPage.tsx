@@ -8,7 +8,7 @@ export default function NotFoundPage(): React.JSX.Element {
     <div className={style.notFound}>
       <h1>404</h1>
       <p>Страница не найдена</p>
-      <Link onClick={() => setActiveItem('Home')} className={style.linka} to="/home">
+      <Link onClick={() => setActiveItem('Мои вишлисты')} className={style.linka} to="/myList">
         Вернуться на главную
       </Link>
     </div>
