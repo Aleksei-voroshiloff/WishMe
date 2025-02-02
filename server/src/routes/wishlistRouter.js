@@ -10,6 +10,7 @@ wishlistRouter
 
 wishlistRouter
   .route('/:id')
+  .get(wishlistController.getOneWl)
   .put(wishlistController.updateWl)
   .delete(wishlistController.deleteWishlist);
 

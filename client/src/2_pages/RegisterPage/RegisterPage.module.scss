@@ -3,15 +3,37 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to bottom, #ffffff, #096b23);
-  font-family: 'Arial', sans-serif;
+  width: 200vh;
+  font-family: 'Nunito';
 }
-
+@-webkit-keyframes form {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes form {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
 .form {
+  -webkit-animation: form 0.911s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: form 0.911s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  font-family: 'Nunito';
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background: #146a2c55;
+  background: rgba(7, 58, 11, 0.77);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -20,6 +42,7 @@
   margin-bottom: 30vh;
 
   .input {
+    font-family: 'Nunito';
     padding: 0.8rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
@@ -40,19 +63,19 @@
   }
 
   .button {
+    font-family: 'Nunito';
     width: 100%;
     padding: 0.8rem;
     font-size: 1rem;
     color: #fff;
-    background: #146116;
+    background: #681d1d;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 
     &:hover {
-      background-color: #45a047;
-      transform: scale(1.02);
+      transform: scale(1.05);
     }
 
     &:active {
@@ -61,7 +84,8 @@
   }
 
   .text {
-    color: #f44336;
+    font-family: 'Nunito';
+    color: #d3d2d2;
     font-size: 0.9rem;
     margin: -0.5rem 0 1rem;
   }

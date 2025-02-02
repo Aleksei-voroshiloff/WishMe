@@ -6,6 +6,23 @@ export type User = {
   name: string;
 };
 
+export const OneUserShema = z.object({
+  name: z.string(),
+  phoneNumber: z.string(),
+  birthday: z.string(),
+  avatar: z.string().nullable(),
+});
+
+export type OneUserType = z.infer<typeof OneUserShema>;
+
+export const UserPostShema = z.object({
+  name: z.string(),
+  phoneNumber: z.string(),
+  birthday: z.string(),
+  file: z.string().nullable(),
+});
+export type UserPostType = z.infer<typeof UserPostShema>;
+
 export type UserState = {
   status: 'loading' | 'logged' | 'guest';
   data: User | null;

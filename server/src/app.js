@@ -8,6 +8,7 @@ const authRouter = require('./routes/authRouter');
 const wishRouter = require('./routes/wishRouter');
 const wishlistRouter = require('./routes/wishlistRouter');
 const friendRouter = require('./routes/friendRouter');
+const userRouter = require('./routes/userRouter');
 
 app.use(express.static('public'));
 app.use(morgan('dev'));
@@ -20,5 +21,6 @@ app.use('/api/tokens', tokenRouter);
 app.use('/api/wishlist', wishlistRouter);
 app.use('/api/wish', wishRouter);
 app.use('/api/friend', friendRouter);
+app.use('/api/users', userRouter);
 
 module.exports = app;
