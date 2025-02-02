@@ -12,6 +12,7 @@ export default function WishListPage(): React.JSX.Element {
 
   return (
     // {user.id === userid ? div}
+    
     <div>
       <div style={{ display: 'flex', margin: '50px' }}>
         {user?.id === wishListCards[0]?.userId ? (
