@@ -20,6 +20,7 @@ class FriendService {
 
   async destroyFriend(id) {
     await this.model.Friend.destroy({ where: { friendId: id } });
+    await this.model.Friend.destroy({ where: { userId: id } });
   }
 }
 

@@ -28,7 +28,7 @@ export default function FriendCardComponent({ friend }: FriendProp): React.JSX.E
           <h2>{friend.name}</h2>
           <p>День рождения: {String(friend.birthday)}</p>
         </div>
-        <button>Удалить друга</button>
+        <button>Удалить из друзей</button>
       </div>
     </NavLink>
   );

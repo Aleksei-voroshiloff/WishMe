@@ -41,7 +41,7 @@ export default function RegisterPage(): React.JSX.Element {
           className={styles.input}
           type="tel"
           {...register('phoneNumber')}
-          placeholder="example@example.com"
+          placeholder="89123456789"
         />
         {errors.phoneNumber && <p className={styles.text}>{errors.phoneNumber.message}</p>}
 
