@@ -16,13 +16,14 @@ export const getWishList = createAsyncThunk('list/getWishList', async (_, { reje
   }
 });
 
+
 export const getOneWishList = createAsyncThunk(
   'list/getOneWishList',
   async (listId: number, { rejectWithValue }) => {
     try {
       const { data } = await axiosInstance.get<WishListObjectType>(`/wishlist/${String(listId)}`);
-     console.log(data, 'getOneList');
-     
+      console.log(data, 'getOneList');
+      
       return data;
     } catch (error) {
       console.error('Ошибка при выполнении запроса:', error);
@@ -51,7 +52,7 @@ export const updateWishList = createAsyncThunk(
     try {
       const { data } = await axios.put(`/api/wishlist/${String(wishListId)}`, wishListData);
       console.log('WishList updated:', data);
-
+      
       return WishListObjectSchema.parse(data);
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Что-то пошло не так');
@@ -72,3 +73,12 @@ export const deleteWishList = createAsyncThunk<number, number>(
     }
   },
 );
+
+export const getFriendWishListThunk = createAsyncThunk('list/getFriendWishListThunk', async(friendId: number, {rejectWithValue})=> {
+  try {
+    const {data} = await axiosInstance.get(`/wishlist/friend/${String(friendId)}`);
+    return WishListSchema.parse(data)
+  } catch (error) {
+    return rejectWithValue(error instanceof Error ? error.message : 'Что-то пошло не так с getFriendWishListThunk');
+  }
+})
