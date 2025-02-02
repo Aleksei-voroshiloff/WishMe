@@ -137,7 +137,7 @@ module.exports = {
       [
         {
           title: 'Танец Кенана',
-          file: '',
+          file: 'https://images.icecat.biz/img/gallery_raw/img_20109668_raw_1482459716_5228_3788.jpg',
           wishUrl: 'https://dance.kmti.ru/',
           wishListId: 1,
           price: 100,
@@ -145,7 +145,7 @@ module.exports = {
         },
         {
           title: 'Феррари',
-          file: '',
+          file: 'https://images.icecat.biz/img/gallery_raw/img_20109668_raw_1482459716_5228_3788.jpg',
           wishUrl: 'https://auto.ru/cars/ferrari/all/?utm_referrer=https%3A%2F%2Fauto.ru%2Fcars%2Fferrari%2Fall%2F',
           wishListId: 1,
           price: 60000000,
