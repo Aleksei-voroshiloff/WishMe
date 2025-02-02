@@ -13,14 +13,15 @@ export default function NavBar(): React.JSX.Element {
 
   return (
     <div className={style.menu}>
-      <Menu fluid vertical tabular>
+      <Menu fluid vertical tabular color="blue">
         {data && (
           <>
-            <div></div>
-            <MenuItem name={data.name ? `${data.name} 🟢` : 'Гость 🔴'}>
-              <Image src="/images/wireframe/media-paragraph.png" />
+            <MenuItem>
+              <Image className={style.avatar} src="/HomerSimpson.webp" />
+              <div className={style.textava}>{data.name ? data.name : 'Гость'}</div>
             </MenuItem>
             <MenuItem
+              className={style.textMenu}
               as={Link}
               to="/myList"
               name="Мои вишлисты"
@@ -28,6 +29,7 @@ export default function NavBar(): React.JSX.Element {
               onClick={() => dispatch(setActiveItem('Мои вишлисты'))}
             />
             <MenuItem
+              className={style.textMenu}
               as={Link}
               to="/home"
               name="Подарки друзьям"
@@ -35,6 +37,7 @@ export default function NavBar(): React.JSX.Element {
               onClick={() => dispatch(setActiveItem('Подарки друзьям'))}
             />
             <MenuItem
+              className={style.textMenu}
               as={Link}
               to="/myFriends"
               name="Друзья"
@@ -42,19 +45,20 @@ export default function NavBar(): React.JSX.Element {
               onClick={() => dispatch(setActiveItem('Друзья'))}
             />
             <MenuItem
+              className={style.textMenu}
               as={Link}
               to="/home"
               name="Архив"
               active={activeItem === 'Архив'}
               onClick={() => dispatch(setActiveItem('Архив'))}
             />
-            <MenuItem onClick={() => logoutHandler()} name="Выход" />
+            <MenuItem className={style.textMenu} onClick={() => logoutHandler()} name="Выход" />
           </>
         )}
         {!data ? (
           <>
-            <MenuItem as={Link} to="/register" name="Регистрация" />
-            <MenuItem as={Link} to="/login" name="Вход" />
+            <MenuItem className={style.textMenu} as={Link} to="/register" name="Регистрация" />
+            <MenuItem className={style.textMenu} as={Link} to="/login" name="Вход" />
           </>
         ) : null}
       </Menu>

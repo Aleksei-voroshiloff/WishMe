@@ -24,7 +24,7 @@ export default function LoginPage(): React.JSX.Element {
   async function onSubmit(data: LoginCredentials): Promise<void> {
     await loginHandler(data);
     reset();
-    await navigate('/home');
+    await navigate('/myList');
   }
 
   return (
@@ -34,7 +34,7 @@ export default function LoginPage(): React.JSX.Element {
           className={styles.input}
           type="tel"
           {...register('phoneNumber')}
-          placeholder="89123456789"
+          placeholder="Введите номер телефона"
         />
         {errors.phoneNumber && <p className={styles.text}>{errors.phoneNumber.message}</p>}
 
