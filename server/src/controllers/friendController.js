@@ -17,6 +17,17 @@ class FriendController {
     }
   };
 
+  getOnelFriend = async (req, res) => {
+    try {
+      const userId = res.locals.user.id
+      const allFriend = await this.service.findOneFriend(userId);
+      res.json(allFriend);
+    } catch (error) {
+      res.json({ message: 'Ошибка при выведении друзей' });
+      console.log(error);
+    }
+  };
+
   deleteFriend = async (req, res) => {
     try {
       const { id } = req.params;

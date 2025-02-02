@@ -13,7 +13,7 @@ type FriendProp = {
 
 export default function FriendCardComponent({ friend }: FriendProp): React.JSX.Element {
   return (
-    <NavLink to='#'>
+    <NavLink to={`/friends/${String(friend.id)}`}>
       <div className={style.card_wrapper}>
         {friend.avatar ? (
           <img className={style.image} src={friend.avatar} alt="foto" />

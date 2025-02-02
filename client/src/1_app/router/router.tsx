@@ -6,6 +6,7 @@ import ProtectedRoute from './ProtectedRoute';
 import NotFoundPage from '../../2_pages/NotFoundPage/NotFoundPage';
 import WishListPage from '../../2_pages/WishListPage/WishListPage';
 import FriendsPage from '../../2_pages/FriendsPage/FriendsPage';
+import OneFriendPage from '../../2_pages/OneFriendPage/OneFriendPage';
 
 export const router = createBrowserRouter([
   {
@@ -21,13 +22,22 @@ export const router = createBrowserRouter([
             element: <WishListPage />,
           },
           {
-            path: '/myFriends',
+            path: '/friends',
             element: <FriendsPage />,
+          },
+          {
+            path: '/friends/:id',
+            element: <OneFriendPage />,
           },
         ],
       },
-      { path: '/register', element: <RegisterPage /> },
-      { path: '/login', element: <LoginPage /> },
+      {
+        element: <ProtectedRoute allowedStatuses={['guest']} redirectTo="/myList" />,
+        children: [
+          { path: '/register', element: <RegisterPage /> },
+          { path: '/login', element: <LoginPage /> },
+        ],
+      },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

@@ -18,6 +18,19 @@ class FriendService {
     });
   }
 
+  findOneFriend(userId, friendId) {
+    return this.model.Friend.findOne({
+      where: { userId, friendId, status: 'accepted' },
+      include: [
+        {
+          model: this.model.User,
+          as: 'Receiver',
+          attributes: ['id', 'name', 'birthday', 'avatar'],
+        },
+      ],
+    });
+  }
+
   async destroyFriend(id) {
     await this.model.Friend.destroy({ where: { friendId: id } });
     await this.model.Friend.destroy({ where: { userId: id } });

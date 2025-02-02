@@ -36,7 +36,7 @@ export default function NavBar(): React.JSX.Element {
             />
             <MenuItem
               as={Link}
-              to="/myFriends"
+              to="/friends"
               name="Друзья"
               active={activeItem === 'Друзья'}
               onClick={() => dispatch(setActiveItem('Друзья'))}
