@@ -15,20 +15,20 @@ export default function OneWishListPage(): React.ReactElement {
 
   useEffect(() => {
     void dispatch(getOneWishList(Number(listId)));
-    void dispatch(getWish(Number(listId)))
+    void dispatch(getWish(Number(listId)));
   }, [dispatch, listId]);
-//   console.log(listId);
-//   console.log(wishList);
+  //   console.log(listId);
+  //   console.log(wishList);
 
   const filteredWishCards = wishCards.filter((wish) => wish.wishListId === Number(listId));
 
   return (
-    <div>
+    <main className={style.main}>
       <h3>Вишлист: {wishList?.title}</h3>
-      <div>
+      <div className={style.razmap}>
         {filteredWishCards.length > 0 ? (
           filteredWishCards.map((wish) => (
-            <div key={wish.id}>
+            <div key={wish.id} >
               <WishCardUi wish={wish} />
             </div>
           ))
@@ -36,6 +36,6 @@ export default function OneWishListPage(): React.ReactElement {
           <p>Подарки не найдены.</p>
         )}
       </div>
-    </div>
+    </main>
   );
 }
