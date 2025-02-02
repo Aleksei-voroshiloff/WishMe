@@ -5,6 +5,7 @@ import LoginPage from '../../2_pages/LoginPage/LoginPage';
 import ProtectedRoute from './ProtectedRoute';
 import NotFoundPage from '../../2_pages/NotFoundPage/NotFoundPage';
 import WishListPage from '../../2_pages/WishListPage/WishListPage';
+import FriendsPage from '../../2_pages/FriendsPage/FriendsPage';
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
           {
             path: '/myList',
             element: <WishListPage />,
+          },
+          {
+            path: '/myFriends',
+            element: <FriendsPage />,
           },
         ],
       },

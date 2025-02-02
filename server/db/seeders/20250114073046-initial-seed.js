@@ -21,6 +21,12 @@ module.exports = {
           password: bcrypt.hashSync('123456', 10),
           birthday: '2001-11-22'
         },
+        {
+          name: 'Кенан',
+          phoneNumber: '11111111111',
+          password: bcrypt.hashSync('123456', 10),
+          birthday: '2001-11-06'
+        },
       ],
       {},
     );
@@ -183,6 +189,16 @@ module.exports = {
         },
         {
           userId: 2,
+          friendId: 1,
+          status: 'accepted',
+        },
+        {
+          userId: 1,
+          friendId: 3,
+          status: 'accepted',
+        },
+        {
+          userId: 3,
           friendId: 1,
           status: 'accepted',
         },

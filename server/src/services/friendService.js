@@ -6,7 +6,16 @@ class FriendService {
   }
 
   findAllFriend(userId) {
-    return this.model.Friend.findAll({ where: { userId }, include: this.model.User });
+    return this.model.Friend.findAll({
+      where: { userId, status: 'accepted' },
+      include: [
+        {
+          model: this.model.User,
+          as: 'Receiver',
+          attributes: ['id', 'name', 'birthday', 'avatar'],
+        },
+      ],
+    });
   }
 
   async destroyFriend(id) {
