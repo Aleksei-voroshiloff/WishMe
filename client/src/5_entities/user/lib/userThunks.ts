@@ -50,3 +50,12 @@ export const logoutHandler = createAsyncThunk(
     }
   },
 );
+
+export const getOneUser = createAsyncThunk('user/infoOneUser', async (_, { rejectWithValue }) => {
+  try {
+    const { data } = axiosInstance.get<>('/users');
+    return data;
+  } catch (error) {
+    return rejectWithValue((error as Error).message);
+  }
+});
