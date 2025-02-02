@@ -9,6 +9,10 @@ class WishlistService {
     return this.model.Wishlist.findAll({ order: [['id', 'DESC']], where: { userId } });
   }
 
+  getOneWishlist(listId) {
+    return this.model.Wishlist.findByPk(listId);
+  }
+
   async postWishlist({ title, date, userId }) {
     if (!title || !date) {
       throw new Error('Не все поля заполнены');

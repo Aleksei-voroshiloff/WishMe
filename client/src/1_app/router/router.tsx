@@ -21,6 +21,10 @@ export const router = createBrowserRouter([
             element: <WishListPage />,
           },
           {
+            path: '/wishlist/:listId',
+            element: <WishListPage />,
+          },
+          {
             path: '/myFriends',
             element: <FriendsPage />,
           },

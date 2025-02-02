@@ -1,8 +1,8 @@
 import React from 'react'
 
-type Props = {}
 
-export default function WishPage({}: Props) {
+
+export default function WishPage(): React.JSX.Element {
   return (
     <div>WishPage</div>
   )

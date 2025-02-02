@@ -15,6 +15,19 @@ class WishlistController {
     }
   };
 
+  getOneWl = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const oneWishlist = await wishlistService.getOneWishlist(id);
+      res.json(oneWishlist);
+    } catch (error) {
+      res.status(500).json({ message: 'Ошибка сервера getOne' });
+      console.log(error);
+    }
+  };
+
+  
+
   postWl = async (req, res) => {
     try {
       const userId = res.locals.user.id;
