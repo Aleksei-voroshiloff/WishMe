@@ -6,7 +6,8 @@ type WishListState = {
   wishListCards: WishListTypeArray;
   loading: boolean;
   error: null | string;
-  oneWishList: WishListObjectType | null;
+  oneWishList: WishListObjectType | null
+
 };
 
 const initialState: WishListState = {
