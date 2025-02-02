@@ -1,19 +1,21 @@
 import React from 'react';
 import type { WishObjectType } from '../types/types';
-import { CardMeta, CardHeader, CardContent, Card, Icon } from 'semantic-ui-react';
+import { CardMeta, CardHeader, CardContent, Card, Icon, Image } from 'semantic-ui-react';
+import style from './OneWishListPage.module.scss';
+
 
 type Props = {
-  list: WishObjectType;
+  wish: WishObjectType;
 };
 
 export default function WishCardUi({ wish }: Props): React.JSX.Element {
   return (
     <Card>
-      {/* <Image src={list.img} wrapped ui={false} /> */}
+      <Image src={wish.wishUrl} wrapped ui={false} />
       <CardContent>
         <CardHeader>{wish.title}</CardHeader>
         <CardMeta>
-          <span className="date">{wish.date}</span>
+          <span className="date">{wish.wishListId}</span>
         </CardMeta>
       </CardContent>
       <CardContent extra>
