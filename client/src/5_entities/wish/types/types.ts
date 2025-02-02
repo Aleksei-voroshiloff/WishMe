@@ -8,10 +8,6 @@ export const WishObjectSchema = z.object({
   price: z.number(),
   wishListId: z.number(),
 });
- 
-
-
-
 
 export const WishSchema = z.array(WishObjectSchema);
 
@@ -20,6 +16,5 @@ export type WishTypeArray = z.infer<typeof WishSchema>;
 
 export type UpdatewishForm = {
   wishId: number;
-  wishData: Omit<WishObjectType, 'id'>
-  ;
+  wishData: Omit<WishObjectType, 'id'>;
 };
