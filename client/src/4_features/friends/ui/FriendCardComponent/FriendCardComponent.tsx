@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './FriendCardComponent.module.scss';
 import { NavLink } from 'react-router-dom';
+import { Icon } from 'semantic-ui-react';
 
 type FriendProp = {
   friend: {
@@ -32,7 +33,7 @@ export default function FriendCardComponent({ friend }: FriendProp): React.JSX.E
           </NavLink>
           <p>День рождения: {String(friend.birthday)}</p>
         </div>
-        <button>Удалить из друзей</button>
+        <Icon name='trash alternate' color='red'/>
       </div>
     </>
   );
