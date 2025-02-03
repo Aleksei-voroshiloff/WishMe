@@ -65,7 +65,7 @@ const userSlice = createSlice({
       .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
         state.oneUser = payload;
       })
-      .addCase(getOneUser.rejected, (state, action) => {
+      .addCase(updateUserInfo.rejected, (state, action) => {
         state.error = action.error.message ?? 'Что то не так при обновлении';
       });
   },

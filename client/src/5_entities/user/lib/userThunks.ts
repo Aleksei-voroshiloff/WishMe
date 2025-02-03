@@ -9,7 +9,6 @@ import type {
   RegisterFormData,
 } from '../types/types';
 
-
 export const fetchUser = createAsyncThunk('user/fetchUser', async (_, { rejectWithValue }) => {
   try {
     const response = await axiosInstance.get<AuthResponse>('/tokens/refresh');
@@ -71,7 +70,7 @@ export const getOneUser = createAsyncThunk(
 );
 
 export const updateUserInfo = createAsyncThunk(
-  'user/infoOneUser',
+  'user/updateInfo',
   async ({ id, updateData }: DataUpdateType, { rejectWithValue }) => {
     try {
       const { data } = await axiosInstance.put<OneUserType>(`/users/${String(id)}`, updateData);
@@ -81,4 +80,3 @@ export const updateUserInfo = createAsyncThunk(
     }
   },
 );
-
