@@ -9,13 +9,19 @@ class UserController {
 
   getOneUser = async (req, res) => {
     try {
+      const userId = res.locals.user.id;
       const { id } = req.params;
+      if (userId === Number(id)) {
+        return res.json({ message: 'Нет доступа' });
+      }
       const oneUser = await this.service.findOneUser(id);
-      const { password, createdAt, updatedAt, ...userData } = oneUser.toJSON();
-      res.json(userData);
+      const planeOneUser = oneUser.get();
+      delete planeOneUser.password;
+      delete planeOneUser.phoneNumber;
+      return res.status(200).json(planeOneUser);
     } catch (error) {
-      res.json({ message: 'Ошибка при выведении друзей' });
       console.log(error);
+      return res.json({ message: 'Ошибка при выведении друзей' });
     }
   };
 
@@ -35,6 +41,17 @@ class UserController {
     } catch (error) {
       console.log(error);
       return res.json({ message: 'Ошибка при выведении друзей' });
+    }
+  };
+
+  findAllUsers = async (req, res) => {
+    try {
+      const { search } = req.query;
+      const allUsers = await this.service.findAllUsers(search);
+      return res.status(200).json(allUsers);
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: 'Ошибка при выведении друзей' });
     }
   };
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import style from './FriendCardComponent.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
+import { useAppDispatch, useAppSelector } from '../../../../1_app/store/hooks';
+import { deleteFriendThunk } from '../../lib/friendsThunk';
 
 type FriendProp = {
   friend: {
@@ -13,6 +15,8 @@ type FriendProp = {
 };
 
 export default function FriendCardComponent({ friend }: FriendProp): React.JSX.Element {
+const dispatch = useAppDispatch();
+const {friends} = useAppSelector((state) => state.friend)
   return (
     <>
       <div className={style.card_wrapper}>
@@ -33,7 +37,9 @@ export default function FriendCardComponent({ friend }: FriendProp): React.JSX.E
           </NavLink>
           <p>День рождения: {String(friend.birthday)}</p>
         </div>
-        <Icon name='trash alternate' color='red'/>
+        <Icon onClick={() => {void dispatch(deleteFriendThunk(friend.id))
+          console.log(friends)
+        }} name='trash alternate' color='red'/>
       </div>
     </>
   );

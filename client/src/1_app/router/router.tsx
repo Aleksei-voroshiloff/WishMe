@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
     path: '/',
     element: <Layout />,
     children: [
-      { path: '/', element: <Navigate to="/home" /> },
+      { path: '/', element: <Navigate to="/myList" /> },
       {
         element: <ProtectedRoute allowedStatuses={['logged']} redirectTo="/login" />,
         children: [

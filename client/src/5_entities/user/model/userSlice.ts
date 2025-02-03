@@ -23,7 +23,6 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchUser.fulfilled, (state, action) => {
-        console.log(action)
         state.data = action.payload.user;
         state.status = 'logged';
         state.error = null;
@@ -57,11 +56,17 @@ const userSlice = createSlice({
       .addCase(logoutHandler.rejected, (state, action) => {
         state.error = action.error.message ?? 'Something went wrong';
       })
+      .addCase(getOneUser.pending, (state) => {
+        state.oneUser = null;
+        state.error = null;
+      })
       .addCase(getOneUser.fulfilled, (state, { payload }) => {
         state.oneUser = payload;
+        state.error = null;
       })
       .addCase(getOneUser.rejected, (state, action) => {
         state.error = action.error.message ?? 'Что то не так при загрузке юзера';
+        state.oneUser = null;
       })
       .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
         state.oneUser = payload;
