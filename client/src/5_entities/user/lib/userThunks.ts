@@ -1,6 +1,14 @@
 import axiosInstance, { setAccessToken } from '../../../6_shared/api/axiosInstance';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import type { AuthResponse, LoginCredentials, OneUserType, RegisterFormData } from '../types/types';
+
+import type {
+  AuthResponse,
+  DataUpdateType,
+  LoginCredentials,
+  OneUserType,
+  RegisterFormData,
+} from '../types/types';
+
 
 export const fetchUser = createAsyncThunk('user/fetchUser', async (_, { rejectWithValue }) => {
   try {
@@ -50,12 +58,27 @@ export const logoutHandler = createAsyncThunk(
     }
   },
 );
+export const getOneUser = createAsyncThunk(
+  'user/infoOneUser',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.get<OneUserType>(`/users/${String(id)}`);
+      return data;
+    } catch (error) {
+      return rejectWithValue((error as Error).message);
+    }
+  },
+);
 
-export const getOneUser = createAsyncThunk('user/infoOneUser', async (id: number, { rejectWithValue }) => {
-  try {
-    const { data } = await axiosInstance.get<OneUserType>(`/users/${String(id)}`);
-    return data;
-  } catch (error) {
-    return rejectWithValue((error as Error).message);
-  }
-});
+export const updateUserInfo = createAsyncThunk(
+  'user/infoOneUser',
+  async ({ id, updateData }: DataUpdateType, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.put<OneUserType>(`/users/${String(id)}`, updateData);
+      return data;
+    } catch (error) {
+      return rejectWithValue((error as Error).message);
+    }
+  },
+);
+
