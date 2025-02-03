@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../1_app/store/hooks';
 import { setActiveItem } from '../../5_entities/Navbar/model/navbarSlice';
 import { useUser } from '../../5_entities/user/hooks/userHook';
-import { MenuItem, Menu, Image } from 'semantic-ui-react';
+import { MenuItem, Menu, Image, Icon } from 'semantic-ui-react';
 import style from './NavBar.module.scss';
+import { openUserModal } from '../../5_entities/modal_window/model/modalSlice';
 
 export default function NavBar(): React.JSX.Element {
   const dispatch = useAppDispatch();
@@ -17,6 +18,9 @@ export default function NavBar(): React.JSX.Element {
         {data && (
           <>
             <MenuItem>
+              <div onClick={() => dispatch(openUserModal())}>
+                <Icon name="pencil alternate" />
+              </div>
               <Image className={style.avatar} src="/HomerSimpson.webp" />
               <div className={style.textava}>{data.name ? data.name : 'Гость'}</div>
             </MenuItem>

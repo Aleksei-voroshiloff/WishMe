@@ -7,6 +7,7 @@ export type User = {
 };
 
 export const OneUserShema = z.object({
+  id: z.number(),
   name: z.string(),
   phoneNumber: z.string(),
   birthday: z.string(),
@@ -30,7 +31,7 @@ export type DataUpdateType = {
 
 export type UserState = {
   status: 'loading' | 'logged' | 'guest';
-  data: User | null;
+  data: OneUserType | null;
   error: string | null;
   oneUser: OneUserType | null;
 };

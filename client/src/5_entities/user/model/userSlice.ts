@@ -23,6 +23,7 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchUser.fulfilled, (state, action) => {
+        console.log(action)
         state.data = action.payload.user;
         state.status = 'logged';
         state.error = null;
