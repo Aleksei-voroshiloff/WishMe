@@ -14,4 +14,7 @@ wishlistRouter
   .put(wishlistController.updateWl)
   .delete(wishlistController.deleteWishlist);
 
+wishlistRouter.route('/friend/:friendId')
+.get(verifyAccessToken, wishlistController.getAllFriendWl)
+
 module.exports = wishlistRouter;

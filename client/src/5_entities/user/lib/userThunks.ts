@@ -1,5 +1,6 @@
 import axiosInstance, { setAccessToken } from '../../../6_shared/api/axiosInstance';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import type {
   AuthResponse,
   DataUpdateType,
@@ -7,6 +8,7 @@ import type {
   OneUserType,
   RegisterFormData,
 } from '../types/types';
+
 
 export const fetchUser = createAsyncThunk('user/fetchUser', async (_, { rejectWithValue }) => {
   try {
@@ -56,7 +58,6 @@ export const logoutHandler = createAsyncThunk(
     }
   },
 );
-
 export const getOneUser = createAsyncThunk(
   'user/infoOneUser',
   async (id: number, { rejectWithValue }) => {
@@ -80,3 +81,4 @@ export const updateUserInfo = createAsyncThunk(
     }
   },
 );
+
