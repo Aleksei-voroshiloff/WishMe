@@ -1,17 +1,20 @@
-import { addWishList, deleteWishList, getWishList, updateWishList } from '../lib/wishListThunk';
+import { addWishList, deleteWishList, getOneWishList, getWishList, updateWishList } from '../lib/wishListThunk';
 import { createSlice } from '@reduxjs/toolkit';
-import type { WishListTypeArray } from '../types/types';
+import type { WishListObjectType, WishListTypeArray } from '../types/types';
 
 type WishListState = {
   wishListCards: WishListTypeArray;
   loading: boolean;
   error: null | string;
+  oneWishList: WishListObjectType | null
+
 };
 
 const initialState: WishListState = {
   wishListCards: [],
   loading: false,
   error: null,
+  oneWishList: null,
 };
 
 const wishListSlice = createSlice({
@@ -67,6 +70,18 @@ const wishListSlice = createSlice({
         );
       })
       .addCase(updateWishList.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(getOneWishList.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getOneWishList.fulfilled, (state, {payload}) => {
+        state.loading = false;
+        state.oneWishList = payload;
+      })
+      .addCase(getOneWishList.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       });

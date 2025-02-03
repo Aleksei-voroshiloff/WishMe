@@ -22,12 +22,17 @@ export const UserPostShema = z.object({
   file: z.string().nullable(),
 });
 export type UserDataPostType = z.infer<typeof UserPostShema>;
-export type 
+
+export type DataUpdateType = {
+  id: number;
+  updateData: UserDataPostType;
+};
 
 export type UserState = {
   status: 'loading' | 'logged' | 'guest';
   data: User | null;
   error: string | null;
+  oneUser: OneUserType | null;
 };
 
 export type AuthResponse = {

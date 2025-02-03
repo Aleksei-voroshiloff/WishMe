@@ -8,13 +8,28 @@ import axiosInstance from '../../../6_shared/api/axiosInstance';
 export const getWishList = createAsyncThunk('list/getWishList', async (_, { rejectWithValue }) => {
   try {
     const { data } = await axiosInstance.get(`/wishlist`);
-    console.log(data);
+    console.log(data, 'getall');
 
     return WishListSchema.parse(data);
   } catch (error) {
     return rejectWithValue(error instanceof Error ? error.message : 'Что-то пошло не так');
   }
 });
+
+export const getOneWishList = createAsyncThunk(
+  'list/getOneWishList',
+  async (listId: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.get<WishListObjectType>(`/wishlist/${String(listId)}`);
+     console.log(data, 'getOneList');
+     
+      return data;
+    } catch (error) {
+      console.error('Ошибка при выполнении запроса:', error);
+      return rejectWithValue(error instanceof Error ? error.message : 'Что-то пошло не так');
+    }
+  },
+);
 
 export const addWishList = createAsyncThunk(
   'list/addWishList',

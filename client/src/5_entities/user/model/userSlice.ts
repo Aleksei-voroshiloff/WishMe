@@ -1,11 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { UserState } from '../types/types';
-import { fetchUser, submitHandler, loginHandler, logoutHandler } from '../lib/userThunks';
+import {
+  fetchUser,
+  submitHandler,
+  loginHandler,
+  logoutHandler,
+  getOneUser,
+  updateUserInfo,
+} from '../lib/userThunks';
 
 const initialState: UserState = {
   status: 'loading',
   data: null,
   error: null,
+  oneUser: null,
 };
 
 const userSlice = createSlice({
@@ -47,6 +55,18 @@ const userSlice = createSlice({
       })
       .addCase(logoutHandler.rejected, (state, action) => {
         state.error = action.error.message ?? 'Something went wrong';
+      })
+      .addCase(getOneUser.fulfilled, (state, { payload }) => {
+        state.oneUser = payload;
+      })
+      .addCase(getOneUser.rejected, (state, action) => {
+        state.error = action.error.message ?? 'Что то не так при загрузке юзера';
+      })
+      .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
+        state.oneUser = payload;
+      })
+      .addCase(getOneUser.rejected, (state, action) => {
+        state.error = action.error.message ?? 'Что то не так при обновлении';
       });
   },
 });
