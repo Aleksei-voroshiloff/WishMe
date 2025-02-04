@@ -9,20 +9,22 @@ import { openUserModal } from '../../5_entities/modal_window/model/modalSlice';
 export default function NavBar(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const { logoutHandler } = useUser();
+  const data = useAppSelector((state) => state.user.data)
   const user = useAppSelector((state) => state.user.myCabinet);
   const activeItem = useAppSelector((state) => state.navbar.activeItem);
 
+console.log(user)
   return (
     <div className={style.menu}>
       <Menu fluid vertical tabular color="blue">
-        {user && (
+        {data && (
           <>
             <MenuItem>
               <div onClick={() => dispatch(openUserModal())}>
                 <Icon name="pencil alternate" />
               </div>
-              <Image className={style.avatar} src={`http://localhost:3000/${user.avatar}`} />
-              <div className={style.textava}>{user.name ? user.name : 'Гость'}</div>
+              <Image className={style.avatar} src={`http://localhost:3000/${user?.avatar}`} />
+              <div className={style.textava}>{user?.name ? user.name : 'Гость'}</div>
             </MenuItem>
             <MenuItem
               className={style.textMenu}
@@ -59,7 +61,7 @@ export default function NavBar(): React.JSX.Element {
             <MenuItem className={style.textMenu} onClick={() => logoutHandler()} name="Выход" />
           </>
         )}
-        {!user ? (
+        {!data ? (
           <>
             <MenuItem className={style.textMenu} as={Link} to="/register" name="Регистрация" />
             <MenuItem className={style.textMenu} as={Link} to="/login" name="Вход" />

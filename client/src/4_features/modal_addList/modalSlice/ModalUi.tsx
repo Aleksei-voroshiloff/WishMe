@@ -4,13 +4,13 @@ import { ModalContent, ModalActions, Button, Modal, Form, FormField } from 'sema
 
 import { useAppDispatch, useAppSelector } from '../../../1_app/store/hooks';
 
-import { closeModal } from './modalSlice';
 import { addWishList } from '../../../5_entities/wishlist/lib/wishListThunk';
 import { WishListObjectSchema } from '../../../5_entities/wishlist/types/types';
+import { closeModal } from '../../../5_entities/modal_window/model/modalSlice';
 
 export default function ModalUi(): React.JSX.Element {
   const dispatch = useAppDispatch();
-  const showModal = useAppSelector((state) => state.modal_add.showModal);
+  const showModal = useAppSelector((state) => state.modal.showModal);
   const user = useAppSelector((state) => state.user.data);
 
   const addHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {

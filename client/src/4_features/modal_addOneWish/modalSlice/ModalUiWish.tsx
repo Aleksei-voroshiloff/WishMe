@@ -4,15 +4,16 @@ import { ModalContent, ModalActions, Button, Modal, Form, FormField } from 'sema
 
 import { useAppDispatch, useAppSelector } from '../../../1_app/store/hooks';
 
-import { closeModal } from './modalSlice';
+
 import { useParams } from 'react-router-dom';
 import { addWish } from '../../../5_entities/wish/lib/wishThunk';
 import { WishObjectSchema } from '../../../5_entities/wish/types/types';
+import { closeModal } from '../../../5_entities/modal_window/model/modalSlice';
 
 export default function ModalUiWish(): React.JSX.Element {
   const dispatch = useAppDispatch();
 
-  const showModal = useAppSelector((state) => state.modal_add.showModal);
+  const showModal = useAppSelector((state) => state.modal.showModal);
   const { listId } = useParams();
 
   const addHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
