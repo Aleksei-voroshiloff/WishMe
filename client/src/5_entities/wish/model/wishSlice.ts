@@ -1,17 +1,19 @@
-import { addWish, deleteWish, getWish, updateWish } from '../lib/wishThunk';
+import { addWish, deleteWish, getPresInfo, getWish, updateWish } from '../lib/wishThunk';
 import { createSlice } from '@reduxjs/toolkit';
-import type { WishTypeArray } from '../types/types';
+import type { PresentObjType, WishTypeArray } from '../types/types';
 
 type NoteState = {
   wishCards: WishTypeArray;
   loading: boolean;
   error: null | string;
+  reserv: PresentObjType[] | null;
 };
 
 const initialState: NoteState = {
   wishCards: [],
   loading: false,
   error: null,
+  reserv: [],
 };
 
 const wishSlice = createSlice({
@@ -67,6 +69,11 @@ const wishSlice = createSlice({
       .addCase(updateWish.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
+      })
+      .addCase(getPresInfo.fulfilled, (state, { payload }) => {
+        console.log(payload, 'zzzzzzz');
+        state.reserv?.push(payload);
+        
       });
   },
 });

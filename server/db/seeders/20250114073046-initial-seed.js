@@ -38,83 +38,19 @@ module.exports = {
           date: '2025-02-07',
           userId: 1,
         },
+       
         {
-          title: 'Подарки ДР',
+          title: 'Донаты на лечение',
           date: '2025-02-07',
           userId: 1,
         },
         {
-          title: 'Подарки ДР',
+          title: ' 23 февраля ',
           date: '2025-02-07',
           userId: 1,
         },
         {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
+          title: ' свадьба ',
           date: '2025-02-07',
           userId: 1,
         },
@@ -140,7 +76,7 @@ module.exports = {
           file: 'https://images.icecat.biz/img/gallery_raw/img_20109668_raw_1482459716_5228_3788.jpg',
           wishUrl: 'https://dance.kmti.ru/',
           wishListId: 1,
-          price: 100,
+          price: '100',
           isArchived: false,
         },
         {
@@ -148,7 +84,7 @@ module.exports = {
           file: 'https://images.icecat.biz/img/gallery_raw/img_20109668_raw_1482459716_5228_3788.jpg',
           wishUrl: 'https://auto.ru/cars/ferrari/all/?utm_referrer=https%3A%2F%2Fauto.ru%2Fcars%2Fferrari%2Fall%2F',
           wishListId: 1,
-          price: 60000000,
+          price: '60000000',
           isArchived: false,
         },
         {
@@ -156,7 +92,7 @@ module.exports = {
           file: '',
           wishUrl: 'https://market.yandex.ru/catalog--konsoli-playstation-5/40910350/list',
           wishListId: 2,
-          price: 60000,
+          price: '60000',
           isArchived: false,
         },
         {
@@ -164,7 +100,7 @@ module.exports = {
           file: '',
           wishUrl: 'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
           wishListId: 2,
-          price: 1000,
+          price: '1000',
           isArchived: true,
         },
       ],

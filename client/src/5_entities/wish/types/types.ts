@@ -5,9 +5,19 @@ export const WishObjectSchema = z.object({
   title: z.string(),
   file: z.string(),
   wishUrl: z.string(),
-  price: z.number(),
+  price: z.string(),
   wishListId: z.number(),
 });
+
+export const PresentObjShema = z.object({
+  id: z.number(),
+  wishId: z.number(),
+  userId: z.number(),
+})
+
+export type PresentObjType = z.infer<typeof PresentObjShema>
+
+
 
 export const WishSchema = z.array(WishObjectSchema);
 

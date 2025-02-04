@@ -41,7 +41,8 @@ const wishListSlice = createSlice({
       })
       .addCase(addWishList.fulfilled, (state, action) => {
         state.loading = false;
-        state.wishListCards.push(action.payload);
+        console.log('WishList added:', action.payload);
+        state.wishListCards.unshift(action.payload);
       })
       .addCase(addWishList.rejected, (state, action) => {
         state.loading = false;

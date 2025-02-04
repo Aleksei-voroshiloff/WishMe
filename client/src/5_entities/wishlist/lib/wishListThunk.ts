@@ -34,9 +34,11 @@ export const getOneWishList = createAsyncThunk(
 
 export const addWishList = createAsyncThunk(
   'list/addWishList',
-  async (bookData: Omit<WishListObjectType, 'id'>, { rejectWithValue }) => {
+  async (wishlistData: Omit<WishListObjectType, 'id'>, { rejectWithValue }) => {
+   console.log(wishlistData, 'bookData');
+   
     try {
-      const { data } = await axios.post(`/api/wishlist`, bookData);
+      const { data } = await axiosInstance.post(`/wishlist`, wishlistData);
       console.log('WishList created:', data);
 
       return WishListObjectSchema.parse(data);

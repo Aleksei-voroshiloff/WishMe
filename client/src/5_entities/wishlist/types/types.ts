@@ -4,7 +4,7 @@ export const WishListObjectSchema = z.object({
   id: z.number(),
   title: z.string(),
   date: z.string(),
-  userId: z.number(),
+  userId: z.number().optional(),
 });
  
 
