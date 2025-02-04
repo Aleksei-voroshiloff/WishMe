@@ -23,15 +23,16 @@ class UserController {
     try {
       const { id } = req.params;
       const { name, phoneNumber, birthday } = req.body;
+      console.log(req.file)
+      console.log(req.file)
       const updateData = { name, phoneNumber, birthday };
       if (req.file) {
         const fileName = await fileService.createImage(req.file.buffer);
-        updateData.avatar = fileName; // Устанавливаем значение для поля avatar
-      } else {
-        updateData.avatar = null;
+        updateData.avatar = fileName;
       }
       const updUser = await this.service.updateUser(id, updateData);
-      return res.json(updUser);
+      const { password, createdAt, updatedAt, ...filterData } = updUser.toJSON();
+      return res.json(filterData);
     } catch (error) {
       console.log(error);
       return res.json({ message: 'Ошибка при выведении друзей' });

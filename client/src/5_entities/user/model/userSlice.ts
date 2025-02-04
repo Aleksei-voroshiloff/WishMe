@@ -7,6 +7,7 @@ import {
   logoutHandler,
   getOneUser,
   updateUserInfo,
+  myCabinetInfo,
 } from '../lib/userThunks';
 
 const initialState: UserState = {
@@ -14,6 +15,7 @@ const initialState: UserState = {
   data: null,
   error: null,
   oneUser: null,
+  myCabinet: null,
 };
 
 const userSlice = createSlice({
@@ -23,7 +25,6 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchUser.fulfilled, (state, action) => {
-        console.log(action)
         state.data = action.payload.user;
         state.status = 'logged';
         state.error = null;
@@ -63,8 +64,11 @@ const userSlice = createSlice({
       .addCase(getOneUser.rejected, (state, action) => {
         state.error = action.error.message ?? 'Что то не так при загрузке юзера';
       })
+      .addCase(myCabinetInfo.fulfilled, (state, { payload }) => {
+        state.myCabinet = payload;
+      })
       .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
-        state.oneUser = payload;
+        state.myCabinet = payload;
       })
       .addCase(updateUserInfo.rejected, (state, action) => {
         state.error = action.error.message ?? 'Что то не так при обновлении';
