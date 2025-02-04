@@ -1,4 +1,11 @@
-import { addWish, deleteWish, getPresInfo, getWish, updateWish } from '../lib/wishThunk';
+import {
+  addWish,
+  deleteWish,
+  getPresInfo,
+  getWish,
+  toggleReservation,
+  updateWish,
+} from '../lib/wishThunk';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PresentObjType, WishTypeArray } from '../types/types';
 
@@ -6,20 +13,26 @@ type NoteState = {
   wishCards: WishTypeArray;
   loading: boolean;
   error: null | string;
-  reserv: PresentObjType[] | null;
+  isLoading: boolean;
+  reservations: Record<number, PresentObjType | null>;
 };
 
 const initialState: NoteState = {
   wishCards: [],
   loading: false,
   error: null,
-  reserv: [],
+  reservations: {},
+  isLoading: false,
 };
 
 const wishSlice = createSlice({
   name: 'wish',
   initialState,
-  reducers: {},
+  reducers: {
+    setIsLoading: (state) => {
+      state.isLoading = !state.isLoading;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getWish.pending, (state) => {
@@ -72,10 +85,19 @@ const wishSlice = createSlice({
       })
       .addCase(getPresInfo.fulfilled, (state, { payload }) => {
         console.log(payload, 'zzzzzzz');
-        state.reserv?.push(payload);
-        
+        state.reservations[payload.id] = payload;
+      })
+      .addCase(toggleReservation.fulfilled, (state, { payload }) => {
+        const x = payload?.id;
+        if (payload) {
+          state.reservations[x] = payload;
+        } else {
+          const { [x]: _, ...rest } = state.reservations;
+          state.reservations = rest;
+        }
       });
   },
 });
+export const { setIsLoading } = wishSlice.actions;
 
 export default wishSlice.reducer;

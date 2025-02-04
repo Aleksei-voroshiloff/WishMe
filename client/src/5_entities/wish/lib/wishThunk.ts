@@ -4,6 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import type { PresentObjType, UpdatewishForm, WishObjectType } from '../types/types';
 import { WishObjectSchema, WishSchema } from '../types/types';
 import axiosInstance from '../../../6_shared/api/axiosInstance';
+import type { ParsPresentForm } from '../../wishlist/types/types';
 
 export const getWish = createAsyncThunk(
   'wish/getWish',
@@ -74,3 +75,40 @@ export const getPresInfo = createAsyncThunk(
     }
   },
 );
+
+export const toggleReservation = createAsyncThunk(
+  'wish/toggleReservation',
+  async (isReserved, { rejectWithValue }) => {
+    console.log(isReserved, 111111111);
+    
+
+    try {
+      if (isReserved.id) {
+        await axiosInstance.delete(`/present/${String(isReserved.id)}`);
+        return null;
+      }
+      const { data } = await axiosInstance.post<PresentObjType>('/presents',  isReserved );
+      return data;
+    } catch (error) {
+      return rejectWithValue(error instanceof Error ? error.message : 'Ошибка бронирования');
+    }
+  },
+);
+
+// export const toggleReservation = createAsyncThunk(
+//   'wish/toggleReservation',
+//   async (wishId) => {
+//     console.log(wishId, 222222);
+
+//       // console.log(isReserved, 'qqqqqqqqqqq');
+//       // console.log(isReserved, 'wishID');
+
+//       // if (isReserved) {
+//       //   await axiosInstance.delete(`/presents/${String(wishId)}`);
+//       //   return null;
+//       // }
+//       const { data } = await axiosInstance.post<PresentObjType>('/presents', { wishId });
+//       return data;
+
+//   },
+// );
