@@ -73,7 +73,20 @@ export const updateUserInfo = createAsyncThunk(
   'user/updateInfo',
   async ({ id, updateData }: DataUpdateType, { rejectWithValue }) => {
     try {
+      console.log(updateData)
       const { data } = await axiosInstance.put<OneUserType>(`/users/${String(id)}`, updateData);
+      return data;
+    } catch (error) {
+      return rejectWithValue((error as Error).message);
+    }
+  },
+);
+
+export const myCabinetInfo = createAsyncThunk(
+  'user/myCabinet',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.get<OneUserType | null>(`/users/${String(id)}`);
       return data;
     } catch (error) {
       return rejectWithValue((error as Error).message);
