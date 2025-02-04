@@ -18,6 +18,15 @@ export const OneUserShema = z.object({
 
 export type OneUserType = z.infer<typeof OneUserShema>;
 
+export const MyDataShema = z.object({
+  id: z.number(),
+  name: z.string(),
+  phoneNumber: z.string(),
+  birthday: z.string().nullable(),
+  avatar: z.string().nullable(),
+});
+export type MyDataType = z.infer<typeof MyDataShema>;
+
 export const UserPostShema = z.object({
   name: z.string(),
   phoneNumber: z.string(),
