@@ -7,10 +7,11 @@ export type User = {
 };
 
 export const OneUserShema = z.object({
+  id: z.number(),
   name: z.string(),
   phoneNumber: z.string(),
   birthday: z.string(),
-  avatar: z.string().nullable(),
+  avatar: z.string(),
 });
 
 export type OneUserType = z.infer<typeof OneUserShema>;
@@ -19,8 +20,9 @@ export const UserPostShema = z.object({
   name: z.string(),
   phoneNumber: z.string(),
   birthday: z.string(),
-  file: z.string().nullable(),
+  file: z.instanceof(File).nullable(),
 });
+
 export type UserDataPostType = z.infer<typeof UserPostShema>;
 
 export type DataUpdateType = {
@@ -30,13 +32,14 @@ export type DataUpdateType = {
 
 export type UserState = {
   status: 'loading' | 'logged' | 'guest';
-  data: User | null;
+  data: OneUserType | null;
   error: string | null;
   oneUser: OneUserType | null;
+  myCabinet: OneUserType | null;
 };
 
 export type AuthResponse = {
-  user: User;
+  user: OneUserType;
   accessToken: string;
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import NavBar from '../3_widgets/NavBar/NavBar';
 import style from './Layout.module.scss';
+import ModalPage from '../4_features/modal_window/ModalPage';
 
 export default function Layout(): React.JSX.Element {
   return (
@@ -12,6 +13,7 @@ export default function Layout(): React.JSX.Element {
       <div className={style.home}>
         <NavBar />
         <Outlet />
+        <ModalPage />
       </div>
     </div>
   );
