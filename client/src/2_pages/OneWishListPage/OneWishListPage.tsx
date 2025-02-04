@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
 import { getOneWishList } from '../../5_entities/wishlist/lib/wishListThunk';
 import { useAppDispatch, useAppSelector } from '../../1_app/store/hooks';
 import WishCardUi from '../../5_entities/wish/ui/WishCardUi';
 import { getWish } from '../../5_entities/wish/lib/wishThunk';
 import style from './OneWishListPage.module.scss';
 import { Button, Icon } from 'semantic-ui-react';
-import { openModal } from '../../4_features/modal_addList/modalSlice/modalSlice';
 import ModalUiWish from '../../4_features/modal_addOneWish/modalSlice/ModalUiWish';
+import { openModal } from '../../5_entities/modal_window/model/modalSlice';
 
 export default function OneWishListPage(): React.ReactElement {
   const { listId } = useParams();
@@ -21,7 +20,6 @@ export default function OneWishListPage(): React.ReactElement {
     void dispatch(getOneWishList(Number(listId)));
     void dispatch(getWish(Number(listId)));
   }, [dispatch, listId]);
-
 
   const filteredWishCards = wishCards.filter((wish) => wish.wishListId === Number(listId));
 

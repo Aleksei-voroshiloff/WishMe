@@ -5,8 +5,9 @@ import WishListCardUi from '../../5_entities/wishlist/ui/WishListCardUi';
 import style from './WishListPage.module.scss';
 import { getWishList } from '../../5_entities/wishlist/lib/wishListThunk';
 import { Button, Icon } from 'semantic-ui-react';
-import { openModal } from '../../4_features/modal_addList/modalSlice/modalSlice';
+
 import ModalUi from '../../4_features/modal_addList/modalSlice/ModalUi';
+import { openModal } from '../../5_entities/modal_window/model/modalSlice';
 
 export default function WishListPage(): React.JSX.Element {
   const dispatch = useAppDispatch();
