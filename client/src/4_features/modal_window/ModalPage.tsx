@@ -8,9 +8,15 @@ import {
   Form,
   FormField,
   Image,
+  Message,
 } from 'semantic-ui-react';
 import { useAppDispatch, useAppSelector } from '../../1_app/store/hooks';
-import { closeUserModal, setAvatar } from '../../5_entities/modal_window/model/modalSlice';
+import {
+  closeUserModal,
+  setAvatar,
+  setShowDate,
+  setTomorrowDate,
+} from '../../5_entities/modal_window/model/modalSlice';
 import style from './Modal.module.scss';
 import { updateUserInfo } from '../../5_entities/user/lib/userThunks';
 
@@ -20,6 +26,8 @@ export default function ModalPage(): React.JSX.Element {
   const user = useAppSelector((state) => state.user.myCabinet);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const avatar = useAppSelector((state) => state.modal.avatar);
+  const showDate = useAppSelector((state) => state.modal.showDate);
+  const tomorrowDate = useAppSelector((state) => state.modal.tomorrowDate);
 
   const handleImageClick = (): void => {
     fileInputRef.current?.click(); // Открываем диалог выбора файла
@@ -40,15 +48,36 @@ export default function ModalPage(): React.JSX.Element {
     e.preventDefault();
     try {
       const formData = new FormData(e.currentTarget);
+      const data = formData.get('birthday') as string;
+      const inputDate = new Date(data);
+      // Получаем текущую дату
+      const today = new Date();
+      // Сбрасываем время для корректного сравнения
+      today.setHours(0, 0, 0, 0);
+      console.log(today);
+      inputDate.setHours(0, 0, 0, 0);
+      // Проверяем, введена ли дата позже текущей
+      if (inputDate > today) {
+        dispatch(setTomorrowDate());
+        return; // Прерываем выполнение функции
+      }
+
+      if (!data) {
+        dispatch(setShowDate());
+        return;
+      }
       if (user?.id !== undefined) {
         await dispatch(updateUserInfo({ id: user.id, updateData: formData }));
       }
       dispatch(closeUserModal());
+      dispatch(setTomorrowDate());
     } catch (error) {
       console.error(error, 'Ошибка в обновлении');
     }
   };
+
   const noFoto = '/avatar.png';
+
   if (!user) return <></>;
   return (
     <Modal
@@ -97,6 +126,10 @@ export default function ModalPage(): React.JSX.Element {
           <FormField>
             <label>Ваша дата рождения</label>
             <input name="birthday" type="date" defaultValue={user.birthday ?? ''} />
+            {showDate && <Message color="red">Укажите дату рождения</Message>}
+            {tomorrowDate && (
+              <Message color="red">Дата не можеть быть позднее сегодняшнего дня</Message>
+            )}
           </FormField>
           <ModalActions style={{ marginTop: '20px' }}>
             <Button onClick={() => dispatch(closeUserModal())}>Вернуться</Button>
