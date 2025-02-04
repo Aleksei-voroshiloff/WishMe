@@ -7,6 +7,7 @@ import {
   logoutHandler,
   getOneUser,
   updateUserInfo,
+  myCabinetInfo,
 } from '../lib/userThunks';
 
 const initialState: UserState = {
@@ -14,6 +15,7 @@ const initialState: UserState = {
   data: null,
   error: null,
   oneUser: null,
+  myCabinet: null,
 };
 
 const userSlice = createSlice({
@@ -68,8 +70,11 @@ const userSlice = createSlice({
         state.error = action.error.message ?? 'Что то не так при загрузке юзера';
         state.oneUser = null;
       })
+      .addCase(myCabinetInfo.fulfilled, (state, { payload }) => {
+        state.myCabinet = payload;
+      })
       .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
-        state.oneUser = payload;
+        state.myCabinet = payload;
       })
       .addCase(updateUserInfo.rejected, (state, action) => {
         state.error = action.error.message ?? 'Что то не так при обновлении';

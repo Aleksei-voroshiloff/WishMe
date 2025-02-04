@@ -11,7 +11,7 @@ class UserService {
   }
 
   async updateUser(id, updateData) {
-    await this.model.User.update({ where: { id } }, updateData);
+    await this.model.User.update(updateData, { where: { id } });
     const updateUserInfo = await this.model.User.findByPk(id);
     return updateUserInfo;
   }

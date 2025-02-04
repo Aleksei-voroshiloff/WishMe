@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       file: DataTypes.TEXT,
       wishUrl: DataTypes.TEXT,
       wishListId: DataTypes.INTEGER,
-      price: DataTypes.INTEGER,
+      price: DataTypes.STRING,
       isArchived: DataTypes.BOOLEAN,
     },
     {

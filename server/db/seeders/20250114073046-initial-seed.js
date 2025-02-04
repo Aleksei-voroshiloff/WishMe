@@ -13,19 +13,20 @@ module.exports = {
           name: 'Admin',
           phoneNumber: '12345678910',
           password: bcrypt.hashSync('123456', 10),
-          birthday: '2000-02-07'
+          birthday: '2000-02-07',
+          avatar: '/1738587739365.webp',
         },
         {
           name: 'Лексус',
           phoneNumber: '10987654321',
           password: bcrypt.hashSync('123456', 10),
-          birthday: '2001-11-22'
+          birthday: '2001-11-22',
         },
         {
           name: 'Кенан',
           phoneNumber: '11111111111',
           password: bcrypt.hashSync('123456', 10),
-          birthday: '2001-11-06'
+          birthday: '2001-11-06',
         },
       ],
       {},
@@ -38,87 +39,23 @@ module.exports = {
           date: '2025-02-07',
           userId: 1,
         },
+       
         {
-          title: 'Подарки ДР',
+          title: 'Донаты на лечение',
           date: '2025-02-07',
           userId: 1,
         },
         {
-          title: 'Подарки ДР',
+          title: ' 23 февраля ',
           date: '2025-02-07',
           userId: 1,
         },
         {
-          title: 'Подарки ДР',
+          title: ' свадьба ',
           date: '2025-02-07',
           userId: 1,
         },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        {
-          title: 'Подарки ДР',
-          date: '2025-02-07',
-          userId: 1,
-        },
-        
+
         {
           title: 'Подарки 23 февраля',
           date: '2025-02-23',
@@ -140,31 +77,34 @@ module.exports = {
           file: 'https://images.icecat.biz/img/gallery_raw/img_20109668_raw_1482459716_5228_3788.jpg',
           wishUrl: 'https://dance.kmti.ru/',
           wishListId: 1,
-          price: 100,
+          price: '100',
           isArchived: false,
         },
         {
           title: 'Феррари',
           file: 'https://images.icecat.biz/img/gallery_raw/img_20109668_raw_1482459716_5228_3788.jpg',
-          wishUrl: 'https://auto.ru/cars/ferrari/all/?utm_referrer=https%3A%2F%2Fauto.ru%2Fcars%2Fferrari%2Fall%2F',
+          wishUrl:
+            'https://auto.ru/cars/ferrari/all/?utm_referrer=https%3A%2F%2Fauto.ru%2Fcars%2Fferrari%2Fall%2F',
           wishListId: 1,
-          price: 60000000,
+          price: '60000000',
           isArchived: false,
         },
         {
           title: 'PS5',
           file: '',
-          wishUrl: 'https://market.yandex.ru/catalog--konsoli-playstation-5/40910350/list',
+          wishUrl:
+            'https://market.yandex.ru/catalog--konsoli-playstation-5/40910350/list',
           wishListId: 2,
-          price: 60000,
+          price: '60000',
           isArchived: false,
         },
         {
           title: 'Книга Гарри Поттер',
           file: '',
-          wishUrl: 'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
+          wishUrl:
+            'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
           wishListId: 2,
-          price: 1000,
+          price: '1000',
           isArchived: true,
         },
       ],

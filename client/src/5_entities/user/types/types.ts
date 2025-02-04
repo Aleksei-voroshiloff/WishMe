@@ -22,8 +22,9 @@ export const UserPostShema = z.object({
   name: z.string(),
   phoneNumber: z.string(),
   birthday: z.string(),
-  file: z.string().nullable(),
+  file: z.instanceof(File).nullable(),
 });
+
 export type UserDataPostType = z.infer<typeof UserPostShema>;
 
 export type DataUpdateType = {
@@ -36,10 +37,11 @@ export type UserState = {
   data: User | null;
   error: string | null;
   oneUser: OneUserType | null;
+  myCabinet: OneUserType | null;
 };
 
 export type AuthResponse = {
-  user: User;
+  user: OneUserType;
   accessToken: string;
 };
 
