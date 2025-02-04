@@ -31,7 +31,6 @@ module.exports = {
       },
       avatar: {
         type: Sequelize.TEXT,
-        defaultValue: '/1738587739365.webp',
       },
       createdAt: {
         allowNull: false,

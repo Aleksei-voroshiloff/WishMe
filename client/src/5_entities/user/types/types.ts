@@ -6,7 +6,6 @@ export type User = {
   name: string;
   avatar: string | null;
   birthday: string | null;
-  phoneNumber: string;
 };
 
 export const OneUserShema = z.object({
@@ -38,7 +37,7 @@ export type UserDataPostType = z.infer<typeof UserPostShema>;
 
 export type DataUpdateType = {
   id: number;
-  updateData: UserDataPostType;
+  updateData: FormData;
 };
 
 export type UserState = {
@@ -46,7 +45,7 @@ export type UserState = {
   data: User | null;
   error: string | null;
   oneUser: OneUserType | null;
-  myCabinet: OneUserType | null;
+  myCabinet: MyDataType | null;
 };
 
 export type AuthResponse = {

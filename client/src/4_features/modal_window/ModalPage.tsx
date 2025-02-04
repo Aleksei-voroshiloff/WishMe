@@ -48,56 +48,64 @@ export default function ModalPage(): React.JSX.Element {
       console.error(error, 'Ошибка в обновлении');
     }
   };
-  console.log(avatar);
-  if (user?.avatar !== undefined)
-    return (
-      <Modal
-        size="small"
-        open={showUserModal}
-        onClose={() => {
-          dispatch(closeUserModal());
-        }}
-      >
-        <ModalHeader>Личный кабинет</ModalHeader>
-        <ModalContent>
-          <Form onSubmit={updateHandler}>
-            <div>
+  const noFoto = '/avatar.png';
+  if (!user) return <></>;
+  return (
+    <Modal
+      size="small"
+      open={showUserModal}
+      onClose={() => {
+        dispatch(closeUserModal());
+      }}
+    >
+      <ModalHeader>Личный кабинет</ModalHeader>
+      <ModalContent>
+        <Form onSubmit={updateHandler}>
+          <div>
+            {user.avatar || avatar ? (
               <Image
-                onClick={() => handleImageClick()}
+                onClick={handleImageClick}
                 style={{ cursor: 'pointer' }}
                 className={style.avatar}
-                src={avatar ?? `http://localhost:3000/${user.avatar}`}
+                src={avatar ?? `http://localhost:3000/${user.avatar ?? ''}`}
               />
-              <input
-                ref={fileInputRef}
-                accept="image/*"
-                onChange={handleFileChange}
-                className={style.addFoto}
-                type="file"
-                name="file"
+            ) : (
+              <Image
+                onClick={handleImageClick}
+                style={{ cursor: 'pointer' }}
+                className={style.avatar}
+                src={noFoto}
               />
-            </div>
-            <FormField>
-              <label>Имя пользователя</label>
-              <input name="name" type="text" defaultValue={user.name} />
-            </FormField>
-            <FormField>
-              <label>Номер телефона</label>
-              <input name="phoneNumber" type="text" defaultValue={user.phoneNumber} />
-            </FormField>
-            <FormField>
-              <label>Ваша дата рождения</label>
-              <input name="birthday" type="date" defaultValue={user.birthday} />
-            </FormField>
-            <ModalActions style={{ marginTop: '20px' }}>
-              <Button onClick={() => dispatch(closeUserModal())}>Вернуться</Button>
-              <Button primary type="submit">
-                Сохранить
-              </Button>
-            </ModalActions>
-          </Form>
-        </ModalContent>
-      </Modal>
-    );
-  return <></>;
+            )}
+            <input
+              ref={fileInputRef}
+              accept="image/*"
+              onChange={handleFileChange}
+              className={style.addFoto}
+              type="file"
+              name="file"
+            />
+          </div>
+          <FormField>
+            <label>Имя пользователя</label>
+            <input name="name" type="text" defaultValue={user.name} />
+          </FormField>
+          <FormField>
+            <label>Номер телефона</label>
+            <input name="phoneNumber" type="text" defaultValue={user.phoneNumber} />
+          </FormField>
+          <FormField>
+            <label>Ваша дата рождения</label>
+            <input name="birthday" type="date" defaultValue={user.birthday ?? ''} />
+          </FormField>
+          <ModalActions style={{ marginTop: '20px' }}>
+            <Button onClick={() => dispatch(closeUserModal())}>Вернуться</Button>
+            <Button primary type="submit">
+              Сохранить
+            </Button>
+          </ModalActions>
+        </Form>
+      </ModalContent>
+    </Modal>
+  );
 }
