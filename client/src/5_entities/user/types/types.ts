@@ -4,14 +4,16 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 export type User = {
   id: number;
   name: string;
+  avatar: string | null;
+  birthday: string | null;
+  phoneNumber: string;
 };
 
 export const OneUserShema = z.object({
   id: z.number(),
   name: z.string(),
-  phoneNumber: z.string(),
-  birthday: z.string(),
-  avatar: z.string(),
+  birthday: z.string().nullable(),
+  avatar: z.string().nullable(),
 });
 
 export type OneUserType = z.infer<typeof OneUserShema>;
@@ -32,7 +34,7 @@ export type DataUpdateType = {
 
 export type UserState = {
   status: 'loading' | 'logged' | 'guest';
-  data: OneUserType | null;
+  data: User | null;
   error: string | null;
   oneUser: OneUserType | null;
   myCabinet: OneUserType | null;

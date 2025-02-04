@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../../../6_shared/api/axiosInstance';
-import { oneFriendSchema, receivefriendsSchema } from '../types/types';
+import { friendsSchema, oneFriendSchema, receivefriendsSchema } from '../types/types';
 
 export const getAllFriends = createAsyncThunk(
   'friend/getAllFriends',
@@ -30,8 +30,8 @@ export const addFriend = createAsyncThunk(
   }),
 );
 
-export const deleteFriend = createAsyncThunk(
-  'friend/deleteFriend',
+export const deleteFriendThunk = createAsyncThunk(
+  'friend/deleteFriendThunk',
   (
   async (id: number, {rejectWithValue}) => {
     try {
@@ -42,3 +42,14 @@ export const deleteFriend = createAsyncThunk(
     }
   }),
 );
+
+export const findFriendsThunk = createAsyncThunk('users/findFriendsThunk', async(search: string, {rejectWithValue}) => {
+  try {
+    const response = await axiosInstance.get(`/users?search=${search}`);
+    const data = friendsSchema.parse(response.data);
+    return data
+  } catch (error) {
+    console.log(error)
+    return rejectWithValue((error as Error).message);
+  }
+})
