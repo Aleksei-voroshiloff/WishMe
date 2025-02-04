@@ -1,12 +1,13 @@
 import axiosInstance, { setAccessToken } from '../../../6_shared/api/axiosInstance';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import type {
-  AuthResponse,
-  DataUpdateType,
-  LoginCredentials,
-  OneUserType,
-  RegisterFormData,
+import {
+  OneUserShema,
+  type AuthResponse,
+  type DataUpdateType,
+  type LoginCredentials,
+  type OneUserType,
+  type RegisterFormData,
 } from '../types/types';
 
 export const fetchUser = createAsyncThunk('user/fetchUser', async (_, { rejectWithValue }) => {
@@ -61,8 +62,9 @@ export const getOneUser = createAsyncThunk(
   'user/infoOneUser',
   async (id: number, { rejectWithValue }) => {
     try {
-      const { data } = await axiosInstance.get<OneUserType>(`/users/${String(id)}`);
-      return data;
+      const response = await axiosInstance.get<OneUserType>(`/users/${String(id)}`);
+      const filteredData = OneUserShema.parse(response.data)
+      return filteredData;
     } catch (error) {
       return rejectWithValue((error as Error).message);
     }

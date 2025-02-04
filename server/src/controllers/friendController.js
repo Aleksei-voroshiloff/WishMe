@@ -21,9 +21,10 @@ class FriendController {
     try {
       const { id } = req.params;
       await this.service.destroyFriend(id);
+      res.status(200).json({ message: 'Друг удален' });
     } catch (error) {
-      res.json({ message: 'Ошибка при delite друзей' });
       console.log(error);
+      res.json({ message: 'Ошибка при delite друзей' });
     }
   };
 }
