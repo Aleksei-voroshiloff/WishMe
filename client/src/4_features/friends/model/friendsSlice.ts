@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { FriendsType } from '../types/types';
-import { deleteFriendThunk, findFriendsThunk, getAllFriends } from '../lib/friendsThunk';
+import type { FriendsType, OneFriendType } from '../types/types';
+import { acceptFriendThunk, addFriendThunk, deleteFriendThunk, findFriendsThunk, getAllFriends, getAllMyRequestsThunk, getAllRequestsToMeThunk } from '../lib/friendsThunk';
 
 type FriendsStateType = {
   friends: FriendsType;
@@ -11,6 +11,10 @@ type FriendsStateType = {
   foundFriendsLoading: boolean;
   modalShow: boolean;
   search: string;
+  requestsToMe: FriendsType;
+  requestsToMeLoading: boolean;
+  myRequests: FriendsType;
+  myRequestsLoading: boolean;
 };
 
 const initialState: FriendsStateType = {
@@ -21,6 +25,10 @@ const initialState: FriendsStateType = {
   foundFriendsLoading: false,
   modalShow: false,
   search: '',
+  requestsToMe: [],
+  requestsToMeLoading: false,
+  myRequests: [],
+  myRequestsLoading: false,
 };
 
 export const friendsSlice = createSlice({
@@ -58,6 +66,8 @@ export const friendsSlice = createSlice({
       .addCase(deleteFriendThunk.fulfilled, (state, action) => {
         state.loading = false;
         state.friends = state.friends.filter(friend => friend.id !== action.payload);
+        state.requestsToMe = state.requestsToMe.filter(requestToMe => requestToMe.id !== action.payload);
+        state.myRequests = state.myRequests.filter(myRequest => myRequest.id !== action.payload);
       })
       .addCase(deleteFriendThunk.rejected, (state, action) => {
         state.loading = false;
@@ -73,6 +83,61 @@ export const friendsSlice = createSlice({
       })
       .addCase(findFriendsThunk.rejected, (state, action) => {
         state.foundFriendsLoading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(addFriendThunk.pending, (state) => {
+        state.myRequestsLoading = true;
+        state.error = null;
+      })
+      .addCase(addFriendThunk.fulfilled, (state, action: PayloadAction<OneFriendType>) => {
+        state.myRequestsLoading = false;
+        state.myRequests.unshift(action.payload);
+      })
+      .addCase(addFriendThunk.rejected, (state, action) => {
+        state.myRequestsLoading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(acceptFriendThunk.pending, (state) => {
+        state.requestsToMeLoading = true;
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(acceptFriendThunk.fulfilled, (state, action: PayloadAction<OneFriendType>) => {
+        state.loading = false
+        state.requestsToMeLoading = false;
+        state.requestsToMe = state.requestsToMe.filter(requestToMe => requestToMe.id !== action.payload.id)
+        state.friends.unshift(action.payload);
+      })
+      .addCase(acceptFriendThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.requestsToMeLoading = false;
+        state.error = action.payload as string;
+      })
+
+
+      .addCase(getAllMyRequestsThunk.pending, (state) => {
+        state.myRequestsLoading = true;
+        state.error = null;
+      })
+      .addCase(getAllMyRequestsThunk.fulfilled, (state, action: PayloadAction<FriendsType>) => {
+        state.myRequestsLoading = false;
+        state.myRequests = action.payload;
+      })
+      .addCase(getAllMyRequestsThunk.rejected, (state, action) => {
+        state.myRequestsLoading = false;
+        state.error = action.payload as string;
+      })
+
+      .addCase(getAllRequestsToMeThunk.pending, (state) => {
+        state.requestsToMeLoading = true;
+        state.error = null;
+      })
+      .addCase(getAllRequestsToMeThunk.fulfilled, (state, action: PayloadAction<FriendsType>) => {
+        state.requestsToMeLoading = false;
+        state.requestsToMe = action.payload;
+      })
+      .addCase(getAllRequestsToMeThunk.rejected, (state, action) => {
+        state.requestsToMeLoading = false;
         state.error = action.payload as string;
       })
   },

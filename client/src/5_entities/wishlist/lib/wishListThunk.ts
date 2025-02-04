@@ -78,8 +78,8 @@ export const deleteWishList = createAsyncThunk<number, number>(
 
 export const getFriendWishListThunk = createAsyncThunk('list/getFriendWishListThunk', async(friendId: number, {rejectWithValue})=> {
   try {
-    const {data} = await axiosInstance.get(`/wishlist/friend/${String(friendId)}`);
-    return WishListSchema.parse(data)
+    const response = await axiosInstance.get(`/wishlist/friend/${String(friendId)}`);
+    return WishListSchema.parse(response.data)
   } catch (error) {
     return rejectWithValue(error instanceof Error ? error.message : 'Что-то пошло не так с getFriendWishListThunk');
   }
