@@ -9,8 +9,8 @@ class UserController {
 
   getMyData = async (req, res) => {
     try {
-      const userId = res.locals.user.id;
-      const oneUser = await this.service.findOneUser(userId);
+      const { id } = req.params;
+      const oneUser = await this.service.findOneUser(id);
       const planeOneUser = oneUser.get();
       delete planeOneUser.password;
       return res.status(200).json(planeOneUser);
@@ -42,8 +42,6 @@ class UserController {
     try {
       const { id } = req.params;
       const { name, phoneNumber, birthday } = req.body;
-      console.log(req.file);
-      console.log(req.file);
       const updateData = { name, phoneNumber, birthday };
       if (req.file) {
         const fileName = await fileService.createImage(req.file.buffer);
