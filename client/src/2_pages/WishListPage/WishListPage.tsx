@@ -7,7 +7,7 @@ import { getWishList } from '../../5_entities/wishlist/lib/wishListThunk';
 import { Button, Icon } from 'semantic-ui-react';
 
 import ModalUi from '../../4_features/modal_addList/modalSlice/ModalUi';
-import { openModal } from '../../5_entities/modal_window/model/modalSlice';
+import { openModal } from '../../5_entities/modal_window/modalSlice';
 
 export default function WishListPage(): React.JSX.Element {
   const dispatch = useAppDispatch();

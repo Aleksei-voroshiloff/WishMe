@@ -5,8 +5,14 @@ class PresentService {
     this.model = model;
   }
 
+  async findPresentFriend(userId) {
+    const response = await this.model.Present.findAll({ where: { userId } });
+    console.log(response)
+    return response;
+  }
+
   findAllPresent(id) {
-    return this.model.Present.findOne({  where: { wishId: id } });
+    return this.model.Present.findOne({ where: { wishId: id } });
   }
 }
 

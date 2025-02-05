@@ -8,6 +8,7 @@ import WishListPage from '../../2_pages/WishListPage/WishListPage';
 import FriendsPage from '../../2_pages/FriendsPage/FriendsPage';
 import OneWishListPage from '../../2_pages/OneWishListPage/OneWishListPage';
 import OneFriendPage from '../../2_pages/OneFriendPage/OneFriendPage';
+import PresentPage from '../../2_pages/PresenPage/PresentPage';
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ export const router = createBrowserRouter([
           {
             path: '/friends/:id',
             element: <OneFriendPage />,
+          },
+          {
+            path: '*',
+            element: <NotFoundPage />,
+          },
+          {
+            path: '/present',
+            element: <PresentPage/>,
           },
         ],
       },

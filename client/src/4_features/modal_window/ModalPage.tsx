@@ -12,11 +12,13 @@ import {
 } from 'semantic-ui-react';
 import { useAppDispatch, useAppSelector } from '../../1_app/store/hooks';
 import {
+  closeDangerDate,
+  closeTomorrowDate,
   closeUserModal,
+  openDangerDate,
+  openTomorrowDate,
   setAvatar,
-  setShowDate,
-  setTomorrowDate,
-} from '../../5_entities/modal_window/model/modalSlice';
+} from '../../5_entities/modal_window/modalSlice';
 import style from './Modal.module.scss';
 import { updateUserInfo } from '../../5_entities/user/lib/userThunks';
 
@@ -54,23 +56,22 @@ export default function ModalPage(): React.JSX.Element {
       const today = new Date();
       // Сбрасываем время для корректного сравнения
       today.setHours(0, 0, 0, 0);
-      console.log(today);
       inputDate.setHours(0, 0, 0, 0);
       // Проверяем, введена ли дата позже текущей
       if (inputDate > today) {
-        dispatch(setTomorrowDate());
-        return; // Прерываем выполнение функции
+        dispatch(openTomorrowDate());
+        return;
       }
-
       if (!data) {
-        dispatch(setShowDate());
+        dispatch(openDangerDate());
         return;
       }
       if (user?.id !== undefined) {
         await dispatch(updateUserInfo({ id: user.id, updateData: formData }));
       }
       dispatch(closeUserModal());
-      dispatch(setTomorrowDate());
+      dispatch(closeTomorrowDate());
+      dispatch(closeDangerDate());
     } catch (error) {
       console.error(error, 'Ошибка в обновлении');
     }

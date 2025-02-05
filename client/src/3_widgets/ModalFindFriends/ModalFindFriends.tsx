@@ -18,15 +18,13 @@ export default function ModalFindFriends(): React.JSX.Element {
     (store) => store.friend,
   );
 
-useEffect(() => {
-      const timeOut = setTimeout(() => {
-        void dispatch(findFriendsThunk(search));
-      }, 800);
-      return () => clearTimeout(timeOut);
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      void dispatch(findFriendsThunk(search));
+    }, 800);
+    return () => clearTimeout(timeOut);
   }, [search]);
 
-  console.log(foundFriends)
-  
   return (
     <Modal size="small" open={modalShow} onClose={() => dispatch(closeWindow())}>
       <ModalHeader>Поиск</ModalHeader>

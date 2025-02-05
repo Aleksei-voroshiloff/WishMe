@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../../1_app/store/hooks';
 
 import { addWishList } from '../../../5_entities/wishlist/lib/wishListThunk';
 import { WishListObjectSchema } from '../../../5_entities/wishlist/types/types';
-import { closeModal } from '../../../5_entities/modal_window/model/modalSlice';
+import { closeModal } from '../../../5_entities/modal_window/modalSlice';
 
 export default function ModalUi(): React.JSX.Element {
   const dispatch = useAppDispatch();
