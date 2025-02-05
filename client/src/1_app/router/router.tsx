@@ -17,16 +17,21 @@ export const router = createBrowserRouter([
     children: [
       { path: '/', element: <Navigate to="/login" /> },
       {
+        path: '/friends/:id',
+        element: <OneFriendPage />,
+      },
+      {
+        path: '/wishlist/:listId',
+        element: <OneWishListPage />,
+      },
+      {
         element: <ProtectedRoute allowedStatuses={['logged']} redirectTo="/login" />,
         children: [
           {
             path: '/myList',
             element: <WishListPage />,
           },
-          {
-            path: '/wishlist/:listId',
-            element: <OneWishListPage />,
-          },
+
           {
             path: '/friends',
             element: <FriendsPage />,
@@ -41,7 +46,7 @@ export const router = createBrowserRouter([
           },
           {
             path: '/present',
-            element: <PresentPage/>,
+            element: <PresentPage />,
           },
         ],
       },
