@@ -17,8 +17,6 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-
 app.use('/api/auth', authRouter);
 app.use('/api/tokens', tokenRouter);
 app.use('/api/wishlist', wishlistRouter);
