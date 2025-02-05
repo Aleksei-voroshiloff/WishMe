@@ -5,12 +5,12 @@ import FriendCardComponent from '../FriendCardComponent/FriendCardComponent';
 import style from './FriendCardWrapper.module.scss';
 
 export default function FriendCardWrapper(): React.JSX.Element {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const { friends } = useAppSelector((state) => state.friend);
 
-  // useEffect(() => {
-  //   void dispatch(getAllFriends());
-  // }, [dispatch]);
+  useEffect(() => {
+    void dispatch(getAllFriends());
+  }, [dispatch]);
 
   return (
     <>

@@ -6,16 +6,16 @@ const presentService = require('../services/presentService');
 const { Present } = require('../../db/models');
 
 class PresentController {
-  getPresentForFriend = async (req, res) => {
-    try {
-      const userId = res.locals.user.id;
-      const presentFor = await presentService.findPresentFriend(userId);
-      return presentFor
-    } catch (error) {
-      res.status(500).json({ message: 'Ошибка сервера get' });
-      console.log(error);
-    }
-  };
+  // getPresentForFriend = async (req, res) => {
+  //   try {
+  //     const userId = res.locals.user.id;
+  //     const presentFor = await presentService.findPresentFriend(userId);
+  //     return presentFor
+  //   } catch (error) {
+  //     res.status(500).json({ message: 'Ошибка сервера get' });
+  //     console.log(error);
+  //   }
+  // };
 
   getAllpresent = async (req, res) => {
     try {

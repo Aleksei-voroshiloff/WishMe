@@ -5,6 +5,27 @@ class WishService {
     this.model = model;
   }
 
+  async getWishesByUser(userId) {
+    const wishes = await this.model.Wish.findAll({
+      include: [
+        {
+          model: this.model.User,
+          as: 'wishToGive',
+          where: { id: userId },
+        },
+      ],
+    });
+    const wishlistId = wishes.map((wishL) => wishL.wishListId);
+    const result = await this.model.User.findAll({
+      include: {
+        model: this.model.Wishlist,
+        where: { id: wishlistId },
+      },
+    });
+
+    return { wishes, result };
+  }
+
   findAllWish(wishListId) {
     return this.model.Wish.findAll({ order: [['id', 'DESC']], where: { wishListId } });
   }
