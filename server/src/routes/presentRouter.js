@@ -5,7 +5,7 @@ const presentRouter = express.Router();
 
 presentRouter
   .route('/')
-  .get(verifyAccessToken, presentController.getPresentForFriend)
+  // .get(verifyAccessToken, presentController.getPresentForFriend)
   .post(verifyAccessToken, presentController.createPresent);
 
 presentRouter

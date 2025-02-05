@@ -6,6 +6,7 @@ import wishReducer from '../../5_entities/wish/model/wishSlice';
 import friendReducer from '../../4_features/friends/model/friendsSlice';
 import modalReducer from '../../5_entities/modal_window/modalSlice';
 import redactionReducer from '../../5_entities/delete/redactionSlice';
+import presentReducer from '../../5_entities/present/model/presentSlice';
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     friend: friendReducer,
     modal: modalReducer,
     redaction: redactionReducer,
+    present: presentReducer,
   },
 });
 

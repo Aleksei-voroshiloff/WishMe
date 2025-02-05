@@ -4,6 +4,17 @@
 const wishService = require('../services/wishServices');
 
 class WishController {
+  getWishFriend = async (req, res) => {
+    try {
+      const userId = res.locals.user.id;
+      const friendWish = await wishService.getWishesByUser(userId);
+      res.json(friendWish);
+    } catch (error) {
+      res.status(500).json({ message: 'Ошибка сервера запрос занятых подарков' });
+      console.log(error);
+    }
+  };
+
   getAllWish = async (req, res) => {
     try {
       const { wishListId } = req.query;

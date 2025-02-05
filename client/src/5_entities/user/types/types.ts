@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { WishListObjectSchema } from '../../wishlist/types/types';
 
 export type User = {
   id: number;
@@ -14,7 +15,14 @@ export const OneUserShema = z.object({
   birthday: z.string().nullable(),
   avatar: z.string().nullable(),
 });
-
+export const PresentUserShema = z.object({
+  Wishlists: z.array(WishListObjectSchema),
+  id: z.number(),
+  name: z.string(),
+  birthday: z.string().nullable(),
+  avatar: z.string().nullable(),
+});
+export type PresentUserType = z.infer<typeof PresentUserShema>;
 export type OneUserType = z.infer<typeof OneUserShema>;
 
 export const MyDataShema = z.object({

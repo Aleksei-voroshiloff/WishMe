@@ -42,23 +42,23 @@ module.exports = {
         {
           title: 'Подарки ДР',
           date: '2025-02-07',
-          userId: 1,
+          userId: 3,
         },
 
         {
           title: 'Донаты на лечение',
           date: '2025-02-07',
-          userId: 1,
+          userId: 2,
         },
         {
           title: ' 23 февраля ',
           date: '2025-02-07',
-          userId: 1,
+          userId: 4,
         },
         {
           title: ' свадьба ',
           date: '2025-02-07',
-          userId: 1,
+          userId: 2,
         },
 
         {
@@ -81,7 +81,7 @@ module.exports = {
           title: 'Танец Кенана',
           file: 'https://images.icecat.biz/img/gallery_raw/img_20109668_raw_1482459716_5228_3788.jpg',
           wishUrl: 'https://dance.kmti.ru/',
-          wishListId: 1,
+          wishListId: 3,
           price: '100',
           isArchived: false,
         },
@@ -90,7 +90,7 @@ module.exports = {
           file: 'https://images.icecat.biz/img/gallery_raw/img_20109668_raw_1482459716_5228_3788.jpg',
           wishUrl:
             'https://auto.ru/cars/ferrari/all/?utm_referrer=https%3A%2F%2Fauto.ru%2Fcars%2Fferrari%2Fall%2F',
-          wishListId: 1,
+          wishListId: 4,
           price: '60000000',
           isArchived: false,
         },
@@ -99,7 +99,7 @@ module.exports = {
           file: '',
           wishUrl:
             'https://market.yandex.ru/catalog--konsoli-playstation-5/40910350/list',
-          wishListId: 2,
+          wishListId: 1,
           price: '60000',
           isArchived: false,
         },
@@ -138,11 +138,7 @@ module.exports = {
       [
         {
           userId: 1,
-          wishId: 3,
-        },
-        {
-          userId: 1,
-          wishId: 3,
+          wishId: 1,
         },
         {
           userId: 1,
@@ -150,7 +146,11 @@ module.exports = {
         },
         {
           userId: 1,
-          wishId: 2,
+          wishId: 3,
+        },
+        {
+          userId: 1,
+          wishId: 4,
         },
       ],
       {},
