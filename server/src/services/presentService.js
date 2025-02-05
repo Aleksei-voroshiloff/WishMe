@@ -32,6 +32,6 @@ class PresentService {
 
 
 }
-
+}
 const presService = new PresentService(allModels);
 module.exports = presService;
