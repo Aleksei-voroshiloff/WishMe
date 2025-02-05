@@ -22,6 +22,12 @@ class PresentController {
   createPresent = async (req, res) => {
     try {
       const userId = res.locals.user.id;
+      const { wishId } = req.body; // Получаем wishId из тела запроса
+    
+    if (!wishId) {
+      return res.status(400).json({ message: 'wishId is required' });
+    }
+
       
       const newPresent = await presentService.addPresent({ wishId, userId });
       res.status(201).json(newPresent);

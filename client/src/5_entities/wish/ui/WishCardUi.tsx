@@ -7,6 +7,7 @@ import { getPresInfo, toggleReservation } from '../lib/wishThunk';
 import { useAppDispatch, useAppSelector } from '../../../1_app/store/hooks';
 import { setIsLoading } from '../model/wishSlice';
 import { PresentObjSchema } from '../../wishlist/types/types';
+import { Link } from 'react-router-dom';
 
 type Props = {
   wish: WishObjectType;
@@ -47,10 +48,13 @@ export default function WishCardUi({ wish }: Props): React.JSX.Element {
       </div>
       <div>
         <h4>{wish.title}</h4>
+        <Button as={Link} to={wish.wishUrl} color='vk' >
+        Перейти в магазин
+        </Button>
         <h2>{wish.price} ₽</h2>
       </div>
       <div>
-        <Button loading={isLoading} disabled={isLoading} onClick={handleReserveClick}>
+        <Button  onClick={handleReserveClick}>
           {reservation ? 'Занято' : 'Забронировать'}
         </Button>
       </div>
