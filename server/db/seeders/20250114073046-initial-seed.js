@@ -142,6 +142,14 @@ module.exports = {
         },
         {
           userId: 1,
+          wishId: 3,
+        },
+        {
+          userId: 1,
+          wishId: 2,
+        },
+        {
+          userId: 1,
           wishId: 2,
         },
       ],
