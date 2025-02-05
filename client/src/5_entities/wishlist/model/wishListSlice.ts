@@ -1,4 +1,11 @@
-import { addWishList, deleteWishList, getFriendWishListThunk, getOneWishList, getWishList, updateWishList } from '../lib/wishListThunk';
+import {
+  addWishList,
+  deleteWishList,
+  getFriendWishListThunk,
+  getOneWishList,
+  getWishList,
+  updateWishList,
+} from '../lib/wishListThunk';
 import { createSlice } from '@reduxjs/toolkit';
 import type { WishListObjectType, WishListTypeArray } from '../types/types';
 
@@ -6,8 +13,8 @@ type WishListState = {
   wishListCards: WishListTypeArray;
   loading: boolean;
   error: null | string;
-  oneWishList: WishListObjectType | null
-
+  oneWishList: WishListObjectType | null;
+  showModalEditList: boolean;
 };
 
 const initialState: WishListState = {
@@ -15,12 +22,21 @@ const initialState: WishListState = {
   loading: false,
   error: null,
   oneWishList: null,
+  showModalEditList: false,
 };
 
 const wishListSlice = createSlice({
   name: 'list',
   initialState,
-  reducers: {},
+  reducers: {
+    openEditListModal(state, action: { payload: WishListObjectType }) {
+      state.showModalEditList = true;
+      state.oneWishList = action.payload;
+    },
+    closeEditListModal(state) {
+      state.showModalEditList = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getWishList.pending, (state) => {
@@ -54,7 +70,7 @@ const wishListSlice = createSlice({
       })
       .addCase(deleteWishList.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.wishListCards = state.wishListCards.filter((book) => book.id !== payload);
+        state.wishListCards = state.wishListCards.filter((list) => list.id !== payload);
       })
       .addCase(deleteWishList.rejected, (state, action) => {
         state.loading = false;
@@ -78,7 +94,7 @@ const wishListSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(getOneWishList.fulfilled, (state, {payload}) => {
+      .addCase(getOneWishList.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.oneWishList = payload;
       })
@@ -90,17 +106,17 @@ const wishListSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(getFriendWishListThunk.fulfilled, (state, {payload}) => {
+      .addCase(getFriendWishListThunk.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.wishListCards = payload;
       })
       .addCase(getFriendWishListThunk.rejected, (state, action) => {
-        state.wishListCards = []
+        state.wishListCards = [];
         state.loading = false;
         state.error = action.payload as string;
       });
   },
 });
-
+export const { openEditListModal, closeEditListModal } = wishListSlice.actions;
 
 export default wishListSlice.reducer;

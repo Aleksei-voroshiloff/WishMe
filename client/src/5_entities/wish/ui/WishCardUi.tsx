@@ -5,7 +5,7 @@ import { Button, Icon } from 'semantic-ui-react';
 
 import { deleteWish, getPresInfo, toggleReservation } from '../lib/wishThunk';
 import { useAppDispatch, useAppSelector } from '../../../1_app/store/hooks';
-import { setIsLoading } from '../model/wishSlice';
+import { openEditModal, setIsLoading } from '../model/wishSlice';
 import { PresentObjSchema } from '../../wishlist/types/types';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ type Props = {
 export default function WishCardUi({ wish, showButton }: Props): React.JSX.Element {
   const dispatch = useAppDispatch();
   const reservation = useAppSelector((state) => state.wish.reservations[wish.id]);
-  const isLoading = useAppSelector((state) => state.wish.isLoading);
+
   console.log(wish.id, 'wish.id');
   const isReserved1 = useAppSelector((state) => state.wish.reservations[wish.id]);
   // console.log(isReserved, 'isReservedisReservedisReserved');
@@ -71,7 +71,7 @@ export default function WishCardUi({ wish, showButton }: Props): React.JSX.Eleme
           <>
             <Icon
               className={style.edit}
-              onClick={() => handleEditClick(wish.id)}
+              onClick={() => dispatch(openEditModal(wish))}
               size="large"
               name="pencil alternate"
               color="black"

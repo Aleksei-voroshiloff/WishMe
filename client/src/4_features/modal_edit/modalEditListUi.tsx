@@ -11,7 +11,7 @@ import { closeEditModal } from '../../5_entities/wish/model/wishSlice';
 
 export default function ModalUiWishEdit(): React.JSX.Element {
   const dispatch = useAppDispatch();
-  const wish = useAppSelector((state) => state.wish.wishCard);
+  const list = useAppSelector((state) => state.wishlist.oneWishList);
   const showModalEdit = useAppSelector((state) => state.wish.showModalEdit);
   const { listId } = useParams();
 
@@ -26,15 +26,15 @@ export default function ModalUiWishEdit(): React.JSX.Element {
     console.log(validDate, 'ModalUiWishEdit');
 
     try {
-      if (wish?.id !== undefined) {
-        await dispatch(updateWish({ wishId: wish.id, wishData: validDate }));
+      if (list?.id !== undefined) {
+        await dispatch(updateWish({ wishId: list.id, wishData: validDate }));
       }
     } catch (error) {
       console.error('Error dispatching addWishList:', error);
     }
     dispatch(closeEditModal());
   };
-  if (wish?.id !== undefined) {
+  if (list?.id !== undefined) {
     return (
       <Modal size="small" open={showModalEdit} onClose={() => dispatch(closeEditModal())}>
         <ModalContent>
@@ -43,23 +43,16 @@ export default function ModalUiWishEdit(): React.JSX.Element {
               <label>Название подарка</label>
               <input
                 name="title"
-                defaultValue={wish.title}
-                placeholder="Введите название подарка"
+                defaultValue={list.title}
+                placeholder="Введите название вишлиста"
               />
             </FormField>
             <FormField>
               <label>Картинка</label>
-              <input name="file" defaultValue={wish.file} type="text" placeholder="url картинки" />
+              <input name="date" defaultValue={list.date} type="date" />
             </FormField>
 
-            <FormField>
-              <label>Ссылка на товар</label>
-              <input name="wishUrl" defaultValue={wish.wishUrl} type="url" placeholder="Вставьте ссылку" />
-            </FormField>
-            <FormField>
-              <label>Цена в рублях</label>
-              <input name="price" defaultValue={wish.price} type="number" placeholder="0 ₽" />
-            </FormField>
+            
 
             <ModalActions style={{ marginTop: '20px' }}>
               <Button color="google plus" onClick={() => dispatch(closeEditModal())}>

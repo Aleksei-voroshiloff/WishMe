@@ -72,6 +72,7 @@ class WishlistController {
     try {
       const { id } = req.params;
       await wishlistService.deleteWishList(id);
+      res.sendStatus(204);
     } catch (error) {
       res.status(500).json({ message: 'Ошибка сервера dalete' });
       console.log(error);
