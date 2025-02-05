@@ -51,12 +51,12 @@ export const updateWish = createAsyncThunk(
 
 export const deleteWish = createAsyncThunk<number, number>(
   'wish/deleteWish',
-  async (bookId, { rejectWithValue }) => {
+  async (wishId, { rejectWithValue }) => {
     try {
-      const { data } = await axios.delete<WishObjectType>(`/api/wish/${String(bookId)}`);
+      const { data } = await axios.delete<WishObjectType>(`/api/wish/${String(wishId)}`);
       console.log('Wish deleted:', data);
 
-      return bookId;
+      return wishId;
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Что-то пошло не так');
     }

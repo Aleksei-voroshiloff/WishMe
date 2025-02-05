@@ -5,9 +5,10 @@ import { useAppDispatch, useAppSelector } from '../../1_app/store/hooks';
 import WishCardUi from '../../5_entities/wish/ui/WishCardUi';
 import { getWish } from '../../5_entities/wish/lib/wishThunk';
 import style from './OneWishListPage.module.scss';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button, Checkbox, Icon, Segment } from 'semantic-ui-react';
 import ModalUiWish from '../../4_features/modal_addOneWish/modalSlice/ModalUiWish';
 import { openModal } from '../../5_entities/modal_window/modalSlice';
+import { setShowButton } from '../../5_entities/delete/redactionSlice';
 
 export default function OneWishListPage(): React.ReactElement {
   const { listId } = useParams();
@@ -15,6 +16,7 @@ export default function OneWishListPage(): React.ReactElement {
   const user = useAppSelector((state) => state.user.data);
   const wishList = useAppSelector((state) => state.wishlist.oneWishList);
   const { wishCards } = useAppSelector((state) => state.wish);
+  const showButton = useAppSelector((state) => state.redaction.showButton);
 
   useEffect(() => {
     void dispatch(getOneWishList(Number(listId)));
@@ -31,7 +33,17 @@ export default function OneWishListPage(): React.ReactElement {
             <Button>
               <Icon name="add" size="huge" onClick={() => dispatch(openModal())} />
             </Button>
-            <h1 style={{ marginLeft: '100px' }}>Добавить</h1>
+            <Segment style={{ marginLeft: '100px' }}>
+              
+              <Checkbox
+              name='read'
+              value={1}
+                checked={showButton}
+                onClick={() => dispatch(setShowButton())}
+                label={showButton ? 'Редактирование включено' : 'Редактирование выключено'}
+                toggle
+              />
+            </Segment>
           </>
         ) : null}
       </div>
@@ -41,7 +53,7 @@ export default function OneWishListPage(): React.ReactElement {
         {filteredWishCards.length > 0 ? (
           filteredWishCards.map((wish) => (
             <div key={wish.id}>
-              <WishCardUi wish={wish} />
+              <WishCardUi wish={wish} showButton={showButton} />
             </div>
           ))
         ) : (

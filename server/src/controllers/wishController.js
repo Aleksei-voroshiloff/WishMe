@@ -62,6 +62,7 @@ class WishController {
     try {
       const { id } = req.params;
       await wishService.destroyWish(id);
+      res.sendStatus(204);
     } catch (error) {
       res.status(500).json({ message: 'Ошибка сервера dalete' });
       console.log(error);
