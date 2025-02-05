@@ -29,15 +29,13 @@ export default function WishListPage(): React.JSX.Element {
   return (
     <main className={style.main}>
       <div style={{ display: 'flex', margin: '50px' }}>
-        {user?.id === wishListCards[0]?.userId ? (
-          <>
-            <Button>
-              {' '}
-              <Icon name="add" size="huge" onClick={() => dispatch(openModal())} />
-            </Button>
-            <h1 style={{ marginLeft: '100px' }}>Добавить</h1>
-          </>
-        ) : null}
+        <>
+          <Button>
+            {' '}
+            <Icon name="add" size="huge" onClick={() => dispatch(openModal())} />
+          </Button>
+          <h1 style={{ marginLeft: '100px' }}>Добавить</h1>
+        </>
       </div>
       <div className={style.razmap}>
         {wishListCards.map((list) => (
