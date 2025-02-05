@@ -6,7 +6,7 @@ import PresentFriendUi from '../../5_entities/present/ui/PresentFriendUi';
 
 export default function PresentPage(): React.JSX.Element {
   const { loading, presents } = useAppSelector((state) => state.present);
-console.log(presents)
+
   if (loading) return <Loader />;
   if (presents !== null)
     return (
@@ -15,7 +15,6 @@ console.log(presents)
         {presents.result.map((user) =>
           user.Wishlists.map((wishlist) => {
             const wishP = presents.wishes.filter((wish) => wishlist.id === wish.wishListId);
-            console.log(wishP)
             return (
               <>
                 {wishP.map((wish) => (

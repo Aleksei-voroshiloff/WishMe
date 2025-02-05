@@ -5,7 +5,7 @@ type NavbarState = {
 };
 
 const initialState: NavbarState = {
-  activeItem: 'Home',
+  activeItem: 'Мои вишлисты',
 };
 
 const navbarSlice = createSlice({
