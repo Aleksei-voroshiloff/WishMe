@@ -6,6 +6,8 @@ type ModalState = {
   avatar: string | null;
   showDate: boolean;
   tomorrowDate: boolean;
+  showModalEdit: boolean;
+  
 };
 
 const initialState: ModalState = {
@@ -14,6 +16,7 @@ const initialState: ModalState = {
   avatar: null,
   showDate: false,
   tomorrowDate: false,
+  showModalEdit: false,
 };
 
 const modalSlice = createSlice({
@@ -32,6 +35,8 @@ const modalSlice = createSlice({
     closeDangerDate(state) {
       state.showDate = false;
     },
+   
+    
     setAvatar(state, action: { payload: string }) {
       state.avatar = action.payload;
     },

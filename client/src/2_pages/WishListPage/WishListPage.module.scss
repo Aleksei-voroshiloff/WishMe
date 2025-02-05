@@ -7,9 +7,6 @@
 .razmap {
   display: flex;
   flex-wrap:wrap;
-
-  justify-content: center;
-//   margin: 50px 0 0 50px;
   gap: 15px;
  
 
@@ -17,26 +14,131 @@
 }
 
 .card1 {
-    
+ 
   position: relative;
   padding: 3%;
-  width: 200px;
+  width: 251px;
+  min-height: 150px;
 //   min-height: 30vh;
   border-radius: 20px;
   border: 2px solid black;
-  background-color: #e3727241; // Цвет фона карточки
-  transition: transform 0.3s, box-shadow 0.3s; // Плавный переход
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Тень для карточки
+  background-image: url('https://i.pinimg.com/originals/7f/3a/68/7f3a68fe9ae08dfcfb26a0863a20d375.gif');
+  box-shadow: 0 4px 8px rgba(14, 149, 36, 0.2); // Тень для карточки
   cursor: pointer;
 
   &:hover {
     transform: scale(1.05); // Увеличение карточки при наведении
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); // Увеличенная тень при наведении
+    box-shadow: 0 8px 20px rgba(0, 77, 3, 0.67); // Увеличенная тень при наведении
   }
 }
 
-.topRight {
-  position: absolute;
-  top: 26%;
-  right: 20px;
+
+.redaction{
+
+margin-left: 62%;
+
+  
 }
+
+.del:hover {
+  transform: scale(1.20);
+}
+
+.edit:hover {
+  transform: scale(1.33);
+}
+
+
+.gift_box {
+  width: 200px;
+  height: 150px;
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.3s;
+  overflow: hidden;
+}
+
+.gift_box:hover {
+  transform: translateY(-5px);
+}
+
+.plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+}
+
+.plus::before,
+.plus::after {
+  content: '';
+  position: absolute;
+  background: white;
+  transition: all 0.3s;
+}
+
+.plus::before {
+  width: 100%;
+  height: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.plus::after {
+  height: 100%;
+  width: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.gift_box:hover .plus::before {
+  transform: translateY(-50%) rotate(90deg);
+  opacity: 0.7;
+}
+
+.gift_box:hover .plus::after {
+  transform: translateX(-50%) rotate(180deg);
+  opacity: 0.7;
+}
+
+.gift {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  opacity: 0;
+  transition: all 0.5s;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+}
+
+.gift_box:hover .gift {
+  opacity: 1;
+  bottom: 50px;
+  animation: float 2s ease-in-out infinite;
+}
+.label {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+@keyframes shine {
+  100% {
+    transform: translate(50%, 50%);
+  }
+}
+

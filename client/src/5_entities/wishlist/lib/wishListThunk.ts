@@ -60,12 +60,12 @@ export const updateWishList = createAsyncThunk(
 
 export const deleteWishList = createAsyncThunk<number, number>(
   'list/deleteWishList',
-  async (bookId, { rejectWithValue }) => {
+  async (listId, { rejectWithValue }) => {
     try {
-      const { data } = await axios.delete<WishListObjectType>(`/api/wishlist/${String(bookId)}`);
+      const { data } = await axios.delete<WishListObjectType>(`/api/wishlist/${String(listId)}`);
       console.log('WishList deleted:', data);
 
-      return bookId;
+      return listId;
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Что-то пошло не так');
     }

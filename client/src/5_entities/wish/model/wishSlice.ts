@@ -7,7 +7,7 @@ import {
   updateWish,
 } from '../lib/wishThunk';
 import { createSlice } from '@reduxjs/toolkit';
-import type { PresentObjType, WishTypeArray } from '../types/types';
+import type { PresentObjType, WishObjectType, WishTypeArray } from '../types/types';
 
 type NoteState = {
   wishCards: WishTypeArray;
@@ -15,6 +15,8 @@ type NoteState = {
   error: null | string;
   isLoading: boolean;
   reservations: Record<number, PresentObjType | null>;
+  wishCard: WishObjectType | null;
+  showModalEdit: boolean;
 };
 
 const initialState: NoteState = {
@@ -23,14 +25,23 @@ const initialState: NoteState = {
   error: null,
   reservations: {},
   isLoading: false,
+  wishCard: null,
+  showModalEdit: false,
 };
 
 const wishSlice = createSlice({
-  name: 'wish',
+  name: 'wish1',
   initialState,
   reducers: {
     setIsLoading: (state) => {
       state.isLoading = !state.isLoading;
+    },
+    openEditModal(state,  action: { payload: WishObjectType }) {
+      state.showModalEdit = true;
+      state.wishCard = action.payload;
+    },
+    closeEditModal(state) {
+      state.showModalEdit = false;
     },
   },
   extraReducers: (builder) => {
@@ -66,8 +77,6 @@ const wishSlice = createSlice({
       .addCase(deleteWish.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.wishCards = state.wishCards.filter((wish) => wish.id !== payload);
-
-        
       })
       .addCase(deleteWish.rejected, (state, action) => {
         state.loading = false;
@@ -100,6 +109,6 @@ const wishSlice = createSlice({
       });
   },
 });
-export const { setIsLoading } = wishSlice.actions;
+export const { setIsLoading, openEditModal, closeEditModal } = wishSlice.actions;
 
 export default wishSlice.reducer;

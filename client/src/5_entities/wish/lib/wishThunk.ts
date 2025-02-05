@@ -39,7 +39,7 @@ export const updateWish = createAsyncThunk(
   'wish/updateWish',
   async ({ wishId, wishData }: UpdatewishForm, { rejectWithValue }) => {
     try {
-      const { data } = await axios.put(`/api/wish/${String(wishId)}`, wishData);
+      const { data } = await axiosInstance.put(`/wish/${String(wishId)}`, wishData);
       console.log('Wish updated:', data);
 
       return WishObjectSchema.parse(data);
