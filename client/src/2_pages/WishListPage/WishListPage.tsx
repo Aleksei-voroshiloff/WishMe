@@ -6,7 +6,7 @@ import style from './WishListPage.module.scss';
 import { getWishList } from '../../5_entities/wishlist/lib/wishListThunk';
 import { Button, Icon } from 'semantic-ui-react';
 
-import ModalUi from '../../4_features/modal_addList/modalSlice/ModalUi';
+import ModalUiList from '../../4_features/modal_addList/modalSlice/ModalUiList';
 import { openModal } from '../../5_entities/modal_window/modalSlice';
 
 export default function WishListPage(): React.JSX.Element {
@@ -44,7 +44,7 @@ export default function WishListPage(): React.JSX.Element {
           </div>
         ))}
       </div>
-      <ModalUi />
+      <ModalUiList />
     </main>
   );
 }

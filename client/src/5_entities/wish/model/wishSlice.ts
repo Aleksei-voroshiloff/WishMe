@@ -65,7 +65,9 @@ const wishSlice = createSlice({
       })
       .addCase(deleteWish.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.wishCards = state.wishCards.filter((book) => book.id !== payload);
+        state.wishCards = state.wishCards.filter((wish) => wish.id !== payload);
+
+        
       })
       .addCase(deleteWish.rejected, (state, action) => {
         state.loading = false;
@@ -84,7 +86,7 @@ const wishSlice = createSlice({
         state.error = action.payload as string;
       })
       .addCase(getPresInfo.fulfilled, (state, { payload }) => {
-        console.log(payload, 'zzzzzzz');
+        // console.log(payload, 'zzzzzzz');
         state.reservations[payload.id] = payload;
       })
       .addCase(toggleReservation.fulfilled, (state, { payload }) => {
