@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './FriendCardComponent.module.scss';
+import style from './RequestToMeCardComponent.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import { useAppDispatch, useAppSelector } from '../../../../1_app/store/hooks';
@@ -15,19 +15,19 @@ type FriendProp = {
   };
 };
 
-export default function FriendCardComponent({ friend }: FriendProp): React.JSX.Element {
+export default function RequestToMeCardComponent({ requestToMe }: FriendProp): React.JSX.Element {
   const dispatch = useAppDispatch();
   const { friends } = useAppSelector((store) => store.friend);
-  const IsFriends = friends.find((el) => el.id === friend.id);
   const { data } = useAppSelector((store) => store.user);
+  
   return (
     <>
       <div className={style.card_wrapper}>
-        <NavLink onClick={()=> dispatch(closeWindow())} to={`/friends/${String(friend.id)}`}>
-          {friend.avatar ? (
+        <NavLink onClick={()=> dispatch(closeWindow())} to={`/friends/${String(requestToMe.id)}`}>
+          {requestToMe.avatar ? (
             <img
               className={style.image}
-              src={`http://localhost:3000/${friend.avatar}`}
+              src={`http://localhost:3000/${requestToMe.avatar}`}
               alt="foto"
             />
           ) : (
@@ -39,23 +39,25 @@ export default function FriendCardComponent({ friend }: FriendProp): React.JSX.E
           )}
         </NavLink>
         <div className={style.info_wrapper}>
-          <NavLink onClick={()=> dispatch(closeWindow())} to={`/friends/${String(friend.id)}`}>
-            <h2>{friend.name}</h2>{' '}
+          <NavLink onClick={()=> dispatch(closeWindow())} to={`/friends/${String(requestToMe.id)}`}>
+            <h2>{requestToMe.name}</h2>{' '}
           </NavLink>
-          <p>День рождения: {String(friend.birthday)}</p>
+          <p>День рождения: {String(requestToMe.birthday)}</p>
         </div>
-        {IsFriends ? (data?.id !== friend.id &&
+        {IsFriends ? (data?.id !== requestToMe.id &&
           <Icon
             onClick={() => {
-              void dispatch(deleteFriendThunk(friend.id));
+              void dispatch(deleteFriendThunk(requestToMe.id));
             }}
             name="trash alternate"
             color="red"
           />
-        ) : (data?.id !== friend.id &&
+        ) : (data?.id !== requestToMe.id &&
           <Icon name="add" color="green"/>
         )}
       </div>
+
+      RequestToMeCardComponent
     </>
   );
 }
