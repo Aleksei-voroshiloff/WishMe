@@ -5,6 +5,13 @@ const friendRouter = express.Router();
 
 friendRouter.route('/').get(verifyAccessToken, friendController.getAllFriend);
 
-friendRouter.route('/:id').delete(friendController.deleteFriend);
+friendRouter.route('/requeststome').get(verifyAccessToken, friendController.findAllRequestsToFriend);
+friendRouter.route('/myrequests').get(verifyAccessToken, friendController.findAllFriendRequests);
+
+friendRouter
+  .route('/:id')
+  .delete(friendController.deleteFriend)
+  .post(verifyAccessToken, friendController.addFriend)
+  .put(verifyAccessToken, friendController.acceptFriend);
 
 module.exports = friendRouter;

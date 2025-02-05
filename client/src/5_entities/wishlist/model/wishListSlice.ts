@@ -95,6 +95,7 @@ const wishListSlice = createSlice({
         state.wishListCards = payload;
       })
       .addCase(getFriendWishListThunk.rejected, (state, action) => {
+        state.wishListCards = []
         state.loading = false;
         state.error = action.payload as string;
       });

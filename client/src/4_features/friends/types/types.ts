@@ -11,6 +11,12 @@ export const receiveFriendSchema = z.object({
   Receiver: oneFriendSchema,
 });
 
+export const receiveToFriendSchema = z.object({
+  Requester: oneFriendSchema,
+});
+
+
+export const receivesToFriendSchema = z.array(receiveToFriendSchema)
 export const receivefriendsSchema = z.array(receiveFriendSchema);
 export const friendsSchema = z.array(oneFriendSchema)
 

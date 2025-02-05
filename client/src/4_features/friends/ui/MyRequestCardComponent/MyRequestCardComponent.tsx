@@ -1,10 +1,9 @@
-import React from 'react';
-import style from './FriendCardComponent.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import { useAppDispatch, useAppSelector } from '../../../../1_app/store/hooks';
 import { deleteFriendThunk } from '../../lib/friendsThunk';
 import { closeWindow } from '../../model/friendsSlice';
+import style from './MyRequestCardComponent.module.scss';
 
 type FriendProp = {
   friend: {
