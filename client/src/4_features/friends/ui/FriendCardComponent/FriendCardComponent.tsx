@@ -3,7 +3,7 @@ import style from './FriendCardComponent.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import { useAppDispatch, useAppSelector } from '../../../../1_app/store/hooks';
-import { deleteFriendThunk } from '../../lib/friendsThunk';
+import { addFriendThunk, deleteFriendThunk } from '../../lib/friendsThunk';
 import { closeWindow } from '../../model/friendsSlice';
 
 type FriendProp = {
@@ -33,7 +33,7 @@ export default function FriendCardComponent({ friend }: FriendProp): React.JSX.E
           ) : (
             <img
               className={style.image}
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQycpUJ3ZthUXax2SBqN96C4xh1C4tyA7XbPA&s"
+              src="/avatar.png"
               alt="foto"
             />
           )}
@@ -53,7 +53,7 @@ export default function FriendCardComponent({ friend }: FriendProp): React.JSX.E
             color="red"
           />
         ) : (data?.id !== friend.id &&
-          <Icon name="add" color="green"/>
+          <Icon onClick={()=> void dispatch(addFriendThunk(friend.id))} name="add" color="green"/>
         )}
       </div>
     </>

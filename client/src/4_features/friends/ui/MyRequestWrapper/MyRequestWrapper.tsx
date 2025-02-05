@@ -1,21 +1,28 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../1_app/store/hooks';
-import { getAllFriends } from '../../lib/friendsThunk';
-import FriendCardComponent from '../FriendCardComponent/FriendCardComponent';
+import { getAllMyRequestsThunk } from '../../lib/friendsThunk';
 import style from './MyRequestWrapper.module.scss'
+import MyRequestCardComponent from '../MyRequestCardComponent/MyRequestCardComponent';
 
 export default function MyRequestWrapper(): React.JSX.Element {
   const dispatch = useAppDispatch();
-  const { friends } = useAppSelector((state) => state.friend);
+  
+  // useEffect(() => {
+  //   void dispatch(getAllMyRequestsThunk());
+  // }, [dispatch]);
 
-  useEffect(() => {
-    void dispatch(getAllFriends());
-  }, [dispatch]);
+  const { myRequests, myRequestsError } = useAppSelector((state) => state.friend);
+
+  console.log(myRequests, 'myRequests', myRequestsError)
+  
   return (
+     <> 
+     <h3>Отправленные заявки</h3>
     <div className={style.list}>
-      {friends.map((friend) => (
-        <FriendCardComponent key={friend.id} friend={friend} />
+      {myRequests.map((myRequest) => (
+        <MyRequestCardComponent key={myRequest.id} myRequest={myRequest} />
       ))}
     </div>
+    </>
   );
 }

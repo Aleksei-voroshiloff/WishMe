@@ -15,6 +15,7 @@ type FriendsStateType = {
   requestsToMeLoading: boolean;
   myRequests: FriendsType;
   myRequestsLoading: boolean;
+  myRequestsError: string | null,
 };
 
 const initialState: FriendsStateType = {
@@ -29,6 +30,7 @@ const initialState: FriendsStateType = {
   requestsToMeLoading: false,
   myRequests: [],
   myRequestsLoading: false,
+  myRequestsError: null,
 };
 
 export const friendsSlice = createSlice({
@@ -92,10 +94,11 @@ export const friendsSlice = createSlice({
       .addCase(addFriendThunk.fulfilled, (state, action: PayloadAction<OneFriendType>) => {
         state.myRequestsLoading = false;
         state.myRequests.unshift(action.payload);
+        state.myRequestsError = null;
       })
       .addCase(addFriendThunk.rejected, (state, action) => {
         state.myRequestsLoading = false;
-        state.error = action.payload as string;
+        state.myRequestsError = action.payload as string;
       })
       .addCase(acceptFriendThunk.pending, (state) => {
         state.requestsToMeLoading = true;
