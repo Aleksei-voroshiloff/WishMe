@@ -1,5 +1,5 @@
 .menu {
-  min-width:17%;
+  min-width: 180px;
 }
 
 .avatar {
@@ -19,4 +19,12 @@
   font-weight: 1000;
   margin-top: 10px;
   font-size: 20px;
+  width: 100px;
+  flex-wrap: wrap;
+}
+
+.red {
+  cursor: pointer;
+  width: min-content;
+  color: rgb(107, 115, 122);
 }

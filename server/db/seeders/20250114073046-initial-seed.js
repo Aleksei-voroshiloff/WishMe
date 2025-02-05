@@ -14,7 +14,6 @@ module.exports = {
           phoneNumber: '12345678910',
           password: bcrypt.hashSync('123456', 10),
           birthday: '2000-02-07',
-          avatar: '/1738587739365.webp',
         },
         {
           name: 'Лексус',
@@ -39,7 +38,7 @@ module.exports = {
           date: '2025-02-07',
           userId: 1,
         },
-       
+
         {
           title: 'Донаты на лечение',
           date: '2025-02-07',
@@ -118,7 +117,7 @@ module.exports = {
           wishId: 3,
         },
         {
-          userId: 2,
+          userId: 1,
           wishId: 2,
         },
       ],
