@@ -117,7 +117,7 @@ module.exports = {
           wishId: 3,
         },
         {
-          userId: 2,
+          userId: 1,
           wishId: 2,
         },
       ],
