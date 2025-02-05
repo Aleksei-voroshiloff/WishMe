@@ -7,7 +7,7 @@ import { getWish } from '../../5_entities/wish/lib/wishThunk';
 import style from './OneWishListPage.module.scss';
 import { Button, Icon } from 'semantic-ui-react';
 import ModalUiWish from '../../4_features/modal_addOneWish/modalSlice/ModalUiWish';
-import { openModal } from '../../5_entities/modal_window/model/modalSlice';
+import { openModal } from '../../5_entities/modal_window/modalSlice';
 
 export default function OneWishListPage(): React.ReactElement {
   const { listId } = useParams();

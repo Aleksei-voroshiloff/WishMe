@@ -20,11 +20,17 @@ const modalSlice = createSlice({
   name: 'Modal',
   initialState,
   reducers: {
-    setTomorrowDate(state) {
-      state.tomorrowDate = !state.tomorrowDate;
+    openTomorrowDate(state) {
+      state.tomorrowDate = true;
     },
-    setShowDate(state) {
-      state.showDate = !state.showDate;
+    closeTomorrowDate(state) {
+      state.tomorrowDate = false;
+    },
+    openDangerDate(state) {
+      state.showDate = true;
+    },
+    closeDangerDate(state) {
+      state.showDate = false;
     },
     setAvatar(state, action: { payload: string }) {
       state.avatar = action.payload;
@@ -35,6 +41,8 @@ const modalSlice = createSlice({
     closeUserModal(state) {
       state.showUserModal = false;
       state.avatar = null;
+      state.tomorrowDate = false;
+      state.showDate = false;
     },
     openModal(state) {
       state.showModal = true;
@@ -46,6 +54,15 @@ const modalSlice = createSlice({
   },
 });
 
-export const {setTomorrowDate, openUserModal, closeUserModal, setAvatar, openModal, closeModal, setShowDate } =
-  modalSlice.actions;
+export const {
+  openTomorrowDate,
+  closeTomorrowDate,
+  openUserModal,
+  closeUserModal,
+  setAvatar,
+  openModal,
+  closeModal,
+  openDangerDate,
+  closeDangerDate,
+} = modalSlice.actions;
 export default modalSlice.reducer;

@@ -4,7 +4,7 @@ import { setActiveItem } from '../../5_entities/Navbar/model/navbarSlice';
 import { useUser } from '../../5_entities/user/hooks/userHook';
 import { MenuItem, Menu, Image } from 'semantic-ui-react';
 import style from './NavBar.module.scss';
-import { openUserModal } from '../../5_entities/modal_window/model/modalSlice';
+import { openUserModal } from '../../5_entities/modal_window/modalSlice';
 
 export default function NavBar(): React.JSX.Element {
   const dispatch = useAppDispatch();
@@ -42,7 +42,7 @@ export default function NavBar(): React.JSX.Element {
               <MenuItem
                 className={style.textMenu}
                 as={Link}
-                to="/home"
+                to="/present"
                 name="Подарки друзьям"
                 active={activeItem === 'Подарки друзьям'}
                 onClick={() => dispatch(setActiveItem('Подарки друзьям'))}

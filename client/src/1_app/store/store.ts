@@ -4,7 +4,8 @@ import navbarReducer from '../../5_entities/Navbar/model/navbarSlice';
 import wishListReducer from '../../5_entities/wishlist/model/wishListSlice';
 import wishReducer from '../../5_entities/wish/model/wishSlice';
 import friendReducer from '../../4_features/friends/model/friendsSlice';
-import modalReducer from '../../5_entities/modal_window/model/modalSlice';
+import modalReducer from '../../5_entities/modal_window/modalSlice';
+import redactionReducer from '../../5_entities/delete/redactionSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     wish: wishReducer,
     friend: friendReducer,
     modal: modalReducer,
+    redaction: redactionReducer,
   },
 });
 
