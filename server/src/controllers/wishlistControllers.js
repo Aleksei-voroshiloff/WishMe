@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable class-methods-use-this */
 
-const friendService = require('../services/friendService');
 const wishlistService = require('../services/wishlistService');
 
 class WishlistController {
@@ -30,9 +29,6 @@ class WishlistController {
   getAllFriendWl = async (req, res) => {
     try {
       const {friendId} = req.params
-      const userId =res.locals.user.id
-      const friendship = await friendService.findFriendship(userId, friendId)
-      if (!friendship) return res.status(403).json({message: 'Доступ запрещен'})
       const allWishlist = await wishlistService.getAllWishlist(friendId);
     return res.status(200).json(allWishlist)
     } catch (error) {

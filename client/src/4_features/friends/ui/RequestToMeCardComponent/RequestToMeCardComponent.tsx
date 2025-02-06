@@ -2,8 +2,7 @@ import React from 'react';
 import style from './RequestToMeCardComponent.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
-import { useAppDispatch, useAppSelector } from '../../../../1_app/store/hooks';
-import { acceptFriendThunk, deleteFriendThunk } from '../../lib/friendsThunk';
+import { useFriend } from '../../lib/useFriends';
 
 type FriendProp = {
   requestToMe: {
@@ -15,9 +14,7 @@ type FriendProp = {
 };
 
 export default function RequestToMeCardComponent({ requestToMe }: FriendProp): React.JSX.Element {
-  const dispatch = useAppDispatch();
-  const { friends } = useAppSelector((store) => store.friend);
-  const { data } = useAppSelector((store) => store.user);
+const {acceptRequest, rejectRequest} = useFriend()
   
   return (
     <>
@@ -43,15 +40,15 @@ export default function RequestToMeCardComponent({ requestToMe }: FriendProp): R
           </NavLink>
           <p>День рождения: {String(requestToMe.birthday)}</p>
         </div>
-          <Icon
+          <Icon title='Отклонить заявку'
             onClick={() => {
-              void dispatch(deleteFriendThunk(requestToMe.id));
+              rejectRequest(requestToMe.id)
             }}
             name="trash alternate"
             color="red"
           />
-          <Icon onClick={() => 
-              void dispatch(acceptFriendThunk(requestToMe.id))
+          <Icon title='Принять заявку' onClick={() => 
+              acceptRequest(requestToMe.id)
             } name="add" color="green"/>
       </div>
     </>

@@ -15,14 +15,14 @@ export default function FriendProfileComponent({ friend }: FriendProp): React.JS
   return (
     <>
       <div className={style.card_wrapper}>
-          {friend?.avatar ? (
-            <img className={style.image} src={friend.avatar} alt="foto" />
-          ) : (
+      {friend?.avatar ? (
             <img
               className={style.image}
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQycpUJ3ZthUXax2SBqN96C4xh1C4tyA7XbPA&s"
+              src={`http://localhost:3000/${friend.avatar}`}
               alt="foto"
             />
+          ) : (
+            <img className={style.image} src="/avatar.png" alt="foto" />
           )}
         <div className={style.info_wrapper}>
             <h2>{friend?.name}</h2>

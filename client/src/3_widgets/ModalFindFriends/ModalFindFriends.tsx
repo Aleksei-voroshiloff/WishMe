@@ -17,7 +17,7 @@ export default function ModalFindFriends(): React.JSX.Element {
   const dispatch = useAppDispatch();
 
   const { search, modalShow, foundFriends, foundFriendsLoading } = useAppSelector(
-    (store) => store.friend,
+    (store) => store.friend
   );
 
   useEffect(() => {

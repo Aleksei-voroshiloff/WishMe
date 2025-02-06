@@ -24,9 +24,9 @@ class FriendService {
     });
   }
 
-  async destroyFriend(id) {
-    await this.model.Friend.destroy({ where: { friendId: id } });
-    await this.model.Friend.destroy({ where: { userId: id } });
+  async destroyFriend(userId, friendId) {
+    await this.model.Friend.destroy({ where: { userId, friendId } });
+    await this.model.Friend.destroy({ where: { userId: friendId, friendId: userId } });
   }
 
   async addFriend(userId, friendId) {
@@ -59,7 +59,7 @@ class FriendService {
     }
     await requester.update({ status: 'accepted' });
 
-    await this.model.create({userId, friendId, status: 'accepted' });
+    await this.model.Friend.create({userId, friendId, status: 'accepted' });
 
     const newFriend = await this.model.User.findByPk(friendId);
 
