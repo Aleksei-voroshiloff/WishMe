@@ -7,6 +7,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
+  margin-top: 65px;
 }
 
 .first_div {
@@ -23,24 +24,41 @@
   min-height: 150px;
   //   min-height: 30vh;
   border-radius: 20px;
-  border: 2px solid rgba(84, 31, 116, 0.605);
+  border: 1px solid #b24343;
   background-image: url('https://i.pinimg.com/originals/7f/3a/68/7f3a68fe9ae08dfcfb26a0863a20d375.gif');
-  box-shadow: 0 4px 8px rgba(14, 149, 36, 0.2); // Тень для карточки
+
   cursor: pointer;
 
   &:hover {
     transform: scale(1.01); // Увеличение карточки при наведении
-    box-shadow: 0 8px 20px rgba(0, 77, 3, 0.67); // Увеличенная тень при наведении
+    box-shadow: 0px 0px 10px #b24343; // Увеличенная тень при наведении
   }
 }
 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   background-color: rgb(255, 255, 255);
   height: 120px;
   border-radius: 20px;
-  border: 2px solid rgba(84, 31, 116, 0.605);
+  border: 1px solid #b24343;
 }
 
+.title {
+  font-weight: 900;
+  font-size: x-large;
+}
+.date {
+  font-weight: 600;
+  color: linear-gradient(135deg, #b65555, #ff8e8e);
+}
+
+.panel {
+  display: flex;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.311);
+  height: 50px;
+}
 .redaction {
   margin-left: 62%;
 }
@@ -68,7 +86,7 @@
   background: linear-gradient(135deg, #b65555, #ff8e8e);
   border-radius: 20px;
   position: relative;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
   cursor: pointer;
   transition: transform 0.3s;
   overflow: hidden;

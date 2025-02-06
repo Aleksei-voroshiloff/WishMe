@@ -30,14 +30,14 @@ export default function WishListCardUi({ list, showButton }: Props): React.JSX.E
   return (
     <div className={style.card1}>
       <div className={style.content} onClick={() => handleCardClick(list.id)}>
-        <h3>
+        <div className={style.title}>
           {list.title}
-        </h3>
-        <span>
+        </div>
+        <div className={style.date} >
           Дата мероприятия:
           <br />
           {list.date}
-        </span>
+        </div>
       </div>
       {showButton && (
         <div className={style.redaction}>

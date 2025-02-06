@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../1_app/store/hooks';
 import WishCardUi from '../../5_entities/wish/ui/WishCardUi';
 import { getWish } from '../../5_entities/wish/lib/wishThunk';
 import style from './OneWishListPage.module.scss';
-import { Checkbox, Icon, Segment } from 'semantic-ui-react';
+import { Checkbox, Icon } from 'semantic-ui-react';
 import ModalUiWish from '../../4_features/modal_addOneWish/modalSlice/ModalUiWish';
 import { openModal } from '../../5_entities/modal_window/modalSlice';
 import { setShowButton } from '../../5_entities/delete/redactionSlice';
@@ -29,35 +29,35 @@ export default function OneWishListPage(): React.ReactElement {
     void dispatch(getUserByWishlistThunk(Number(listId)));
   }, [dispatch, listId]);
 
-  console.log(oneUser, 123444444);
-
   const filteredWishCards = wishCards.filter((wish) => wish.wishListId === Number(listId));
 
   return (
     <main className={style.main}>
-      <div style={{ borderBottom: '1px solid #ccc', paddingBottom: '10px' }}>
+      <div className={style.panel}>
         {user?.id === wishList?.userId ? (
           <div className={style.functionalPage}>
-            <div>
-              <Icon
-                className={style.back_button}
-                name="chevron left"
-                size="huge"
-                onClick={() => navigate(-1)}
-              />
+            <div className={style.redax}>
+              <div>
+                <Icon
+                  className={style.back_button}
+                  name="chevron left"
+                  size="large"
+                  onClick={() => navigate(-1)}
+                />
+              </div>
             </div>
-
-            <div>
-              <Segment style={{ marginLeft: '100px' }}>
+            <div className={style.redaxText}>Режим редакции:</div>
+            <div className={style.redaxToggle}>
+              <div>
                 <Checkbox
                   name="read"
                   value={1}
                   checked={showButton}
                   onClick={() => dispatch(setShowButton())}
-                  label={showButton ? 'Редактирование включено' : 'Редактирование выключено'}
+                  label={showButton}
                   toggle
                 />
-              </Segment>
+              </div>
             </div>
           </div>
         ) : (
