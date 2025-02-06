@@ -8,6 +8,7 @@ import {
   getOneUser,
   updateUserInfo,
   myCabinetInfo,
+  getUserByWishlistThunk,
 } from '../lib/userThunks';
 
 const initialState: UserState = {
@@ -77,6 +78,12 @@ const userSlice = createSlice({
         state.myCabinet = payload;
       })
       .addCase(updateUserInfo.rejected, (state, action) => {
+        state.error = action.error.message ?? 'Что то не так при обновлении';
+      })
+      .addCase(getUserByWishlistThunk.fulfilled, (state, { payload }) => {
+        state.oneUser = payload;
+      })
+      .addCase(getUserByWishlistThunk.rejected, (state, action) => {
         state.error = action.error.message ?? 'Что то не так при обновлении';
       });
   },

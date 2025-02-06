@@ -5,3 +5,26 @@
   gap: 15px;
   width: 100%;
 }
+
+.error{
+  margin-top: 10%;
+  flex-grow: 1;
+  text-align: center;
+  cursor: pointer;
+}
+
+.back_button,
+.add_button {
+  display: flex;
+  align-items: center;
+
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.back_button:hover, .add_button:hover {
+  transform: scale(1.3);
+}

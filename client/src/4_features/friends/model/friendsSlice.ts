@@ -1,7 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { FriendsType, OneFriendType } from '../types/types';
-import { acceptFriendThunk, addFriendThunk, deleteFriendThunk, findFriendsThunk, getAllFriends, getAllMyRequestsThunk, getAllRequestsToMeThunk } from '../lib/friendsThunk';
+import {
+  acceptFriendThunk,
+  addFriendThunk,
+  deleteFriendThunk,
+  findFriendsThunk,
+  getAllFriends,
+  getAllMyRequestsThunk,
+  getAllRequestsToMeThunk,
+} from '../lib/friendsThunk';
 
 type FriendsStateType = {
   friends: FriendsType;
@@ -15,7 +23,10 @@ type FriendsStateType = {
   requestsToMeLoading: boolean;
   myRequests: FriendsType;
   myRequestsLoading: boolean;
-  myRequestsError: string | null,
+  myRequestsError: string | null;
+  showFriends: boolean;
+  showMyRequests: boolean;
+  showRequestsToMe: boolean;
 };
 
 const initialState: FriendsStateType = {
@@ -31,6 +42,9 @@ const initialState: FriendsStateType = {
   myRequests: [],
   myRequestsLoading: false,
   myRequestsError: null,
+  showFriends: false,
+  showMyRequests: false,
+  showRequestsToMe: false,
 };
 
 export const friendsSlice = createSlice({
@@ -45,6 +59,24 @@ export const friendsSlice = createSlice({
     },
     closeWindow(state) {
       state.modalShow = false;
+    },
+    unhideFriends(state) {
+      state.showFriends = true;
+    },
+    hideFriends(state) {
+      state.showFriends = false;
+    },
+    unhideMyRequests(state) {
+      state.showMyRequests = true;
+    },
+    hideMyRequests(state) {
+      state.showMyRequests = false;
+    },
+    unhideRequestsToMe(state) {
+      state.showRequestsToMe = true;
+    },
+    hideRequestsToMe(state) {
+      state.showRequestsToMe = false;
     },
   },
   extraReducers: (builder) => {
@@ -67,9 +99,11 @@ export const friendsSlice = createSlice({
       })
       .addCase(deleteFriendThunk.fulfilled, (state, action) => {
         state.loading = false;
-        state.friends = state.friends.filter(friend => friend.id !== action.payload);
-        state.requestsToMe = state.requestsToMe.filter(requestToMe => requestToMe.id !== action.payload);
-        state.myRequests = state.myRequests.filter(myRequest => myRequest.id !== action.payload);
+        state.friends = state.friends.filter((friend) => friend.id !== action.payload);
+        state.requestsToMe = state.requestsToMe.filter(
+          (requestToMe) => requestToMe.id !== action.payload,
+        );
+        state.myRequests = state.myRequests.filter((myRequest) => myRequest.id !== action.payload);
       })
       .addCase(deleteFriendThunk.rejected, (state, action) => {
         state.loading = false;
@@ -106,17 +140,18 @@ export const friendsSlice = createSlice({
         state.myRequestsError = null;
       })
       .addCase(acceptFriendThunk.fulfilled, (state, action: PayloadAction<OneFriendType>) => {
-        state.loading = false
+        state.loading = false;
         state.requestsToMeLoading = false;
         state.friends.unshift(action.payload);
-        state.requestsToMe = state.requestsToMe.filter(requestToMe => requestToMe.id !== action.payload.id)
+        state.requestsToMe = state.requestsToMe.filter(
+          (requestToMe) => requestToMe.id !== action.payload.id,
+        );
       })
       .addCase(acceptFriendThunk.rejected, (state, action) => {
         state.loading = false;
         state.requestsToMeLoading = false;
         state.error = action.payload as string;
       })
-
 
       .addCase(getAllMyRequestsThunk.pending, (state) => {
         state.myRequestsLoading = true;
@@ -142,12 +177,20 @@ export const friendsSlice = createSlice({
       .addCase(getAllRequestsToMeThunk.rejected, (state, action) => {
         state.requestsToMeLoading = false;
         state.error = action.payload as string;
-      })
+      });
   },
 });
 
-
-// Other code such as selectors can use the imported `RootState` type
-export const { openWindow, closeWindow, setSearch } = friendsSlice.actions;
+export const {
+  openWindow,
+  closeWindow,
+  setSearch,
+  unhideFriends,
+  hideFriends,
+  unhideMyRequests,
+  hideMyRequests,
+  unhideRequestsToMe,
+  hideRequestsToMe,
+} = friendsSlice.actions;
 
 export default friendsSlice.reducer;

@@ -10,6 +10,8 @@ import ModalUiWish from '../../4_features/modal_addOneWish/modalSlice/ModalUiWis
 import { openModal } from '../../5_entities/modal_window/modalSlice';
 import { setShowButton } from '../../5_entities/delete/redactionSlice';
 import ModalUiWishEdit from '../../4_features/modal_edit/ModalUiWishEdit';
+import { getUserByWishlistThunk } from '../../5_entities/user/lib/userThunks';
+import FriendProfileComponent from '../../4_features/friends/ui/FriendProfileComponent/FriendProfileComponent';
 
 export default function OneWishListPage(): React.ReactElement {
   const { listId } = useParams();
@@ -19,11 +21,15 @@ export default function OneWishListPage(): React.ReactElement {
   const wishList = useAppSelector((state) => state.wishlist.oneWishList);
   const { wishCards } = useAppSelector((state) => state.wish);
   const showButton = useAppSelector((state) => state.redaction.showButton);
+  const { oneUser } = useAppSelector((state) => state.user);
 
   useEffect(() => {
     void dispatch(getOneWishList(Number(listId)));
     void dispatch(getWish(Number(listId)));
+    void dispatch(getUserByWishlistThunk(Number(listId)));
   }, [dispatch, listId]);
+
+  console.log(oneUser, 123444444);
 
   const filteredWishCards = wishCards.filter((wish) => wish.wishListId === Number(listId));
 
@@ -54,7 +60,19 @@ export default function OneWishListPage(): React.ReactElement {
               </Segment>
             </div>
           </div>
-        ) : null}
+        ) : (
+          <>
+            <div>
+              <Icon
+                className={style.back_button}
+                name="chevron left"
+                size="huge"
+                onClick={() => navigate(-2)}
+              />
+            </div>
+            <FriendProfileComponent friend={oneUser} />
+          </>
+        )}
       </div>
 
       <h3>Вишлист: {wishList?.title}</h3>

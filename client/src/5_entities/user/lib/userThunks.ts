@@ -1,7 +1,7 @@
 import axiosInstance, { setAccessToken } from '../../../6_shared/api/axiosInstance';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import type { MyDataType } from '../types/types';
+import type { getUserType, MyDataType } from '../types/types';
 import {
   OneUserShema,
   type AuthResponse,
@@ -64,9 +64,11 @@ export const getOneUser = createAsyncThunk(
   async (id: number, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get<OneUserType>(`/users/${String(id)}`);
+      console.log(response)
       const filteredData = OneUserShema.parse(response.data);
       return filteredData;
     } catch (error) {
+      console.log(error)
       return rejectWithValue((error as Error).message);
     }
   },
@@ -90,6 +92,19 @@ export const myCabinetInfo = createAsyncThunk(
     try {
       const { data } = await axiosInstance.get<MyDataType | null>(`/users/my/${String(id)}`);
       return data;
+    } catch (error) {
+      return rejectWithValue((error as Error).message);
+    }
+  },
+);
+
+export const getUserByWishlistThunk = createAsyncThunk(
+  'user/getUserByWishlistThunk',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.get<getUserType | null>(`/users/wishlist/${String(id)}`);
+      const user = OneUserShema.parse(data?.User)
+      return user;
     } catch (error) {
       return rejectWithValue((error as Error).message);
     }
