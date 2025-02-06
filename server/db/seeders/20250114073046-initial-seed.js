@@ -179,45 +179,45 @@ module.exports = {
       ],
       {},
     );
-    await queryInterface.bulkInsert(
-      'Presents',
-      [
-        {
-          userId: 1,
-          wishId: 1,
-        },
-        {
-          userId: 1,
-          wishId: 2,
-        },
-        {
-          userId: 1,
-          wishId: 3,
-        },
-        {
-          userId: 1,
-          wishId: 4,
-        },
-        {
-          userId: 2,
-          wishId: 5,
-        },
-        {
-          userId: 2,
-          wishId: 6,
-        },
-        {
-          userId: 1,
-          wishId: 7,
-        },
-        {
-          userId: 1,
-          wishId: 9,
-        },
+    // await queryInterface.bulkInsert(
+    //   'Presents',
+    //   [
+    //     {
+    //       userId: 1,
+    //       wishId: 1,
+    //     },
+    //     {
+    //       userId: 1,
+    //       wishId: 2,
+    //     },
+    //     {
+    //       userId: 1,
+    //       wishId: 3,
+    //     },
+    //     {
+    //       userId: 1,
+    //       wishId: 4,
+    //     },
+    //     {
+    //       userId: 2,
+    //       wishId: 5,
+    //     },
+    //     {
+    //       userId: 2,
+    //       wishId: 6,
+    //     },
+    //     {
+    //       userId: 1,
+    //       wishId: 7,
+    //     },
+    //     {
+    //       userId: 1,
+    //       wishId: 9,
+    //     },
 
-      ],
-      {},
-    );
+    //   ],
+    //   {},
+    // );
     await queryInterface.bulkInsert(
       'Friends',
       [

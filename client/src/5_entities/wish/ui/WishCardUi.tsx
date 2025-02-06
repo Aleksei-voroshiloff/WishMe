@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../../1_app/store/hooks';
 import { openEditModal } from '../model/wishSlice';
 import { Link, useParams } from 'react-router-dom';
 import type { WishListObjectType } from '../../wishlist/types/types';
+import { getAllPresent } from '../../present/lib/presentThunk';
 
 type Props = {
   wish: WishObjectType;
@@ -36,6 +37,7 @@ export default function WishCardUi({ wish, showButton,  }: Props): React.JSX.Ele
         await dispatch(postReservation(wishId));
       }
       await dispatch(getPresInfo(wish.id));
+      await dispatch(getAllPresent())
     } catch (error) {
       console.error('Ошибка бронирования:', error);
     }
