@@ -78,16 +78,10 @@ export const getPresInfo = createAsyncThunk(
 
 export const toggleReservation = createAsyncThunk(
   'wish/toggleReservation',
-  async (isReserved, { rejectWithValue }) => {
-    console.log(isReserved, 111111111);
-    
-
+  async (wishId: number, { rejectWithValue }) => {
     try {
-      if (isReserved.id) {
-        await axiosInstance.delete(`/present/${String(isReserved.id)}`);
-        return null;
-      }
-      const { data } = await axiosInstance.post<PresentObjType>('/presents',  isReserved );
+      const { data } = await axiosInstance.post<PresentObjType>(`/present/${String(wishId)}`);
+      console.log(data, 'created present');
       return data;
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Ошибка бронирования');

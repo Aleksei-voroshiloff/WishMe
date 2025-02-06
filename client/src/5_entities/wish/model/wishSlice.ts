@@ -13,30 +13,27 @@ type NoteState = {
   wishCards: WishTypeArray;
   loading: boolean;
   error: null | string;
-  isLoading: boolean;
-  reservations: Record<number, PresentObjType | null>;
+  reservations:  PresentObjType | null;
   wishCard: WishObjectType | null;
   showModalEdit: boolean;
+  isBusy: boolean;
 };
 
 const initialState: NoteState = {
   wishCards: [],
   loading: false,
   error: null,
-  reservations: {},
-  isLoading: false,
+  reservations: null,
   wishCard: null,
   showModalEdit: false,
+  isBusy: false,
 };
 
 const wishSlice = createSlice({
   name: 'wish1',
   initialState,
   reducers: {
-    setIsLoading: (state) => {
-      state.isLoading = !state.isLoading;
-    },
-    openEditModal(state,  action: { payload: WishObjectType }) {
+    openEditModal(state, action: { payload: WishObjectType }) {
       state.showModalEdit = true;
       state.wishCard = action.payload;
     },
@@ -96,19 +93,17 @@ const wishSlice = createSlice({
       })
       .addCase(getPresInfo.fulfilled, (state, { payload }) => {
         // console.log(payload, 'zzzzzzz');
-        state.reservations[payload.id] = payload;
+        state.reservations = payload;
       })
       .addCase(toggleReservation.fulfilled, (state, { payload }) => {
-        const x = payload?.id;
-        if (payload) {
-          state.reservations[x] = payload;
-        } else {
-          const { [x]: _, ...rest } = state.reservations;
-          state.reservations = rest;
-        }
+        state.reservations = payload
+        if( state.wishCards.some((wish) => wish.id === payload.wishId)) {
+          state.isBusy = !state.isBusy
+        } 
+
       });
   },
 });
-export const { setIsLoading, openEditModal, closeEditModal } = wishSlice.actions;
+export const { openEditModal, closeEditModal } = wishSlice.actions;
 
 export default wishSlice.reducer;

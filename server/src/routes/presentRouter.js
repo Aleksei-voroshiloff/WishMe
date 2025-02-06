@@ -6,10 +6,11 @@ const presentRouter = express.Router();
 presentRouter
   .route('/')
   // .get(verifyAccessToken, presentController.getPresentForFriend)
-  .post(verifyAccessToken, presentController.createPresent);
+  // .post(verifyAccessToken, presentController.createPresent);
 
 presentRouter
   .route('/:id')
+  .post(verifyAccessToken, presentController.createPresent)
   .get(presentController.getAllpresent)
   .delete(verifyAccessToken, presentController.deletePresent);
 
