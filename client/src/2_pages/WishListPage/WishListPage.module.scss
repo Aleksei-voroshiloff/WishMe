@@ -1,61 +1,74 @@
 .main {
-    padding: 10px;
-    flex-grow: 1;
+  padding: 10px;
+  flex-grow: 1;
 }
-
 
 .razmap {
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   gap: 15px;
- 
+}
 
-  
+.first_div {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: space-between;
 }
 
 .card1 {
- 
   position: relative;
   padding: 3%;
   width: 251px;
   min-height: 150px;
-//   min-height: 30vh;
+  //   min-height: 30vh;
   border-radius: 20px;
-  border: 2px solid black;
+  border: 2px solid rgba(84, 31, 116, 0.605);
   background-image: url('https://i.pinimg.com/originals/7f/3a/68/7f3a68fe9ae08dfcfb26a0863a20d375.gif');
   box-shadow: 0 4px 8px rgba(14, 149, 36, 0.2); // Тень для карточки
   cursor: pointer;
 
   &:hover {
-    transform: scale(1.05); // Увеличение карточки при наведении
+    transform: scale(1.01); // Увеличение карточки при наведении
     box-shadow: 0 8px 20px rgba(0, 77, 3, 0.67); // Увеличенная тень при наведении
   }
 }
+.content {
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  height: 120px;
+  border-radius: 20px;
+  border: 2px solid rgba(84, 31, 116, 0.605);
+}
 
-
-.redaction{
-
-margin-left: 62%;
-
-  
+.redaction {
+  margin-left: 62%;
 }
 
 .del:hover {
-  transform: scale(1.20);
+  transform: scale(1.2);
 }
 
 .edit:hover {
   transform: scale(1.33);
 }
 
+.check {
+  font-weight: 500;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 .gift_box {
   width: 200px;
   height: 150px;
-  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  background: linear-gradient(135deg, #b65555, #ff8e8e);
   border-radius: 20px;
   position: relative;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: transform 0.3s;
   overflow: hidden;
@@ -114,7 +127,7 @@ margin-left: 62%;
   font-size: 40px;
   opacity: 0;
   transition: all 0.5s;
-  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
 }
 
 .gift_box:hover .gift {
@@ -132,8 +145,13 @@ margin-left: 62%;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-10px); }
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
 }
 
 @keyframes shine {
@@ -141,4 +159,3 @@ margin-left: 62%;
     transform: translate(50%, 50%);
   }
 }
-

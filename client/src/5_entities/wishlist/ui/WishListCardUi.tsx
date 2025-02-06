@@ -29,10 +29,9 @@ export default function WishListCardUi({ list, showButton }: Props): React.JSX.E
 
   return (
     <div className={style.card1}>
-      <div  onClick={() => handleCardClick(list.id)}>
+      <div className={style.content} onClick={() => handleCardClick(list.id)}>
         <h3>
           {list.title}
-          <Icon name="share" color="purple" />
         </h3>
         <span>
           Дата мероприятия:
@@ -40,7 +39,6 @@ export default function WishListCardUi({ list, showButton }: Props): React.JSX.E
           {list.date}
         </span>
       </div>
-      <div></div>
       {showButton && (
         <div className={style.redaction}>
           <Icon
