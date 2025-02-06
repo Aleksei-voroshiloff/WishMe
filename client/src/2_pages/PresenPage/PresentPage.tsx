@@ -12,20 +12,20 @@ export default function PresentPage(): React.JSX.Element {
     return (
       <div className={style.str}>
         <div className={style.first_div}></div>
-        {presents.result.map((user) =>
-          user.Wishlists.map((wishlist) => {
-            const wishP = presents.wishes.filter((wish) => wishlist.id === wish.wishListId);
-            return (
-              <>
-                {wishP.map((wish) => (
-                  <div key={user.id}>
-                    <PresentFriendUi user={user} wish={wish} wishlist={wishlist} />
-                  </div>
-                ))}
-              </>
-            );
-          }),
-        )}
+        <div className={style.content}>
+          {presents.result.map((user) =>
+            user.Wishlists.map((wishlist) => {
+              const wishP = presents.wishes.filter((wish) => wishlist.id === wish.wishListId);
+              return (
+                <>
+                  {wishP.map((wish) => (
+                    <PresentFriendUi key={user.id} user={user} wish={wish} wishlist={wishlist} />
+                  ))}
+                </>
+              );
+            }),
+          )}
+        </div>
       </div>
     );
   return <></>;

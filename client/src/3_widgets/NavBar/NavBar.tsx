@@ -17,7 +17,7 @@ export default function NavBar(): React.JSX.Element {
   if (user !== null)
     return (
       <div className={style.menu}>
-        <Menu fluid vertical tabular color="blue">
+        <Menu fluid vertical tabular>
           {data && (
             <>
               <MenuItem>
@@ -55,14 +55,6 @@ export default function NavBar(): React.JSX.Element {
                 name="Друзья"
                 active={activeItem === 'Друзья'}
                 onClick={() => dispatch(setActiveItem('Друзья'))}
-              />
-              <MenuItem
-                className={style.textMenu}
-                as={Link}
-                to="/home"
-                name="Архив"
-                active={activeItem === 'Архив'}
-                onClick={() => dispatch(setActiveItem('Архив'))}
               />
               <MenuItem className={style.textMenu} onClick={() => logoutHandler()} name="Выход" />
             </>

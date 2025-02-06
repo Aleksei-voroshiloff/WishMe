@@ -1,5 +1,9 @@
 .menu {
   min-width: 180px;
+  position: sticky; /* Липкое позиционирование */
+  top: 0px; /* Фиксируется в верхней части экрана */
+  align-self: flex-start; /* Для корректного поведения в flex-контейнере */
+  z-index: -1; /* Убедитесь, что меню поверх других элементов */
 }
 
 .avatar {
@@ -27,4 +31,5 @@
   cursor: pointer;
   width: min-content;
   color: rgb(107, 115, 122);
+  font-family: 'Nunito';
 }
