@@ -21,6 +21,10 @@ import {
 } from '../../5_entities/modal_window/modalSlice';
 import style from './Modal.module.scss';
 import { updateUserInfo } from '../../5_entities/user/lib/userThunks';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import InputMask, { Props as InputMaskProps } from 'react-input-mask';
+type InputProps = InputMaskProps & React.InputHTMLAttributes<HTMLInputElement>;
+
 
 export default function ModalPage(): React.JSX.Element {
   const dispatch = useAppDispatch();
@@ -122,7 +126,14 @@ export default function ModalPage(): React.JSX.Element {
           </FormField>
           <FormField>
             <label>Номер телефона</label>
-            <input name="phoneNumber" type="text" defaultValue={user.phoneNumber} />
+            <InputMask
+              mask="+7\ (999) 999-99-99"
+              name="phoneNumber"
+              defaultValue={user.phoneNumber}
+              placeholder="+7 (___) ___-__-__"
+            >
+              {(inputProps: InputProps) => <input {...inputProps} type="text" />}
+            </InputMask>
           </FormField>
           <FormField>
             <label>Ваша дата рождения</label>
