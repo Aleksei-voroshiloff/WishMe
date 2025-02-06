@@ -8,6 +8,10 @@
   border: 2px solid rgba(72, 34, 93, 0.904);
   border-radius: 20px;
   background-color: rgb(255, 255, 255);
+  &:hover {
+    transform: scale(1.01); // Увеличение карточки при наведении
+    box-shadow: 0 8px 20px rgba(0, 77, 3, 0.67); // Увеличенная тень при наведении
+  }
 }
 
 .content {
@@ -49,6 +53,7 @@
 }
 
 .userinfo {
+  font-weight: 500;
   position: absolute;
   right: 10px;
   top: 10px;
@@ -64,5 +69,5 @@
 }
 .price {
   font-size: medium;
-  font-weight: 600;
+  font-weight: 800;
 }

@@ -39,8 +39,8 @@ export default function PresentFriendUi({ wish, user, wishlist }: PresentProps):
               src={user.avatar === null ? '/avatar.png' : `http://localhost:3000/${user.avatar}`}
             />
             <div>{user.name}</div>
-            <div>{wishlist.title}</div>
-            <div>{wishlist.date}</div>
+            <div>Вишлист: {wishlist.title}</div>
+            <div>Дата мероприятия: {wishlist.date}</div>
           </div>
         </CardContent>
       </div>
