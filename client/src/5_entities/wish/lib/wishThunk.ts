@@ -4,7 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import type { PresentObjType, UpdatewishForm, WishObjectType } from '../types/types';
 import { WishObjectSchema, WishSchema } from '../types/types';
 import axiosInstance from '../../../6_shared/api/axiosInstance';
-import type { ParsPresentForm } from '../../wishlist/types/types';
+
 
 export const getWish = createAsyncThunk(
   'wish/getWish',

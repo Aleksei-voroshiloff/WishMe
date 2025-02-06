@@ -5,7 +5,6 @@ import style from '../../../2_pages/WishListPage/WishListPage.module.scss';
 import { useAppDispatch } from '../../../1_app/store/hooks';
 import { deleteWishList } from '../lib/wishListThunk';
 import { useNavigate } from 'react-router-dom';
-import { openEditModal } from '../../wish/model/wishSlice';
 import { openEditListModal } from '../model/wishListSlice';
 
 type Props = {
