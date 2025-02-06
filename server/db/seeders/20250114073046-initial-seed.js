@@ -152,6 +152,15 @@ module.exports = {
           userId: 1,
           wishId: 4,
         },
+        {
+          userId: 2,
+          wishId: 5,
+        },
+        {
+          userId: 2,
+          wishId: 6,
+        },
+
       ],
       {},
     );
