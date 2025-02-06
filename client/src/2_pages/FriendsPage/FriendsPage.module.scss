@@ -1,13 +1,48 @@
-.main {
-  padding: 10px;
-  flex-grow: 1;
-  
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Links */
+
 a,
-a:hover,
-a:active,
-a:focus {
-  color: inherit;
+a:link,
+a:visited,
+a:hover {
   text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+
+h1, h2, h3{
+  font-family: 'Nunito';
+}
+
+.main {
+  padding: 0.5rem 0.5rem 1rem 1rem;
+  flex-grow: 1;
+}
+
+.addFriend{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.text{
+  margin: 0;
 }

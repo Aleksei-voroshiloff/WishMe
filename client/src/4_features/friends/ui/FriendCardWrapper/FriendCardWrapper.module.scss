@@ -1,11 +1,13 @@
 .list{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 20px;
 }
 .title{
-  font-size: x-large;
+  font-size: 1.7em;
   font-weight: 800;
   margin-bottom: 10px;
+  font-family: 'Nunito';
 }

@@ -24,20 +24,19 @@ export default function FriendsPage(): React.JSX.Element {
 
   return (
     <main className={style.main}>
-      <section>
-        {/* <input type="text" /> */}
-        <div>
-          <button onClick={() => dispatch(openWindow())}>+</button>
-          <p>Добавить друга</p>
-        </div>
+      <section onClick={() => dispatch(openWindow())} className={style.addFriend}>
+        <p className={style.text}>Добавить друга</p>
+        <button>+</button>
       </section>
-      <div>
+      <section>
         <RequestToMeWrapper />
-      </div>
-      <div>
+      </section>
+      <section>
         <MyRequestWrapper />
-      </div>
-      <FriendCardWrapper />
+      </section>
+      <section>
+        <FriendCardWrapper />
+      </section>
       <ModalFindFriends />
     </main>
   );
