@@ -19,7 +19,7 @@ export const getOneWishList = createAsyncThunk(
   async (listId: number, { rejectWithValue }) => {
     try {
       const { data } = await axiosInstance.get<WishListObjectType>(`/wishlist/${String(listId)}`);
-      console.log(data, 'getOneList');
+      // console.log(data, 'getOneList');
       return data;
     } catch (error) {
       console.error('Ошибка при выполнении запроса:', error);

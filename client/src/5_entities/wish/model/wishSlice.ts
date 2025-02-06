@@ -1,9 +1,10 @@
 import {
   addWish,
+  deleteReservation,
   deleteWish,
   getPresInfo,
   getWish,
-  toggleReservation,
+  postReservation,
   updateWish,
 } from '../lib/wishThunk';
 import { createSlice } from '@reduxjs/toolkit';
@@ -13,7 +14,8 @@ type NoteState = {
   wishCards: WishTypeArray;
   loading: boolean;
   error: null | string;
-  reservations:  PresentObjType | null;
+  reservations: boolean;
+  allReservations: Record<number, boolean >;
   wishCard: WishObjectType | null;
   showModalEdit: boolean;
   isBusy: boolean;
@@ -23,10 +25,11 @@ const initialState: NoteState = {
   wishCards: [],
   loading: false,
   error: null,
-  reservations: null,
+  reservations: false,
   wishCard: null,
   showModalEdit: false,
   isBusy: false,
+  allReservations: {},
 };
 
 const wishSlice = createSlice({
@@ -91,16 +94,21 @@ const wishSlice = createSlice({
         state.loading = false;
         state.error = action.payload as string;
       })
-      .addCase(getPresInfo.fulfilled, (state, { payload }) => {
+      .addCase(getPresInfo.fulfilled, (state, { payload, meta }) => {
         // console.log(payload, 'zzzzzzz');
-        state.reservations = payload;
+        // console.log(meta, 'rrrrrrrrrrrrr');
+        
+        const wishId = meta.arg;
+        state.allReservations[wishId] = payload
+        // console.log(state.allReservations, 'zzzzz');
+        
       })
-      .addCase(toggleReservation.fulfilled, (state, { payload }) => {
-        state.reservations = payload
-        if( state.wishCards.some((wish) => wish.id === payload.wishId)) {
-          state.isBusy = !state.isBusy
-        } 
-
+      .addCase(postReservation.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(deleteReservation.fulfilled, (state) => {
+        state.loading = false;
+        
       });
   },
 });

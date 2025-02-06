@@ -20,9 +20,7 @@ class PresentController {
   getAllpresent = async (req, res) => {
     try {
       const { id } = req.params;
-      console.log(id);
       const allpresent = await presentService.findAllPresent(id);
-      // console.log(allpresent);
       res.json(allpresent);
     } catch (error) {
       res.status(500).json({ message: 'Ошибка сервера get' });
@@ -52,11 +50,11 @@ class PresentController {
       const userId = res.locals.user.id;
       console.log(req.params);
       const { id } = req.params;
-      const onePres = await Present.findByPk(id);
+      const onePres = await Present.findOne({ where: { wishId: id } });
       if (onePres.userId !== userId) {
         return res.status(403).json({ message: 'Нет доступа' });
       }
-      await presentService.deletePresent({ id });
+      await presentService.deletePresent(onePres.id);
       res.sendStatus(204);
     } catch (error) {
       res.status(500).json({ message: 'Ошибка сервера delete' });
