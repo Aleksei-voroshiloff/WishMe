@@ -10,7 +10,7 @@ friendRouter.route('/myrequests').get(verifyAccessToken, friendController.findAl
 
 friendRouter
   .route('/:id')
-  .delete(friendController.deleteFriend)
+  .delete(verifyAccessToken, friendController.deleteFriend)
   .post(verifyAccessToken, friendController.addFriend)
   .put(verifyAccessToken, friendController.acceptFriend);
 

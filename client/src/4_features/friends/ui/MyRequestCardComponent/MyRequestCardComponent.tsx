@@ -1,8 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
-import { useAppDispatch, useAppSelector } from '../../../../1_app/store/hooks';
-import { deleteFriendThunk } from '../../lib/friendsThunk';
 import style from './MyRequestCardComponent.module.scss';
+import { useFriend } from '../../lib/useFriends';
 
 type FriendProp = {
   myRequest: {
@@ -14,8 +13,7 @@ type FriendProp = {
 };
 
 export default function MyRequestCardComponent({ myRequest }: FriendProp): React.JSX.Element {
-  const dispatch = useAppDispatch();
-  const { data } = useAppSelector((store) => store.user);
+const {cancelRequest} = useFriend()
 
   return (
     <>
@@ -41,10 +39,8 @@ export default function MyRequestCardComponent({ myRequest }: FriendProp): React
           </NavLink>
           <p>День рождения: {String(myRequest.birthday)}</p>
         </div>
-          <Icon
-            onClick={() => {
-              void dispatch(deleteFriendThunk(myRequest.id));
-            }}
+          <Icon title='Отменить заявку'
+            onClick={() => cancelRequest(myRequest.id, myRequest.name)}
             name="trash alternate"
             color="red"
           />

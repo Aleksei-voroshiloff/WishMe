@@ -18,7 +18,7 @@ export default function PresentFriendUi({ wish, user, wishlist }: PresentProps):
       <div className={style.friend}>
         <Image src={wish.file} className={style.image} />
         <CardContent>
-          <h2>{wish.title}</h2>
+          <div className={style.title}>{wish.title}</div>
           <CardMeta>{wish.price}</CardMeta>
 
           <Button

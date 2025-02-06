@@ -1,46 +1,44 @@
 import React from 'react';
-
 import { ModalContent, ModalActions, Button, Modal, Form, FormField } from 'semantic-ui-react';
 
-import { useParams } from 'react-router-dom';
-
+import { updateWishList } from '../../5_entities/wishlist/lib/wishListThunk';
+import { WishListObjectSchema } from '../../5_entities/wishlist/types/types';
 import { useAppDispatch, useAppSelector } from '../../1_app/store/hooks';
-import { updateWish } from '../../5_entities/wish/lib/wishThunk';
-import { WishObjectSchema } from '../../5_entities/wish/types/types';
-import { closeEditModal } from '../../5_entities/wish/model/wishSlice';
+import { closeEditListModal } from '../../5_entities/wishlist/model/wishListSlice';
 
-export default function ModalUiWishEdit(): React.JSX.Element {
+export default function ModalEditListUi(): React.JSX.Element {
   const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.user.data);
+
+  const showModalEditList = useAppSelector((state) => state.wishlist.showModalEditList);
   const list = useAppSelector((state) => state.wishlist.oneWishList);
-  const showModalEdit = useAppSelector((state) => state.wish.showModalEdit);
-  const { listId } = useParams();
 
   const EditHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
     const dataForm = Object.fromEntries(new FormData(e.currentTarget));
-    const validDate = WishObjectSchema.omit({ id: true }).parse({
+    const validDate = WishListObjectSchema.omit({ id: true }).parse({
       ...dataForm,
-      wishListId: Number(listId),
+      userId: user?.id,
     });
     console.log(validDate, 'ModalUiWishEdit');
 
     try {
       if (list?.id !== undefined) {
-        await dispatch(updateWish({ wishId: list.id, wishData: validDate }));
+        await dispatch(updateWishList({ wishListId: list.id, wishListData: validDate }));
       }
     } catch (error) {
       console.error('Error dispatching addWishList:', error);
     }
-    dispatch(closeEditModal());
+    dispatch(closeEditListModal());
   };
   if (list?.id !== undefined) {
     return (
-      <Modal size="small" open={showModalEdit} onClose={() => dispatch(closeEditModal())}>
+      <Modal size="small" open={showModalEditList} onClose={() => dispatch(closeEditListModal())}>
         <ModalContent>
           <Form onSubmit={EditHandler}>
             <FormField>
-              <label>Название подарка</label>
+              <label>Название вишлиста</label>
               <input
                 name="title"
                 defaultValue={list.title}
@@ -48,14 +46,12 @@ export default function ModalUiWishEdit(): React.JSX.Element {
               />
             </FormField>
             <FormField>
-              <label>Картинка</label>
+              <label>Дата мероприятия</label>
               <input name="date" defaultValue={list.date} type="date" />
             </FormField>
 
-            
-
             <ModalActions style={{ marginTop: '20px' }}>
-              <Button color="google plus" onClick={() => dispatch(closeEditModal())}>
+              <Button color="google plus" onClick={() => dispatch(closeEditListModal())}>
                 Вернуться к подаркам
               </Button>
               <Button color="linkedin" type="submit">

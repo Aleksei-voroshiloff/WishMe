@@ -98,18 +98,18 @@ export const friendsSlice = createSlice({
       })
       .addCase(addFriendThunk.rejected, (state, action) => {
         state.myRequestsLoading = false;
-        state.myRequestsError = action.payload as string;
+        state.myRequestsError = action.error as string;
       })
       .addCase(acceptFriendThunk.pending, (state) => {
         state.requestsToMeLoading = true;
         state.loading = true;
-        state.error = null;
+        state.myRequestsError = null;
       })
       .addCase(acceptFriendThunk.fulfilled, (state, action: PayloadAction<OneFriendType>) => {
         state.loading = false
         state.requestsToMeLoading = false;
-        state.requestsToMe = state.requestsToMe.filter(requestToMe => requestToMe.id !== action.payload.id)
         state.friends.unshift(action.payload);
+        state.requestsToMe = state.requestsToMe.filter(requestToMe => requestToMe.id !== action.payload.id)
       })
       .addCase(acceptFriendThunk.rejected, (state, action) => {
         state.loading = false;

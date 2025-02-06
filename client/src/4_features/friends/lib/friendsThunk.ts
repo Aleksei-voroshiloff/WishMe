@@ -16,14 +16,14 @@ export const getAllFriends = createAsyncThunk(
   }),
 );
 
-export const addFriendThunk = createAsyncThunk('friend/addFriendThunk', async(id: number, {rejectWithValue})=>{
+export const addFriendThunk = createAsyncThunk('friend/addFriendThunk', async(id: number, {rejectWithValue, signal})=>{
   try {
-    const response = await axiosInstance.post(`/friend/${String(id)}`);
+    const response = await axiosInstance.post(`/friend/${String(id)}`, null, {signal});
     const data = oneFriendSchema.parse(response.data);
     return data
   } catch (error) {
     console.log(error)
-    return rejectWithValue((error as Error).message);
+    return rejectWithValue(error instanceof Error ? error.message : 'Что-то пошло не так');
   }
 })
 

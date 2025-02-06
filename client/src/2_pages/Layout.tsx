@@ -5,6 +5,7 @@ import style from './Layout.module.scss';
 import ModalPage from '../4_features/modal_window/ModalPage';
 import { useAppSelector } from '../1_app/store/hooks';
 import Loader from '../3_widgets/loader/Loader';
+import { ToastContainer } from 'react-toastify';
 
 export default function Layout(): React.JSX.Element {
   const status = useAppSelector((state) => state.user.status);
@@ -19,6 +20,7 @@ export default function Layout(): React.JSX.Element {
         <NavBar />
         <Outlet />
         <ModalPage />
+        <ToastContainer/>
       </div>
     </div>
   );

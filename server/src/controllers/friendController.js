@@ -19,8 +19,9 @@ class FriendController {
 
   deleteFriend = async (req, res) => {
     try {
+      const userId = res.locals.user.id
       const { id } = req.params;
-      await this.service.destroyFriend(id);
+      await this.service.destroyFriend(userId, id);
       res.status(200).json({ message: 'Друг удален' });
     } catch (error) {
       console.log(error);
@@ -36,7 +37,7 @@ class FriendController {
       res.status(201).json(newFriend);
     } catch (error) {
       console.log(error);
-      res.json({ message: 'Ошибка при добавлении друга' });
+      res.status(500).json({ message: 'Ошибка при добавлении друга' });
     }
   };
   
@@ -48,7 +49,7 @@ class FriendController {
       res.status(200).json(newFriend);
     } catch (error) {
       console.log(error);
-      res.json({ message: 'Ошибка при принятии заявки' });
+      res.status(500).json({ message: 'Ошибка при принятии заявки' });
     }
   };
 
