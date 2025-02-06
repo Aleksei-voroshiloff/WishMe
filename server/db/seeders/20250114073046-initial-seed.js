@@ -71,6 +71,16 @@ module.exports = {
           date: '2025-03-08',
           userId: 3,
         },
+        {
+          title: 'Вишлсит1111',
+          date: '2025-03-08',
+          userId: 1,
+        },
+        {
+          title: 'Вишлсит2222',
+          date: '2025-03-08',
+          userId: 1,
+        },
       ],
       {},
     );
@@ -130,6 +140,42 @@ module.exports = {
           price: '500',
           isArchived: false,
         },
+        {
+          title: 'Поттер',
+          file: '',
+          wishUrl:
+            'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
+          wishListId: 7,
+          price: '500',
+          isArchived: false,
+        },
+        {
+          title: 'Поттер',
+          file: '',
+          wishUrl:
+            'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
+          wishListId: 7,
+          price: '500',
+          isArchived: false,
+        },
+        {
+          title: 'Поттер',
+          file: '',
+          wishUrl:
+            'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
+          wishListId: 8,
+          price: '500',
+          isArchived: false,
+        },
+        {
+          title: 'Поттер',
+          file: '',
+          wishUrl:
+            'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
+          wishListId: 8,
+          price: '500',
+          isArchived: false,
+        },
       ],
       {},
     );
@@ -159,6 +205,14 @@ module.exports = {
         {
           userId: 2,
           wishId: 6,
+        },
+        {
+          userId: 1,
+          wishId: 7,
+        },
+        {
+          userId: 1,
+          wishId: 9,
         },
 
       ],
