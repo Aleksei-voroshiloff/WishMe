@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Popup } from 'semantic-ui-react';
 import style from './MyRequestCardComponent.module.scss';
 import { useFriend } from '../../lib/useFriends';
 
@@ -13,7 +13,7 @@ type FriendProp = {
 };
 
 export default function MyRequestCardComponent({ myRequest }: FriendProp): React.JSX.Element {
-const {cancelRequest} = useFriend()
+  const { cancelRequest } = useFriend();
 
   return (
     <>
@@ -26,11 +26,7 @@ const {cancelRequest} = useFriend()
               alt="foto"
             />
           ) : (
-            <img
-              className={style.image}
-              src="/avatar.png"
-              alt="foto"
-            />
+            <img className={style.image} src="/avatar.png" alt="foto" />
           )}
         </NavLink>
         <div className={style.info_wrapper}>
@@ -39,12 +35,17 @@ const {cancelRequest} = useFriend()
           </NavLink>
           <p>День рождения: {String(myRequest.birthday)}</p>
         </div>
-          <Icon title='Отменить заявку'
-            onClick={() => cancelRequest(myRequest.id, myRequest.name)}
-            name="trash alternate"
-            color="red"
-          />
-
+        <Popup
+          content={`Отменить заявку`}
+          trigger={
+            <Icon
+              title="Отменить заявку"
+              onClick={() => cancelRequest(myRequest.id, myRequest.name)}
+              name="trash alternate"
+              color="red"
+            />
+          }
+        />
       </div>
     </>
   );

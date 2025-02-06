@@ -8,12 +8,16 @@ export default function MyRequestWrapper(): React.JSX.Element {
 
   return (
     <>
-      <h3>Отправленные заявки</h3>
-      <div className={style.list}>
-        {myRequests.map((myRequest) => (
-          <MyRequestCardComponent key={myRequest.id} myRequest={myRequest} />
-        ))}
-      </div>
+      {myRequests.length > 0 && (
+        <>
+          <h2>Отправленные заявки:</h2>
+          <div className={style.list}>
+            {myRequests.map((myRequest) => (
+              <MyRequestCardComponent key={myRequest.id} myRequest={myRequest} />
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 }

@@ -40,7 +40,7 @@ export default function WishListCardUi({ list, showButton }: Props): React.JSX.E
           {list.date}
         </span>
       </div>
-      <div></div>
+     
       {showButton && (
         <div className={style.redaction}>
           <Icon

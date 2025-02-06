@@ -9,6 +9,10 @@ export type User = {
   birthday: string | null;
 };
 
+export type getUserType = {
+  User: User;
+}
+
 export const OneUserShema = z.object({
   id: z.number(),
   name: z.string(),

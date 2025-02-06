@@ -11,5 +11,6 @@ userRouter
   .put(upload.single('file'), userController.updateUser);
 
 userRouter.route('/').get(userController.findAllUsers);
+userRouter.route('/wishlist/:id').get(userController.getUserByWhishlist);
 
 module.exports = userRouter;

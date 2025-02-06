@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './FriendCardComponent.module.scss';
 import { NavLink } from 'react-router-dom';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Popup } from 'semantic-ui-react';
 import { useAppDispatch, useAppSelector } from '../../../../1_app/store/hooks';
 import { closeWindow } from '../../model/friendsSlice';
 import { useFriend } from '../../lib/useFriends';
@@ -41,28 +41,28 @@ export default function FriendCardComponent({ friend }: FriendProp): React.JSX.E
           <NavLink onClick={() => dispatch(closeWindow())} to={`/friends/${String(friend.id)}`}>
             <h2>{friend.name}</h2>{' '}
           </NavLink>
-          <p>День рождения: {String(friend.birthday)}</p>
+          <p>День рождения: {friend.birthday}</p>
         </div>
         {IsFriends
           ? data?.id !== friend.id && (
-              <Icon
-                title="Удалить из друзей"
-                onClick={() => {
-                  deleteFriend(friend.id, friend.name)
-                }}
-                name="trash alternate"
-                color="red"
-              />
+            <Popup content={`Удалить из друзей`} trigger={<Icon
+              onClick={() => {
+                deleteFriend(friend.id, friend.name)
+              }}
+              name="trash alternate"
+              color="red"
+            />}/>
+              
             )
           : data?.id !== friend.id && (
-              <Icon
-                title="Отправить заявку в друзья"
+              <Popup content={`Отправить заявку в друзья`} trigger={<Icon
                 onClick={() => throttledAddFriend(friend.id)}
                 name="add"
                 color="green"
-              />
+              />}/>
             )}
       </div>
+      
     </>
   );
 }

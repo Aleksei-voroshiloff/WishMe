@@ -66,6 +66,17 @@ class UserController {
       return res.status(500).json({ message: 'Ошибка при выведении друзей' });
     }
   };
+
+  getUserByWhishlist = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const user = await this.service.getUserByWishlist(id);
+      res.status(200).json(user)
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({message: 'Ошибка при поиске пользователя через вишлист'})
+    }
+  }
 }
 
 const userController = new UserController();

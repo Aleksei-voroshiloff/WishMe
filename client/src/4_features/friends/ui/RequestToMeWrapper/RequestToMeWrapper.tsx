@@ -7,12 +7,16 @@ export default function RequestToMeWrapper(): React.JSX.Element {
 
   return (
     <>
-      <h3>Предложили дружбу</h3>
-      <div className={style.list}>
-        {requestsToMe.map((requestToMe) => (
-          <RequestToMeCardComponent key={requestToMe.id} requestToMe={requestToMe} />
-        ))}
-      </div>
+      {requestsToMe.length > 0 && (
+        <>
+          <h2>Предложили дружбу:</h2>
+          <div className={style.list}>
+            {requestsToMe.map((requestToMe) => (
+              <RequestToMeCardComponent key={requestToMe.id} requestToMe={requestToMe} />
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 }

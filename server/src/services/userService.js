@@ -16,6 +16,15 @@ class UserService {
     return updateUserInfo;
   }
 
+  getUserByWishlist(id) {
+    return this.model.Wishlist.findOne({
+      where: { id },
+      include: [
+        { model: this.model.User, attributes: ['id', 'name', 'avatar', 'birthday'] },
+      ],
+    });
+  }
+
   async findAllUsers(search) {
     if (search && search.trim().length > 0) {
       return this.model.User.findAll({
