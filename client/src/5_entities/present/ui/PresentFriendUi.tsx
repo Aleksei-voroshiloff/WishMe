@@ -20,7 +20,7 @@ export default function PresentFriendUi({ wish, user, wishlist }: PresentProps):
         <CardContent>
           <h2>{wish.title}</h2>
           <CardMeta>{wish.price}</CardMeta>
-       
+
           <Button
             primary
             as={Link}
@@ -31,17 +31,15 @@ export default function PresentFriendUi({ wish, user, wishlist }: PresentProps):
           />
         </CardContent>
         <CardContent extra>
-          <a>
+          <div className={style.userinfo}>
             <Image
               className={style.ava}
               src={user.avatar === null ? '/avatar.png' : `http://localhost:3000/${user.avatar}`}
             />
-            {user.name}
-            <br/>
-            {wishlist.title}
-            <br/>
-            {wishlist.date}
-          </a>
+            <div>{user.name}</div>
+            <div>{wishlist.title}</div>
+            <div>{wishlist.date}</div>
+          </div>
         </CardContent>
       </div>
     </div>
