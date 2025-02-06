@@ -19,9 +19,9 @@ class PresentService {
     return this.model.Present.findOne({ where: { wishId: id } });
   }
 
-  addPresent({ wishId, userId }) {
+  addPresent({ id, userId }) {
     return this.model.Present.create({
-      wishId,
+      wishId: id,
       userId,
     });
   }

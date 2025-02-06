@@ -33,13 +33,13 @@ class PresentController {
   createPresent = async (req, res) => {
     try {
       const userId = res.locals.user.id;
-      const { wishId } = req.body; // Получаем wishId из тела запроса
+      const { id } = req.params; // Получаем wishId из тела запроса
 
-      if (!wishId) {
-        return res.status(400).json({ message: 'wishId is required' });
-      }
+      // if (!wishId) {
+      //   return res.status(400).json({ message: 'wishId is required' });
+      // }
 
-      const newPresent = await presentService.addPresent({ wishId, userId });
+      const newPresent = await presentService.addPresent({ id, userId });
       res.status(201).json(newPresent);
     } catch (error) {
       res.status(500).json({ message: 'Ошибка сервера post' });

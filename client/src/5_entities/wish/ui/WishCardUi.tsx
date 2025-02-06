@@ -3,10 +3,9 @@ import type { WishObjectType } from '../types/types';
 import style from '../../../2_pages/OneWishListPage/OneWishListPage.module.scss';
 import { Button, Icon } from 'semantic-ui-react';
 
-import { deleteWish, getPresInfo, toggleReservation } from '../lib/wishThunk';
+import { deleteWish,getPresInfo,toggleReservation } from '../lib/wishThunk';
 import { useAppDispatch, useAppSelector } from '../../../1_app/store/hooks';
-import { openEditModal, setIsLoading } from '../model/wishSlice';
-import { PresentObjSchema } from '../../wishlist/types/types';
+import { openEditModal } from '../model/wishSlice';
 import { Link } from 'react-router-dom';
 
 type Props = {
@@ -16,30 +15,30 @@ type Props = {
 
 export default function WishCardUi({ wish, showButton }: Props): React.JSX.Element {
   const dispatch = useAppDispatch();
-  const reservation = useAppSelector((state) => state.wish.reservations[wish.id]);
+  const isBusy = useAppSelector((state) => state.wish.isBusy);
+  const reservation = useAppSelector((state) => state.wish.reservations);
 
-  console.log(wish.id, 'wish.id');
-  const isReserved1 = useAppSelector((state) => state.wish.reservations[wish.id]);
-  // console.log(isReserved, 'isReservedisReservedisReserved');
+  
   useEffect(() => {
     if (!reservation) {
       void dispatch(getPresInfo(wish.id));
     }
-  }, [dispatch, reservation]);
+  }, [dispatch, wish.id]);
 
-  const handleReserveClick = async (): Promise<void> => {
-    dispatch(setIsLoading());
+  const handleReserveClick = async (wishId: number): Promise<void> => {
     try {
-      console.log(isReserved1, 'isReserved1');
-      const isReserved = PresentObjSchema.parse(isReserved1);
-      await dispatch(toggleReservation(isReserved));
+      if (reservation) {
+        // Удаляем запись
+        await dispatch(deleteWish(reservation.id));
+      } else {
+        // Создаем запись
+        await dispatch(toggleReservation(wishId));
+      }
     } catch (error) {
       console.error('Ошибка бронирования:', error);
-      // Можно добавить уведомление для пользователя
-    } finally {
-      dispatch(setIsLoading());
-    }
+    } 
   };
+
   const handleDeleteClick = (wishId: number): void => {
     try {
       void dispatch(deleteWish(wishId));
@@ -47,8 +46,6 @@ export default function WishCardUi({ wish, showButton }: Props): React.JSX.Eleme
       console.error('Ошибка удаления:', error);
     }
   };
-
-
 
   // console.log(reservation);
   return (
@@ -64,7 +61,8 @@ export default function WishCardUi({ wish, showButton }: Props): React.JSX.Eleme
         <h2>{wish.price} ₽</h2>
       </div>
       <div>
-        <Button onClick={handleReserveClick}>{reservation ? 'Занято' : 'Забронировать'}</Button>
+        <Button onClick={() => handleReserveClick(wish.id)}>{reservation ? 'Занято' : 'Забронировать'}</Button> 
+  
       </div>
       <div>
         {showButton && (
