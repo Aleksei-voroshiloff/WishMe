@@ -21,7 +21,7 @@ export default function ModalUiList(): React.JSX.Element {
       ...dataForm,
       userId: user?.id,
     });
-    console.log(validDate, 'qqqqqqqqqqqq');
+    
 
     try {
       await dispatch(addWishList(validDate));
@@ -36,15 +36,15 @@ export default function ModalUiList(): React.JSX.Element {
       <ModalContent>
         <Form onSubmit={addHandler}>
           <FormField>
-            <label>Название вишлиста</label>
+            <label style={{fontSize:'large'}} >Название вишлиста</label>
             <input name="title" placeholder="День рождения/свадьба/8марта..." />
           </FormField>
           <FormField>
-            <label>Дата мероприятия</label>
+            <label style={{fontSize:'large'}} >Дата мероприятия</label>
             <input name="date" type="date" />
           </FormField>
           <ModalActions style={{ marginTop: '20px' }}>
-            <Button color="google plus" onClick={() => dispatch(closeModal())}>
+            <Button color='black' onClick={() => dispatch(closeModal())}>
               Вернуться к вишлистам
             </Button>
             <Button color="linkedin" type="submit">
