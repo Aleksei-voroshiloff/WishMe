@@ -34,11 +34,23 @@
   }
 }
 .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   background-color: rgb(255, 255, 255);
   height: 120px;
   border-radius: 20px;
   border: 2px solid rgba(84, 31, 116, 0.605);
+}
+
+.title {
+  font-weight: 900;
+  font-size: x-large;
+}
+.date {
+  font-weight: 600;
+  color: linear-gradient(135deg, #b65555, #ff8e8e);
 }
 
 .redaction {
