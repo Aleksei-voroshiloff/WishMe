@@ -4,16 +4,45 @@
 }
 
 .functionalPage {
-  // border: 2px solid #000; /* Нижний бордер */
+  height: 100%;
   width: 100%;
   display: flex;
+  align-items: center;
+}
+
+.panel {
+  display: flex;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.311);
+  height: 50px;
+}
+
+.redax {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.redaxText {
+  font-family: 'Nunito';
+  font-weight: 900;
+  position: absolute;
+  right: 360px;
+  padding-bottom: 5px;
+}
+.redaxToggle {
+  position: absolute;
+  right: 290px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .back_button,
 .add_button {
   display: flex;
   align-items: center;
-
   border: none;
   border-radius: 4px;
   padding: 8px 12px;
@@ -21,8 +50,9 @@
   font-size: 10px;
 }
 
-.back_button:hover, .add_button:hover {
-  transform: scale(1.1);
+.back_button:hover,
+.add_button:hover {
+  transform: scale(1.01);
 }
 
 .razmap {
@@ -32,41 +62,54 @@
 }
 
 .card1 {
-
+  min-width: 230px;
+  height: 320px;
   position: relative;
-  background-color: #f1f8e9;
+  background-color: #ffffff;
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-  border: 2px solid #8bc34a;
+  padding: 10px;
+  border: 1px solid #b24343;
   border-radius: 20px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Nunito';
 }
 
+.text {
+  display: flex;
+  flex-direction: column;
+}
 .card1:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 10px #b24343;
 }
 
-.card1 h4 {
-  font-size: 1.2rem;
+.title {
+  width: 210px;
+  height: auto; /* Убираем фиксированную высоту для адаптивности */
+  font-family: 'Nunito';
+  font-size: 20px;
   font-weight: 700;
+  margin-top: 10px;
   margin-bottom: 5px;
+  overflow: hidden; /* Скрывает текст, выходящий за пределы, если нужно */
+  word-wrap: break-word; /* Позволяет переносить длинные слова */
+  line-height: 1.2; /* Устанавливает высоту строки для лучшей читаемости */
 }
 
-.card1 h2 {
+.price {
+  font-family: 'Nunito';
   font-size: 1.5rem;
   font-weight: 700;
-  color: #4caf50;
+  color: #000000;
+  margin-top: 20px;
+  margin-bottom: 25px;
 }
 
 .imagewrapper {
   height: 20vh; /* Установите желаемую высоту изображения */
-  max-width: 25vh;
+  width: 100%;
   overflow: hidden;
   border-radius: 20px;
 }
@@ -98,12 +141,12 @@
 }
 
 .gift_box {
-  width: 251px;
-  height: 399px;
-  background: linear-gradient(135deg, #75ff6b, #ff8e8e);
+  width: 230px;
+  height: 320px;
+  background: linear-gradient(135deg, #b65555, #ff8e8e);
   border-radius: 20px;
   position: relative;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: transform 0.3s;
   overflow: hidden;
@@ -162,7 +205,7 @@
   font-size: 40px;
   opacity: 0;
   transition: all 0.5s;
-  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
 }
 
 .gift_box:hover .gift {
@@ -172,8 +215,13 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-10px); }
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
 }
 
 @keyframes shine {
@@ -181,4 +229,3 @@
     transform: translate(50%, 50%);
   }
 }
-

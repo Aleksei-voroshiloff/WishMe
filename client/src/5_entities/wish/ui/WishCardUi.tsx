@@ -2,12 +2,10 @@ import React, { useEffect } from 'react';
 import type { WishObjectType } from '../types/types';
 import style from '../../../2_pages/OneWishListPage/OneWishListPage.module.scss';
 import { Button, Icon } from 'semantic-ui-react';
-
 import { deleteReservation, deleteWish, getPresInfo, postReservation } from '../lib/wishThunk';
 import { useAppDispatch, useAppSelector } from '../../../1_app/store/hooks';
 import { openEditModal } from '../model/wishSlice';
-import { Link, useParams } from 'react-router-dom';
-import type { WishListObjectType } from '../../wishlist/types/types';
+import { Link } from 'react-router-dom';
 import { getAllPresent } from '../../present/lib/presentThunk';
 
 type Props = {
@@ -16,7 +14,9 @@ type Props = {
   // wishList: WishListObjectType;
 };
 
-export default function WishCardUi({ wish, showButton,  }: Props): React.JSX.Element {
+export default function WishCardUi({ wish, showButton }: Props): React.JSX.Element {
+  const formatPrice = (wishPrice: string): string =>
+    wishPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user.data);
   const allReservations = useAppSelector((state) => state.wish.allReservations);
@@ -37,7 +37,7 @@ export default function WishCardUi({ wish, showButton,  }: Props): React.JSX.Ele
         await dispatch(postReservation(wishId));
       }
       await dispatch(getPresInfo(wish.id));
-      await dispatch(getAllPresent())
+      await dispatch(getAllPresent());
     } catch (error) {
       console.error('Ошибка бронирования:', error);
     }
@@ -51,18 +51,22 @@ export default function WishCardUi({ wish, showButton,  }: Props): React.JSX.Ele
     }
   };
 
-  // console.log(reservation);
   return (
     <div className={style.card1}>
       <div className={style.imagewrapper}>
         <img src={wish.file} />
       </div>
-      <div>
-        <h4>{wish.title}</h4>
-        <Button as={Link} to={wish.wishUrl} color="vk">
-          Перейти в магазин
-        </Button>
-        <h2>{wish.price} ₽</h2>
+      <div className={style.text}>
+        <div className={style.title} >{wish.title}</div>
+        <div className={style.price} >{`${formatPrice(wish.price.toString())} руб`}</div>
+        <Button
+          primary
+          as={Link}
+          to={wish.wishUrl}
+          icon="cart arrow down"
+          label={{ as: 'a', basic: true, pointing: 'right', content: 'Перейти к товару' }}
+          labelPosition="left"
+        />
       </div>
       <div>
         {user?.id !== wishList?.userId && (

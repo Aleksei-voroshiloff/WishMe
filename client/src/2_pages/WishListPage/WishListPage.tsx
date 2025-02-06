@@ -4,7 +4,6 @@ import WishListCardUi from '../../5_entities/wishlist/ui/WishListCardUi';
 import style from './WishListPage.module.scss';
 import { getWishList } from '../../5_entities/wishlist/lib/wishListThunk';
 import { Checkbox } from 'semantic-ui-react';
-
 import ModalUiList from '../../4_features/modal_addList/modalSlice/ModalUiList';
 import { openModal } from '../../5_entities/modal_window/modalSlice';
 import { setShowButton } from '../../5_entities/delete/redactionSlice';
@@ -25,19 +24,20 @@ export default function WishListPage(): React.JSX.Element {
 
   return (
     <main className={style.main}>
-      <div className={style.first_div}>
-        <>
-          <div className={style.check}>
+      <div className={style.panel}>
+        <div className={style.check}>Режим редакции:</div>
+        <div className={style.redaxToggle}>
+          <div>
             <Checkbox
               name="read"
               value={1}
               checked={showButton}
               onClick={() => dispatch(setShowButton())}
-              label={showButton ? 'Редактирование включено' : 'Редактирование выключено'}
+              label={showButton}
               toggle
             />
           </div>
-        </>
+        </div>
       </div>
       <div className={style.razmap}>
         <div className={style.gift_box} onClick={() => dispatch(openModal())}>

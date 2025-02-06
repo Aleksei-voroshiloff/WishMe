@@ -11,25 +11,25 @@ module.exports = {
       [
         {
           name: 'Admin',
-          phoneNumber: '12345678910',
+          phoneNumber: '89000001122',
           password: bcrypt.hashSync('123456', 10),
           birthday: '2000-02-07',
         },
         {
           name: 'Лексус',
-          phoneNumber: '10987654321',
+          phoneNumber: '89010001122',
           password: bcrypt.hashSync('123456', 10),
           birthday: '2001-11-22',
         },
         {
           name: 'Кенан',
-          phoneNumber: '11111111111',
+          phoneNumber: '89020001122',
           password: bcrypt.hashSync('123456', 10),
           birthday: '2001-11-06',
         },
         {
           name: 'Андрей',
-          phoneNumber: '22222222222',
+          phoneNumber: '89030001122',
           password: bcrypt.hashSync('123456', 10),
           birthday: '2000-03-10',
         },
@@ -42,18 +42,18 @@ module.exports = {
         {
           title: 'Подарки ДР',
           date: '2025-02-07',
-          userId: 3,
+          userId: 1,
         },
 
         {
-          title: 'Донаты на лечение',
+          title: 'Свадьба',
           date: '2025-02-07',
-          userId: 2,
+          userId: 1,
         },
         {
-          title: ' 23 февраля ',
+          title: '23 февраля',
           date: '2025-02-07',
-          userId: 4,
+          userId: 2,
         },
         {
           title: ' свадьба ',
@@ -64,7 +64,7 @@ module.exports = {
         {
           title: 'Подарки 23 февраля',
           date: '2025-02-23',
-          userId: 2,
+          userId: 3,
         },
         {
           title: 'Подарки 8 марта',
@@ -72,14 +72,14 @@ module.exports = {
           userId: 3,
         },
         {
-          title: 'Вишлсит1111',
+          title: 'Нг',
           date: '2025-03-08',
-          userId: 1,
+          userId: 4,
         },
         {
-          title: 'Вишлсит2222',
+          title: 'Дэрешка',
           date: '2025-03-08',
-          userId: 1,
+          userId: 4,
         },
       ],
       {},
@@ -88,136 +88,66 @@ module.exports = {
       'Wishes',
       [
         {
-          title: 'Танец Кенана',
-          file: 'https://images.icecat.biz/img/gallery_raw/img_20109668_raw_1482459716_5228_3788.jpg',
-          wishUrl: 'https://dance.kmti.ru/',
+          title: 'Носки эльбруса',
+          file: 'https://21-shop.ru/upload/resize/148/148212478/2000x2000x90/noski-zaporozhets-elbrus-korotkie-biryuza.jpg',
+          wishUrl:
+            'https://21-shop.ru/catalog/aksessuary/noski/noski-zaporozhets-elbrus-korotkie.html',
           wishListId: 3,
-          price: '100',
+          price: '203',
           isArchived: false,
         },
         {
-          title: 'Феррари',
-          file: 'https://images.icecat.biz/img/gallery_raw/img_20109668_raw_1482459716_5228_3788.jpg',
+          title: 'Ноутбук Apple MacBook Air 13 M3',
+          file: 'https://img.mvideo.ru/Big/30071832bb.jpg',
           wishUrl:
-            'https://auto.ru/cars/ferrari/all/?utm_referrer=https%3A%2F%2Fauto.ru%2Fcars%2Fferrari%2Fall%2F',
+            'https://www.mvideo.ru/products/noutbuk-apple-macbook-air-13-m3-8-core-10-core-16-512-starlight-mxcu3-30071832',
           wishListId: 4,
-          price: '60000000',
+          price: '184999',
           isArchived: false,
         },
         {
-          title: 'PS5',
-          file: '',
+          title: 'Игровая приставка Sony PlayStation 5',
+          file: 'https://img.mvideo.ru/Big/40079650bb.jpg',
           wishUrl:
-            'https://market.yandex.ru/catalog--konsoli-playstation-5/40910350/list',
+            'https://www.mvideo.ru/products/igrovaya-pristavka-sony-playstation-5-slim-1tb-blu-ray-edition-40079650',
           wishListId: 1,
-          price: '60000',
+          price: '67500',
           isArchived: false,
         },
         {
           title: 'Книга Гарри Поттер',
-          file: '',
+          file: 'https://ir.ozone.ru/s3/multimedia-1-o/wc1000/7015916004.jpg',
           wishUrl:
-            'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
+            'https://www.ozon.ru/product/garri-potter-rosmen-v-podarochnom-bokse-iz-7-knig-rouling-dzhoan-ketlin-1491788805/?at=6WtZW2pZ2S2mVDg7TQD81R0UDArpgncZrAxqvH1PKOkD&avtc=1&avte=4&avts=1738858169&keywords=%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8+%D0%BF%D1%80%D0%BE+%D0%B3%D0%B0%D1%80%D1%80%D0%B8+%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80%D0%B0',
           wishListId: 2,
           price: '1000',
           isArchived: true,
         },
+      ],
+      {},
+    );
+    await queryInterface.bulkInsert(
+      'Presents',
+      [
         {
-          title: 'Книга Гарри',
-          file: '',
-          wishUrl:
-            'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
-          wishListId: 5,
-          price: '100',
-          isArchived: false,
+          userId: 1,
+          wishId: 1,
         },
         {
-          title: 'Поттер',
-          file: '',
-          wishUrl:
-            'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
-          wishListId: 5,
-          price: '500',
-          isArchived: false,
+          userId: 2,
+          wishId: 2,
         },
         {
-          title: 'Поттер',
-          file: '',
-          wishUrl:
-            'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
-          wishListId: 7,
-          price: '500',
-          isArchived: false,
+          userId: 3,
+          wishId: 3,
         },
         {
-          title: 'Поттер',
-          file: '',
-          wishUrl:
-            'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
-          wishListId: 7,
-          price: '500',
-          isArchived: false,
-        },
-        {
-          title: 'Поттер',
-          file: '',
-          wishUrl:
-            'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
-          wishListId: 8,
-          price: '500',
-          isArchived: false,
-        },
-        {
-          title: 'Поттер',
-          file: '',
-          wishUrl:
-            'https://market.yandex.ru/search?text=%D0%B3%D0%B0%D1%80%D1%80%D0%B8%20%D0%BF%D0%BE%D1%82%D1%82%D0%B5%D1%80&hid=987260&hid=10683227&rs=eJwzcghgrGLh-LPA5hOjFAeDwMJDrBIMCkCuwu22HlYNIEMDxPjL2Hy40q6XSWj_J7upTLYc2-0WMbFZWpgbmRk4RXFpcbFxMErwKrAIsEvx5CamlMUXZ6TmpMUbKcy8yqkx9_RnRiN2DhAlwARVy6jACFTLnVyQGJ-Zl1xaEm-owKDBYMTLMaGhoeHDlvY5qxkFgNCLI83YwsTQ2DQxyMjQ3NjC2MDSyMLA3NhEPynVzCTN2DItySQpzSA52STR0DDZ2CAxKS3JKNnAzMBA31DfEADUGj8c&rt=9',
-          wishListId: 8,
-          price: '500',
-          isArchived: false,
+          userId: 4,
+          wishId: 4,
         },
       ],
       {},
     );
-    // await queryInterface.bulkInsert(
-    //   'Presents',
-    //   [
-    //     {
-    //       userId: 1,
-    //       wishId: 1,
-    //     },
-    //     {
-    //       userId: 1,
-    //       wishId: 2,
-    //     },
-    //     {
-    //       userId: 1,
-    //       wishId: 3,
-    //     },
-    //     {
-    //       userId: 1,
-    //       wishId: 4,
-    //     },
-    //     {
-    //       userId: 2,
-    //       wishId: 5,
-    //     },
-    //     {
-    //       userId: 2,
-    //       wishId: 6,
-    //     },
-    //     {
-    //       userId: 1,
-    //       wishId: 7,
-    //     },
-    //     {
-    //       userId: 1,
-    //       wishId: 9,
-    //     },
-
-    //   ],
-    //   {},
-    // );
     await queryInterface.bulkInsert(
       'Friends',
       [
