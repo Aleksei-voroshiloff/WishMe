@@ -35,3 +35,19 @@
   height: 50px;
   border-radius: 50%;
 }
+
+.userinfo{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+}
+
+.title{
+  font-size: x-large;
+  font-weight: 800;
+  
+}

@@ -8,7 +8,7 @@ export default function FriendCardWrapper(): React.JSX.Element {
 
   return (
     <>
-      <h3>Мои друзья</h3>
+      <div className={style.title} >Мои друзья</div>
       <div className={style.list}>
         {friends.map((friend) => (
           <FriendCardComponent key={friend.id} friend={friend} />
