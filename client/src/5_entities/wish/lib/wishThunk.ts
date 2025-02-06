@@ -11,8 +11,6 @@ export const getWish = createAsyncThunk(
   async (wishListId: number, { rejectWithValue }) => {
     try {
       const { data } = await axios.get<WishObjectType[]>(`/api/wish`, { params: { wishListId } });
-      console.log(data, 'getwish');
-      console.log(WishSchema.parse(data), 'getwish1');
 
       return WishSchema.parse(data);
     } catch (error) {
@@ -67,8 +65,9 @@ export const getPresInfo = createAsyncThunk(
   'wish/getPresInfo',
   async (wishId: number, { rejectWithValue }) => {
     try {
-      const { data } = await axiosInstance.get<PresentObjType>(`/present/${String(wishId)}`);
-      console.log(data, 'getPresInfo');
+      const { data } = await axiosInstance.get<boolean>(`/present/${String(wishId)}`);
+      // console.log(data, 'getPresInfo');
+
       return data;
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Что-то пошло не так');
@@ -76,19 +75,26 @@ export const getPresInfo = createAsyncThunk(
   },
 );
 
-export const toggleReservation = createAsyncThunk(
-  'wish/toggleReservation',
-  async (isReserved, { rejectWithValue }) => {
-    console.log(isReserved, 111111111);
-    
-
+export const postReservation = createAsyncThunk(
+  'wish/postReservation',
+  async (wishId: number, { rejectWithValue }) => {
     try {
-      if (isReserved.id) {
-        await axiosInstance.delete(`/present/${String(isReserved.id)}`);
-        return null;
-      }
-      const { data } = await axiosInstance.post<PresentObjType>('/presents',  isReserved );
+      const { data } = await axiosInstance.post<PresentObjType>(`/present/${String(wishId)}`);
+      console.log(data, 'created present');
       return data;
+    } catch (error) {
+      return rejectWithValue(error instanceof Error ? error.message : 'Ошибка бронирования');
+    }
+  },
+);
+
+export const deleteReservation = createAsyncThunk(
+  'wish/deleteReservation',
+  async (wishId: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.delete(`/present/${String(wishId)}`);
+      console.log(data, 'deleted present');
+      return wishId;
     } catch (error) {
       return rejectWithValue(error instanceof Error ? error.message : 'Ошибка бронирования');
     }

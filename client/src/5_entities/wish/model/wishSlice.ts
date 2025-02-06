@@ -1,9 +1,10 @@
 import {
   addWish,
+  deleteReservation,
   deleteWish,
   getPresInfo,
   getWish,
-  toggleReservation,
+  postReservation,
   updateWish,
 } from '../lib/wishThunk';
 import { createSlice } from '@reduxjs/toolkit';
@@ -13,30 +14,29 @@ type NoteState = {
   wishCards: WishTypeArray;
   loading: boolean;
   error: null | string;
-  isLoading: boolean;
-  reservations: Record<number, PresentObjType | null>;
+  reservations: boolean;
+  allReservations: Record<number, boolean >;
   wishCard: WishObjectType | null;
   showModalEdit: boolean;
+  isBusy: boolean;
 };
 
 const initialState: NoteState = {
   wishCards: [],
   loading: false,
   error: null,
-  reservations: {},
-  isLoading: false,
+  reservations: false,
   wishCard: null,
   showModalEdit: false,
+  isBusy: false,
+  allReservations: {},
 };
 
 const wishSlice = createSlice({
   name: 'wish1',
   initialState,
   reducers: {
-    setIsLoading: (state) => {
-      state.isLoading = !state.isLoading;
-    },
-    openEditModal(state,  action: { payload: WishObjectType }) {
+    openEditModal(state, action: { payload: WishObjectType }) {
       state.showModalEdit = true;
       state.wishCard = action.payload;
     },
@@ -94,21 +94,24 @@ const wishSlice = createSlice({
         state.loading = false;
         state.error = action.payload as string;
       })
-      .addCase(getPresInfo.fulfilled, (state, { payload }) => {
+      .addCase(getPresInfo.fulfilled, (state, { payload, meta }) => {
         // console.log(payload, 'zzzzzzz');
-        state.reservations[payload.id] = payload;
+        // console.log(meta, 'rrrrrrrrrrrrr');
+        
+        const wishId = meta.arg;
+        state.allReservations[wishId] = payload
+        // console.log(state.allReservations, 'zzzzz');
+        
       })
-      .addCase(toggleReservation.fulfilled, (state, { payload }) => {
-        const x = payload?.id;
-        if (payload) {
-          state.reservations[x] = payload;
-        } else {
-          const { [x]: _, ...rest } = state.reservations;
-          state.reservations = rest;
-        }
+      .addCase(postReservation.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(deleteReservation.fulfilled, (state) => {
+        state.loading = false;
+        
       });
   },
 });
-export const { setIsLoading, openEditModal, closeEditModal } = wishSlice.actions;
+export const { openEditModal, closeEditModal } = wishSlice.actions;
 
 export default wishSlice.reducer;

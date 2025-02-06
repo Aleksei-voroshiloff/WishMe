@@ -15,18 +15,19 @@ class PresentService {
   //   return presentForFriend;
   // }
 
-  findAllPresent(id) {
-    return this.model.Present.findOne({ where: { wishId: id } });
+  async findAllPresent(id) {
+    const isBusy = await this.model.Present.findAll();
+    return isBusy.some((pres) => pres.wishId === Number(id));
   }
 
-  addPresent({ wishId, userId }) {
+  addPresent({ id, userId }) {
     return this.model.Present.create({
-      wishId,
+      wishId: id,
       userId,
     });
   }
 
-  deletePresent({ id }) {
+  deletePresent(id) {
     return this.model.Present.destroy({
       where: {
         id,

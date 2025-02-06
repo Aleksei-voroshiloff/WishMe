@@ -5,12 +5,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
-  background-color: rgba(7, 58, 11, 0.828);
+  border-bottom-right-radius: 50px; /* Увеличение радиуса для эффекта шарика */
+  border-bottom-left-radius: 50px; /* Увеличение радиуса для эффекта шарика */
+  background-color: rgb(16, 69, 3); /* Темно-зеленый цвет */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Тень для эффекта объема */
+  transform: scale(1.05); /* Немного увеличиваем размер для эффекта выпуклости */
 }
 
-.main{
+.str {
+  width: 100%;
+  padding-left: 10vh;
+  padding-right: 10vh;
+}
+.main {
   height: 100%;
   width: 100%;
 }

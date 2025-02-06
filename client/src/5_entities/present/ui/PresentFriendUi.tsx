@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './PresentFriend.module.scss';
-import { CardMeta, CardContent, Image, Button } from 'semantic-ui-react';
+import { CardContent, Image, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import type { OneUserType } from '../../user/types/types';
 import type { WishObjectType } from '../../wish/types/types';
@@ -13,14 +13,16 @@ type PresentProps = {
 };
 
 export default function PresentFriendUi({ wish, user, wishlist }: PresentProps): React.JSX.Element {
+  const formatPrice = (wishPrice: string): string =>
+    wishPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
   return (
     <div className={style.content}>
       <div className={style.friend}>
         <Image src={wish.file} className={style.image} />
-        <CardContent>
+        <div className={style.desc}>
           <div className={style.title}>{wish.title}</div>
-          <CardMeta>{wish.price}</CardMeta>
-
+          <div className={style.price}>{`${formatPrice(wish.price.toString())} руб`}</div>
           <Button
             primary
             as={Link}
@@ -29,7 +31,7 @@ export default function PresentFriendUi({ wish, user, wishlist }: PresentProps):
             label={{ as: 'a', basic: true, pointing: 'right', content: 'Перейти к товару' }}
             labelPosition="left"
           />
-        </CardContent>
+        </div>
         <CardContent extra>
           <div className={style.userinfo}>
             <Image
@@ -37,8 +39,8 @@ export default function PresentFriendUi({ wish, user, wishlist }: PresentProps):
               src={user.avatar === null ? '/avatar.png' : `http://localhost:3000/${user.avatar}`}
             />
             <div>{user.name}</div>
-            <div>{wishlist.title}</div>
-            <div>{wishlist.date}</div>
+            <div>Вишлист: {wishlist.title}</div>
+            <div>Дата мероприятия: {wishlist.date}</div>
           </div>
         </CardContent>
       </div>

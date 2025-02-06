@@ -3,43 +3,46 @@ import type { WishObjectType } from '../types/types';
 import style from '../../../2_pages/OneWishListPage/OneWishListPage.module.scss';
 import { Button, Icon } from 'semantic-ui-react';
 
-import { deleteWish, getPresInfo, toggleReservation } from '../lib/wishThunk';
+import { deleteReservation, deleteWish, getPresInfo, postReservation } from '../lib/wishThunk';
 import { useAppDispatch, useAppSelector } from '../../../1_app/store/hooks';
-import { openEditModal, setIsLoading } from '../model/wishSlice';
-import { PresentObjSchema } from '../../wishlist/types/types';
-import { Link } from 'react-router-dom';
+import { openEditModal } from '../model/wishSlice';
+import { Link, useParams } from 'react-router-dom';
+import type { WishListObjectType } from '../../wishlist/types/types';
+import { getAllPresent } from '../../present/lib/presentThunk';
 
 type Props = {
   wish: WishObjectType;
   showButton: boolean;
+  // wishList: WishListObjectType;
 };
 
-export default function WishCardUi({ wish, showButton }: Props): React.JSX.Element {
+export default function WishCardUi({ wish, showButton,  }: Props): React.JSX.Element {
   const dispatch = useAppDispatch();
-  const reservation = useAppSelector((state) => state.wish.reservations[wish.id]);
+  const user = useAppSelector((state) => state.user.data);
+  const allReservations = useAppSelector((state) => state.wish.allReservations);
+  // const {id} = useParams()
+  const wishList = useAppSelector((state) => state.wishlist.oneWishList);
 
-  console.log(wish.id, 'wish.id');
-  const isReserved1 = useAppSelector((state) => state.wish.reservations[wish.id]);
-  // console.log(isReserved, 'isReservedisReservedisReserved');
   useEffect(() => {
-    if (!reservation) {
-      void dispatch(getPresInfo(wish.id));
-    }
-  }, [dispatch, reservation]);
+    void dispatch(getPresInfo(wish.id));
+  }, [dispatch, wish.id]);
 
-  const handleReserveClick = async (): Promise<void> => {
-    dispatch(setIsLoading());
+  const handleReserveClick = async (wishId: number): Promise<void> => {
     try {
-      console.log(isReserved1, 'isReserved1');
-      const isReserved = PresentObjSchema.parse(isReserved1);
-      await dispatch(toggleReservation(isReserved));
+      if (allReservations[wish.id]) {
+        // Удаляем запись
+        await dispatch(deleteReservation(wishId));
+      } else {
+        // Создаем запись
+        await dispatch(postReservation(wishId));
+      }
+      await dispatch(getPresInfo(wish.id));
+      await dispatch(getAllPresent())
     } catch (error) {
       console.error('Ошибка бронирования:', error);
-      // Можно добавить уведомление для пользователя
-    } finally {
-      dispatch(setIsLoading());
     }
   };
+
   const handleDeleteClick = (wishId: number): void => {
     try {
       void dispatch(deleteWish(wishId));
@@ -47,8 +50,6 @@ export default function WishCardUi({ wish, showButton }: Props): React.JSX.Eleme
       console.error('Ошибка удаления:', error);
     }
   };
-
-
 
   // console.log(reservation);
   return (
@@ -64,7 +65,11 @@ export default function WishCardUi({ wish, showButton }: Props): React.JSX.Eleme
         <h2>{wish.price} ₽</h2>
       </div>
       <div>
-        <Button onClick={handleReserveClick}>{reservation ? 'Занято' : 'Забронировать'}</Button>
+        {user?.id !== wishList?.userId && (
+          <Button onClick={() => handleReserveClick(wish.id)}>
+            {allReservations[wish.id] ? 'Снять бронь' : 'Забронировать'}
+          </Button>
+        )}
       </div>
       <div>
         {showButton && (

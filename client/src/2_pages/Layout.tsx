@@ -18,9 +18,11 @@ export default function Layout(): React.JSX.Element {
       </div>
       <div className={style.home}>
         <NavBar />
-        <Outlet />
+        <div className={style.str}>
+          <Outlet />
+        </div>
         <ModalPage />
-        <ToastContainer/>
+        <ToastContainer />
       </div>
     </div>
   );
