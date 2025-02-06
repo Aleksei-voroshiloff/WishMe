@@ -6,6 +6,10 @@ import type { LoginCredentials } from '../../5_entities/user/types/types';
 import { loginSchema } from '../../5_entities/user/types/types';
 import { useUser } from '../../5_entities/user/hooks/userHook';
 import { useNavigate } from 'react-router-dom';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import InputMask, { Props as InputMaskProps } from 'react-input-mask';
+type InputProps = InputMaskProps & React.InputHTMLAttributes<HTMLInputElement>;
+
 
 export default function LoginPage(): React.JSX.Element {
   const navigate = useNavigate();
@@ -30,12 +34,14 @@ export default function LoginPage(): React.JSX.Element {
   return (
     <main className={styles.main}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <input
+      <InputMask
           className={styles.input}
-          type="tel"
+          mask="+7\ (999) 999-99-99"
           {...register('phoneNumber')}
-          placeholder="Введите номер телефона"
-        />
+          placeholder="+7 (___) ___-__-__"
+        >
+        {(inputProps: InputProps) => <input {...inputProps} type="text" />}
+        </InputMask>
         {errors.phoneNumber && <p className={styles.text}>{errors.phoneNumber.message}</p>}
 
         <input
