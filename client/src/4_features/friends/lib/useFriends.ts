@@ -16,7 +16,7 @@ export function useFriend(): useFriendType {
           .then(() => {
             toast.success('Заявка отправлена!', {
               autoClose: 2000,
-              hideProgressBar: true,
+              hideProgressBar: false,
               closeOnClick: true,
             });
           })
@@ -24,7 +24,7 @@ export function useFriend(): useFriendType {
             console.log(error);
             toast.error('Ошибка отправки заявки!', {
               autoClose: 2000,
-              hideProgressBar: true,
+              hideProgressBar: false,
               closeOnClick: true,
             });
           });
@@ -38,7 +38,7 @@ export function useFriend(): useFriendType {
       .then(() => {
         toast.success(`${name} удалён-(а) из друзей`, {
           autoClose: 2000,
-          hideProgressBar: true,
+          hideProgressBar: false,
           closeOnClick: true,
         });
       })
@@ -46,7 +46,7 @@ export function useFriend(): useFriendType {
         console.log(error);
         toast.error('Ошибка удаления', {
           autoClose: 2000,
-          hideProgressBar: true,
+          hideProgressBar: false,
           closeOnClick: true,
         });
       });
@@ -56,9 +56,9 @@ export function useFriend(): useFriendType {
     dispatch(deleteFriendThunk(friendId))
       .unwrap()
       .then(() => {
-        toast.success(`Заявка в на добавление ${name} в друзья отменена`, {
+        toast.success(`Заявка на добавление ${name} в друзья отменена`, {
           autoClose: 2000,
-          hideProgressBar: true,
+          hideProgressBar: false,
           closeOnClick: true,
         });
       })
@@ -66,7 +66,7 @@ export function useFriend(): useFriendType {
         console.log(error);
         toast.error('Ошибка', {
           autoClose: 2000,
-          hideProgressBar: true,
+          hideProgressBar: false,
           closeOnClick: true,
         });
       });
@@ -78,7 +78,7 @@ export function useFriend(): useFriendType {
       .then(() => {
         toast.success(`Заявка в друзья принята`, {
           autoClose: 2000,
-          hideProgressBar: true,
+          hideProgressBar: false,
           closeOnClick: true,
         });
       })
@@ -86,7 +86,7 @@ export function useFriend(): useFriendType {
         console.log(error);
         toast.error('Ошибка принятия заявки', {
           autoClose: 2000,
-          hideProgressBar: true,
+          hideProgressBar: false,
           closeOnClick: true,
         });
       });
@@ -98,7 +98,7 @@ export function useFriend(): useFriendType {
       .then(() => {
         toast.success(`Заявка в друзья отклонена`, {
           autoClose: 2000,
-          hideProgressBar: true,
+          hideProgressBar: false,
           closeOnClick: true,
         });
       })
@@ -106,7 +106,7 @@ export function useFriend(): useFriendType {
         console.log(error);
         toast.error('Ошибка', {
           autoClose: 2000,
-          hideProgressBar: true,
+          hideProgressBar: false,
           closeOnClick: true,
         });
       });

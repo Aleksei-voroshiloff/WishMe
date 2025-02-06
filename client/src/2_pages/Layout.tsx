@@ -12,7 +12,7 @@ export default function Layout(): React.JSX.Element {
 
   if (status === 'loading') return <Loader />;
   return (
-    <div>
+    <div className={style.main}>
       <div className={style.header}>
         <div className={style.wishme}>WishMe 🎁</div>
       </div>
