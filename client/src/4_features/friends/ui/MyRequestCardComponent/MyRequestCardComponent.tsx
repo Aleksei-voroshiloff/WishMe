@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Icon, Popup } from 'semantic-ui-react';
+import { Popup } from 'semantic-ui-react';
 import style from './MyRequestCardComponent.module.scss';
 import { useFriend } from '../../lib/useFriends';
 
@@ -18,32 +18,35 @@ export default function MyRequestCardComponent({ myRequest }: FriendProp): React
   return (
     <>
       <div className={style.card_wrapper}>
-        <NavLink to={`/friends/${String(myRequest.id)}`}>
-          {myRequest.avatar ? (
-            <img
-              className={style.image}
-              src={`http://localhost:3000/${myRequest.avatar}`}
-              alt="foto"
-            />
-          ) : (
-            <img className={style.image} src="/avatar.png" alt="foto" />
-          )}
-        </NavLink>
-        <div className={style.info_wrapper}>
+        <div className={style.profile_wrapper}>
           <NavLink to={`/friends/${String(myRequest.id)}`}>
-            <h2>{myRequest.name}</h2>{' '}
+            {myRequest.avatar ? (
+              <img
+                className={style.image}
+                src={`http://localhost:3000/${myRequest.avatar}`}
+                alt="foto"
+              />
+            ) : (
+              <img className={style.image} src="/avatar.png" alt="foto" />
+            )}
           </NavLink>
-          <p>День рождения: {String(myRequest.birthday)}</p>
+          <div className={style.info_wrapper}>
+            <NavLink to={`/friends/${String(myRequest.id)}`}>
+              <h2>{myRequest.name}</h2>{' '}
+            </NavLink>
+            <p>День рождения: {String(myRequest.birthday)}</p>
+          </div>
         </div>
+
         <Popup
           content={`Отменить заявку`}
           trigger={
-            <Icon
-              title="Отменить заявку"
+            <button
+              className={style.button_gray}
               onClick={() => cancelRequest(myRequest.id, myRequest.name)}
-              name="trash alternate"
-              color="red"
-            />
+            >
+              Отмена
+            </button>
           }
         />
       </div>

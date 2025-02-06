@@ -24,9 +24,8 @@ type FriendsStateType = {
   myRequests: FriendsType;
   myRequestsLoading: boolean;
   myRequestsError: string | null;
-  showFriends: boolean;
-  showMyRequests: boolean;
-  showRequestsToMe: boolean;
+  showDeleteModal: boolean;
+  selectedFriend: OneFriendType | null;
 };
 
 const initialState: FriendsStateType = {
@@ -42,9 +41,8 @@ const initialState: FriendsStateType = {
   myRequests: [],
   myRequestsLoading: false,
   myRequestsError: null,
-  showFriends: false,
-  showMyRequests: false,
-  showRequestsToMe: false,
+  showDeleteModal: false,
+  selectedFriend: null,
 };
 
 export const friendsSlice = createSlice({
@@ -60,23 +58,13 @@ export const friendsSlice = createSlice({
     closeWindow(state) {
       state.modalShow = false;
     },
-    unhideFriends(state) {
-      state.showFriends = true;
+    unhideDeleteModal(state, action: PayloadAction<OneFriendType>) {
+      state.showDeleteModal = true;
+      state.selectedFriend = action.payload
     },
-    hideFriends(state) {
-      state.showFriends = false;
-    },
-    unhideMyRequests(state) {
-      state.showMyRequests = true;
-    },
-    hideMyRequests(state) {
-      state.showMyRequests = false;
-    },
-    unhideRequestsToMe(state) {
-      state.showRequestsToMe = true;
-    },
-    hideRequestsToMe(state) {
-      state.showRequestsToMe = false;
+    hideDeleteModal(state) {
+      state.showDeleteModal = false;
+      state.selectedFriend = null;
     },
   },
   extraReducers: (builder) => {
@@ -185,12 +173,8 @@ export const {
   openWindow,
   closeWindow,
   setSearch,
-  unhideFriends,
-  hideFriends,
-  unhideMyRequests,
-  hideMyRequests,
-  unhideRequestsToMe,
-  hideRequestsToMe,
+  unhideDeleteModal,
+  hideDeleteModal,
 } = friendsSlice.actions;
 
 export default friendsSlice.reducer;

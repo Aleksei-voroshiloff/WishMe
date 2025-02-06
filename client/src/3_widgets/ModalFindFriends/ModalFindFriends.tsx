@@ -12,12 +12,13 @@ import { closeWindow, setSearch } from '../../4_features/friends/model/friendsSl
 import { useAppDispatch, useAppSelector } from '../../1_app/store/hooks';
 import { findFriendsThunk } from '../../4_features/friends/lib/friendsThunk';
 import FriendCardComponent from '../../4_features/friends/ui/FriendCardComponent/FriendCardComponent';
+import style from './ModalFindFriends.module.scss'
 
 export default function ModalFindFriends(): React.JSX.Element {
   const dispatch = useAppDispatch();
 
   const { search, modalShow, foundFriends, foundFriendsLoading } = useAppSelector(
-    (store) => store.friend
+    (store) => store.friend,
   );
 
   useEffect(() => {
@@ -44,9 +45,11 @@ export default function ModalFindFriends(): React.JSX.Element {
             {foundFriendsLoading ? (
               <p>Идет поиск</p>
             ) : (
-              foundFriends.map((foundFriend) => (
-                <FriendCardComponent key={foundFriend.id} friend={foundFriend} />
-              ))
+              <div className={style.container}>
+                {foundFriends.map((foundFriend) => (
+                  <FriendCardComponent key={foundFriend.id} friend={foundFriend} />
+                ))}
+              </div>
             )}
           </FormField>
           <ModalActions style={{ marginTop: '20px' }}>
