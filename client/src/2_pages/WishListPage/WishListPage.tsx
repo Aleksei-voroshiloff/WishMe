@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../1_app/store/hooks';
 import WishListCardUi from '../../5_entities/wishlist/ui/WishListCardUi';
 import style from './WishListPage.module.scss';
 import { getWishList } from '../../5_entities/wishlist/lib/wishListThunk';
-import { Checkbox} from 'semantic-ui-react';
+import { Checkbox } from 'semantic-ui-react';
 
 import ModalUiList from '../../4_features/modal_addList/modalSlice/ModalUiList';
 import { openModal } from '../../5_entities/modal_window/modalSlice';
@@ -27,10 +27,6 @@ export default function WishListPage(): React.JSX.Element {
     <main className={style.main}>
       <div className={style.first_div}>
         <>
-          <div className={style.gift_box} onClick={() => dispatch(openModal())}>
-            <div className={style.plus}></div>
-            <div className={style.gift}>🎁</div>
-          </div>
           <div className={style.check}>
             <Checkbox
               name="read"
@@ -44,6 +40,10 @@ export default function WishListPage(): React.JSX.Element {
         </>
       </div>
       <div className={style.razmap}>
+        <div className={style.gift_box} onClick={() => dispatch(openModal())}>
+          <div className={style.plus}></div>
+          <div className={style.gift}>🎁</div>
+        </div>
         {wishListCards.map((list) => (
           <div key={list.id}>
             <WishListCardUi list={list} showButton={showButton} />

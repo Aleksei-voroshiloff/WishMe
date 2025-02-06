@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../1_app/store/hooks';
 import WishCardUi from '../../5_entities/wish/ui/WishCardUi';
 import { getWish } from '../../5_entities/wish/lib/wishThunk';
 import style from './OneWishListPage.module.scss';
-import { Checkbox, Icon, Segment } from 'semantic-ui-react';
+import { Checkbox, Icon} from 'semantic-ui-react';
 import ModalUiWish from '../../4_features/modal_addOneWish/modalSlice/ModalUiWish';
 import { openModal } from '../../5_entities/modal_window/modalSlice';
 import { setShowButton } from '../../5_entities/delete/redactionSlice';
@@ -42,22 +42,21 @@ export default function OneWishListPage(): React.ReactElement {
               <Icon
                 className={style.back_button}
                 name="chevron left"
-                size="huge"
+                size="large"
                 onClick={() => navigate(-1)}
               />
             </div>
 
-            <div>
-              <Segment style={{ marginLeft: '100px' }}>
-                <Checkbox
-                  name="read"
-                  value={1}
-                  checked={showButton}
-                  onClick={() => dispatch(setShowButton())}
-                  label={showButton ? 'Редактирование включено' : 'Редактирование выключено'}
-                  toggle
-                />
-              </Segment>
+            <div style={{margin:'10px'}}>
+              Режим редакции 
+              <Checkbox
+                name="read"
+                value={1}
+                checked={showButton}
+                onClick={() => dispatch(setShowButton())}
+                label={showButton}
+                toggle
+              />
             </div>
           </div>
         ) : (
