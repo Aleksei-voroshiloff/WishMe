@@ -51,10 +51,10 @@ export default function ModalEditListUi(): React.JSX.Element {
             </FormField>
 
             <ModalActions style={{ marginTop: '20px' }}>
-              <Button color="google plus" onClick={() => dispatch(closeEditListModal())}>
+              <Button color="black" onClick={() => dispatch(closeEditListModal())}>
                 Вернуться к подаркам
               </Button>
-              <Button color="linkedin" type="submit">
+              <Button color="green" type="submit">
                 Создать
               </Button>
             </ModalActions>
