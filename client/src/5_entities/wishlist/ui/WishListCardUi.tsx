@@ -63,7 +63,7 @@ export default function WishListCardUi({ list, showButton }: Props): React.JSX.E
           <div className={style.share}></div>
         </div>
       )}
-      <div>
+      {<div>
         <Popup wide trigger={<button className={style.batn}>Поделиться</button>} on="click">
           <Grid divided columns="equal">
             <GridColumn>
@@ -94,7 +94,7 @@ export default function WishListCardUi({ list, showButton }: Props): React.JSX.E
             </GridColumn>
           </Grid>
         </Popup>
-      </div>
+      </div>}
     </div>
   );
 }

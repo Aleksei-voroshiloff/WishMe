@@ -29,6 +29,7 @@
   flex-direction: column;
 
   &:hover {
+    cursor: pointer;
     transform: scale(1.01); // Увеличение карточки при наведении
     box-shadow: 0px 0px 10px #b24343; // Увеличенная тень при наведении
   }
