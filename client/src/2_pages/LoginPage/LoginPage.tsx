@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 import InputMask, { Props as InputMaskProps } from 'react-input-mask';
 type InputProps = InputMaskProps & React.InputHTMLAttributes<HTMLInputElement>;
 
-
 export default function LoginPage(): React.JSX.Element {
   const navigate = useNavigate();
 
@@ -34,13 +33,13 @@ export default function LoginPage(): React.JSX.Element {
   return (
     <main className={styles.main}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <InputMask
+        <InputMask
           className={styles.input}
           mask="+7\ (999) 999-99-99"
           {...register('phoneNumber')}
           placeholder="+7 (___) ___-__-__"
         >
-        {(inputProps: InputProps) => <input {...inputProps} type="text" />}
+          {(inputProps: InputProps) => <input {...inputProps} type="text" />}
         </InputMask>
         {errors.phoneNumber && <p className={styles.text}>{errors.phoneNumber.message}</p>}
 

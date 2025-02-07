@@ -10,26 +10,26 @@ module.exports = {
       'Users',
       [
         {
-          name: 'Admin',
-          phoneNumber: '89000001122',
+          name: 'Алексей',
+          phoneNumber: '+7 (900) 000-11-22',
           password: bcrypt.hashSync('123456', 10),
           birthday: '2000-02-07',
         },
         {
-          name: 'Лексус',
-          phoneNumber: '89010001122',
+          name: 'Артем',
+          phoneNumber: '+7 (901) 000-11-22',
           password: bcrypt.hashSync('123456', 10),
           birthday: '2001-11-22',
         },
         {
           name: 'Кенан',
-          phoneNumber: '89020001122',
+          phoneNumber: '+7 (902) 000-11-22',
           password: bcrypt.hashSync('123456', 10),
           birthday: '2001-11-06',
         },
         {
           name: 'Андрей',
-          phoneNumber: '89030001122',
+          phoneNumber: '+7 (903) 000-11-22',
           password: bcrypt.hashSync('123456', 10),
           birthday: '2000-03-10',
         },

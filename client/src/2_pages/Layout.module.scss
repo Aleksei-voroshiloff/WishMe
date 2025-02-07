@@ -8,7 +8,8 @@
   align-items: center;
   border-bottom-right-radius: 50px; /* Увеличение радиуса для эффекта шарика */
   border-bottom-left-radius: 50px; /* Увеличение радиуса для эффекта шарика */
-  background-color: rgb(16, 69, 3); /* Темно-зеленый цвет */
+  background-color: rgba(95, 11, 11, 0.676);
+
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Тень для эффекта объема */
   transform: scale(1.05); /* Немного увеличиваем размер для эффекта выпуклости */
 }
@@ -18,13 +19,16 @@
   padding-top: 2vh;
   padding-left: 10vh;
   padding-right: 10vh;
+
 }
+
 .main {
   min-height: 100vh;
   width: 100%;
   background-image: url('/back2.png');
-
-
+  background-size: cover; /* Заполнение фона */
+  background-position: center; /* Центрирование изображения */
+  background-attachment: fixed; /* Фиксация фона */
 }
 
 .home {
@@ -85,9 +89,10 @@
   font-size: 70px;
   margin-top: 40px;
   margin-left: 30px;
+  padding-top: 15px;
 }
 
-.search{
+.search {
   font-family: 'Nunito';
   font-size: 1.1em;
   font-weight: 800;
@@ -99,12 +104,12 @@
   transition: transform 0.4s ease-in-out;
 }
 
-.icon{
+.icon {
   transition: transform 0.4s ease-in-out;
 }
 
-.search:hover{
-  transform: scale(1.08);  
+.search:hover {
+  transform: scale(1.08);
 }
 
 .search:hover .icon {
