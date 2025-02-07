@@ -48,11 +48,6 @@ module.exports = {
           date: '2025-02-23',
           userId: 3,
         },
-        {
-          title: 'Подарки 8 марта',
-          date: '2025-03-08',
-          userId: 3,
-        },
       ],
       {},
     );

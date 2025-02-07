@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import type { OneUserType } from '../../user/types/types';
 import type { WishObjectType } from '../../wish/types/types';
 import type { WishListObjectType } from '../../wishlist/types/types';
+import { deleteReservation } from '../../wish/lib/wishThunk';
+import { useAppDispatch } from '../../../1_app/store/hooks';
+import { getAllPresent } from '../lib/presentThunk';
 
 type PresentProps = {
   wish: WishObjectType;
@@ -15,6 +18,12 @@ type PresentProps = {
 export default function PresentFriendUi({ wish, user, wishlist }: PresentProps): React.JSX.Element {
   const formatPrice = (wishPrice: string): string =>
     wishPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  const dispatch = useAppDispatch();
+
+  const deleteReserve = async (wishId: number): Promise<void> => {
+    await dispatch(deleteReservation(wishId));
+    await dispatch(getAllPresent());
+  };
 
   return (
     <div className={style.content}>
@@ -41,6 +50,9 @@ export default function PresentFriendUi({ wish, user, wishlist }: PresentProps):
             <div>{user.name}</div>
             <div>Вишлист: {wishlist.title}</div>
             <div>Дата мероприятия: {wishlist.date}</div>
+            <button className={style.button} onClick={() => deleteReserve(wish.id)}>
+              Снять бронь{' '}
+            </button>
           </div>
         </CardContent>
       </div>

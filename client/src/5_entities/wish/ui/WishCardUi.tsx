@@ -57,8 +57,8 @@ export default function WishCardUi({ wish, showButton }: Props): React.JSX.Eleme
         <img src={wish.file} />
       </div>
       <div className={style.text}>
-        <div className={style.title} >{wish.title}</div>
-        <div className={style.price} >{`${formatPrice(wish.price.toString())} руб`}</div>
+        <div className={style.title}>{wish.title}</div>
+        <div className={style.price}>{`${formatPrice(wish.price.toString())} руб`}</div>
         <Button
           primary
           as={Link}
@@ -76,8 +76,8 @@ export default function WishCardUi({ wish, showButton }: Props): React.JSX.Eleme
         )}
       </div>
       <div>
-        {showButton && (
-          <>
+        {showButton && user?.id === wishList?.userId && (
+          <div className={style.delete}>
             <Icon
               className={style.edit}
               onClick={() => dispatch(openEditModal(wish))}
@@ -92,7 +92,7 @@ export default function WishCardUi({ wish, showButton }: Props): React.JSX.Eleme
               name="x"
               size="big"
             />
-          </>
+          </div>
         )}
       </div>
     </div>
