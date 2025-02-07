@@ -12,6 +12,27 @@
   // overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
 }
 
+.batn {
+  position: absolute;
+  border-radius: 20px;
+  border: #b65555 solid 1px;
+  right: 10px;
+  bottom: 10px;
+  margin-top: 10px;
+  height: 25px;
+  width: 100px;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &:hover {
+    transform: scale(1.01); // Увеличение карточки при наведении
+    box-shadow: 0px 0px 10px #b24343; // Увеличенная тень при наведении
+  }
+}
 .first_div {
   display: flex;
   margin-top: 20px;
@@ -23,8 +44,7 @@
   position: relative;
   padding: 3%;
   width: 251px;
-  min-height: 150px;
-  //   min-height: 30vh;
+  min-height: 170px;
   border-radius: 20px;
   border: 1px solid #b24343;
   background-image: url('https://i.pinimg.com/originals/7f/3a/68/7f3a68fe9ae08dfcfb26a0863a20d375.gif');
@@ -39,7 +59,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   padding: 10px;
   background-color: rgb(255, 255, 255);
   height: 120px;
@@ -50,6 +70,7 @@
 .title {
   font-weight: 900;
   font-size: x-large;
+  margin-bottom: 10px;
 }
 .date {
   font-weight: 600;
@@ -64,15 +85,22 @@
   height: 50px;
 }
 .redaction {
-  margin-left: 62%;
+  width: 80px;
+  background-color: #ffffff;
+  border: solid 1px #7f3131;
+  border-radius: 20px;
+  position: absolute;
+  top: -12px;
+  right: 0px;
+  padding: 5px;
 }
 
 .del:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .edit:hover {
-  transform: scale(1.33);
+  transform: scale(1.1);
 }
 
 .check {

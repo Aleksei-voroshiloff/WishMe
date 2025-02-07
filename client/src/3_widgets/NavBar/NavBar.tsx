@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../1_app/store/hooks';
 import { setActiveItem } from '../../5_entities/Navbar/model/navbarSlice';
 import { useUser } from '../../5_entities/user/hooks/userHook';
@@ -13,6 +13,11 @@ export default function NavBar(): React.JSX.Element {
 
   const user = useAppSelector((state) => state.user.myCabinet);
   const activeItem = useAppSelector((state) => state.navbar.activeItem);
+  const navigate = useNavigate();
+  const logautHandler = async (): Promise<void> => {
+    await logoutHandler();
+    await navigate('/login');
+  };
 
   if (user !== null)
     return (
@@ -56,7 +61,7 @@ export default function NavBar(): React.JSX.Element {
                 active={activeItem === 'Друзья'}
                 onClick={() => dispatch(setActiveItem('Друзья'))}
               />
-              <MenuItem className={style.textMenu} onClick={() => logoutHandler()} name="Выход" />
+              <MenuItem className={style.textMenu} onClick={() => logautHandler()} name="Выход" />
             </>
           )}
           {status !== 'logged' && (

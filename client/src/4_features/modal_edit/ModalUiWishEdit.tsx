@@ -54,7 +54,12 @@ export default function ModalUiWishEdit(): React.JSX.Element {
 
             <FormField>
               <label>Ссылка на товар</label>
-              <input name="wishUrl" defaultValue={wish.wishUrl} type="url" placeholder="Вставьте ссылку" />
+              <input
+                name="wishUrl"
+                defaultValue={wish.wishUrl}
+                type="url"
+                placeholder="Вставьте ссылку"
+              />
             </FormField>
             <FormField>
               <label>Цена в рублях</label>
@@ -62,11 +67,11 @@ export default function ModalUiWishEdit(): React.JSX.Element {
             </FormField>
 
             <ModalActions style={{ marginTop: '20px' }}>
-              <Button color="google plus" onClick={() => dispatch(closeEditModal())}>
+              <Button color="black" onClick={() => dispatch(closeEditModal())}>
                 Вернуться к подаркам
               </Button>
-              <Button color="linkedin" type="submit">
-                Создать
+              <Button color="green" type="submit">
+                Сохранить изменения
               </Button>
             </ModalActions>
           </Form>

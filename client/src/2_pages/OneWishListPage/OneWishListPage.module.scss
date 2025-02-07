@@ -74,17 +74,23 @@
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+  
 }
 
 .delete {
+  width: 80px;
   background-color: #ffffff;
-  border: solid 1px #000000;
-  z-index: 1000;
+  border: solid 1px #7f3131;
+  border-radius: 20px;
+  position: absolute;
+  top: -12px;
+  right: 0px;
+  padding: 5px;
 }
 
 .card1 {
   min-width: 230px;
-  height: 320px;
+  height: 380px;
   position: relative;
   background-color: #ffffff;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -108,15 +114,20 @@
 
 .title {
   width: 210px;
-  height: auto; /* Убираем фиксированную высоту для адаптивности */
+  height: 70px; /* Убираем фиксированную высоту для адаптивности */
   font-family: 'Nunito';
   font-size: 20px;
   font-weight: 700;
   margin-top: 10px;
   margin-bottom: 5px;
-  overflow: hidden; /* Скрывает текст, выходящий за пределы, если нужно */
-  word-wrap: break-word; /* Позволяет переносить длинные слова */
-  line-height: 1.2; /* Устанавливает высоту строки для лучшей читаемости */
+  overflow: auto; /* Позволяет прокрутку, если необходимо */
+  word-wrap: break-word;
+  line-height: 1.2;
+  scrollbar-width: thin; /* Для Firefox */
+}
+
+.title::-webkit-scrollbar {
+  display: none; /* Для Chrome, Safari и Opera */
 }
 
 .price {
@@ -124,15 +135,14 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: #000000;
-  margin-top: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .imagewrapper {
   height: 20vh; /* Установите желаемую высоту изображения */
   width: 100%;
   overflow: hidden;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 20px;
 }
 
@@ -142,29 +152,17 @@
   object-fit: cover; /* Обеспечивает заполнение всей области изображением */
 }
 
-.edit {
-  position: absolute;
-  top: 19px;
-  right: 40px;
-}
-
-.del {
-  position: absolute;
-  top: 17px;
-  right: 10px;
-}
-
 .del:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .edit:hover {
-  transform: scale(1.33);
+  transform: scale(1.1);
 }
 
 .gift_box {
   width: 230px;
-  height: 320px;
+  height: 380px;
   background: linear-gradient(135deg, #b65555, #ff8e8e);
   border-radius: 20px;
   position: relative;

@@ -43,10 +43,16 @@ export default function PresentFriendUi({ wish, user, wishlist }: PresentProps):
         </div>
         <CardContent extra>
           <div className={style.userinfo}>
-            <Image
-              className={style.ava}
-              src={user.avatar === null ? '/avatar.png' : `http://localhost:3000/${user.avatar}`}
-            />
+            <div className={style.imag}>
+              <Link to={`/friends/${String(user.id)}`}>
+                <Image
+                  className={style.ava}
+                  src={
+                    user.avatar === null ? '/avatar.png' : `http://localhost:3000/${user.avatar}`
+                  }
+                />
+              </Link>
+            </div>
             <div>{user.name}</div>
             <div>Вишлист: {wishlist.title}</div>
             <div>Дата мероприятия: {wishlist.date}</div>
