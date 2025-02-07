@@ -5,6 +5,7 @@ import { Popup } from 'semantic-ui-react';
 import { useAppDispatch, useAppSelector } from '../../../../1_app/store/hooks';
 import { closeWindow, unhideDeleteModal } from '../../model/friendsSlice';
 import { useFriend } from '../../lib/useFriends';
+import Spinner from '../../../../6_shared/ui/Spinner';
 
 type FriendProp = {
   friend: {
@@ -17,7 +18,7 @@ type FriendProp = {
 
 export default function FriendCardComponent({ friend }: FriendProp): React.JSX.Element {
   const dispatch = useAppDispatch();
-  const { friends } = useAppSelector((store) => store.friend);
+  const { friends, myRequestsLoading } = useAppSelector((store) => store.friend);
   const IsFriends = friends.find((el) => el.id === friend.id);
   const { data } = useAppSelector((store) => store.user);
   const { throttledAddFriend } = useFriend();
@@ -69,7 +70,7 @@ export default function FriendCardComponent({ friend }: FriendProp): React.JSX.E
                     className={style.button_green}
                     onClick={() => throttledAddFriend(friend.id)}
                   >
-                    Добавить
+                    {myRequestsLoading ? <Spinner/> : 'Добавить'}
                   </button>
                 }
               />

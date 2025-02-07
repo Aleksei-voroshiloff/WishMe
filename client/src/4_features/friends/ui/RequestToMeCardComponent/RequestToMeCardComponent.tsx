@@ -3,6 +3,8 @@ import style from './RequestToMeCardComponent.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Popup } from 'semantic-ui-react';
 import { useFriend } from '../../lib/useFriends';
+import { useAppSelector } from '../../../../1_app/store/hooks';
+import Spinner from '../../../../6_shared/ui/Spinner';
 
 type FriendProp = {
   requestToMe: {
@@ -15,6 +17,7 @@ type FriendProp = {
 
 export default function RequestToMeCardComponent({ requestToMe }: FriendProp): React.JSX.Element {
   const { acceptRequest, rejectRequest } = useFriend();
+  const {loading} = useAppSelector(state => state.friend)
 
   return (
     <>
@@ -51,7 +54,7 @@ export default function RequestToMeCardComponent({ requestToMe }: FriendProp): R
             content={`Принять заявку`}
             trigger={
               <button className={style.button_green} onClick={() => acceptRequest(requestToMe.id)}>
-                Принять
+                {loading ? <Spinner/> : 'Принять'}
               </button>
             }
           />
