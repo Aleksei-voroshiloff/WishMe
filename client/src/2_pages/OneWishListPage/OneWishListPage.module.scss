@@ -24,6 +24,16 @@
   justify-content: center;
   padding-bottom: 5px;
 }
+
+.btn {
+  background-color: #b24343c6;
+  border-radius: 20px;
+  margin-top: 10px;
+  height: 30px;
+  width: 150px;
+  align-items: center;
+  color: #ffffff;
+}
 .panel1 {
   display: flex;
   border-bottom: 1px solid rgba(128, 128, 128, 0.311);
@@ -74,7 +84,6 @@
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
-  
 }
 
 .delete {
