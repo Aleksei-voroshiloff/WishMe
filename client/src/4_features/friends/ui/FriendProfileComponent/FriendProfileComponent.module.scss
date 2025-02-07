@@ -18,3 +18,23 @@
   align-items: center;
   justify-content: flex-start;
 }
+
+.button_red, .button_green {
+  color: white;
+  width: 100px;
+  height: 30px;
+  padding: 5px 10px;
+  font-family: 'Nunito';
+  font-weight: 800;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button_red{
+  background-color: rgb(160, 18, 18);
+}
+
+.button_green{
+  background-color: rgb(9, 109, 78);
+}

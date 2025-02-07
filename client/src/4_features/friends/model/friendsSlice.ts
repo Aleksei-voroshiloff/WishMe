@@ -164,6 +164,7 @@ export const friendsSlice = createSlice({
       })
       .addCase(getAllRequestsToMeThunk.rejected, (state, action) => {
         state.requestsToMeLoading = false;
+      
         state.error = action.payload as string;
       });
   },

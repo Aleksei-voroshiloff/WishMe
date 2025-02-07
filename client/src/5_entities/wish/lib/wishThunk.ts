@@ -81,15 +81,17 @@ export const postReservation = createAsyncThunk(
 
 export const deleteReservation = createAsyncThunk(
   'wish/deleteReservation',
-  async (wishId: number, { rejectWithValue }) => {
+  async (wishId: number) => {
     try {
       await axiosInstance.delete(`/present/${String(wishId)}`);
       return wishId;
     } catch (error) {
-      return rejectWithValue(error instanceof Error ? error.message : 'Ошибка бронирования');
+      console.log(error);
+      return 'Подарок забронирован';
     }
   },
 );
+
 
 // export const toggleReservation = createAsyncThunk(
 //   'wish/toggleReservation',

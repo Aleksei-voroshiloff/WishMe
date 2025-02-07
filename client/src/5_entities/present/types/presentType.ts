@@ -7,6 +7,10 @@ export const PresentObjShema = z.object({
   wishes: z.array(WishObjectSchema),
 });
 
+export const userIdSchema = z.object({
+  userId: z.number(),
+});
+
 export const PresentArrShema = z.array(PresentObjShema);
 
 export type PresentObjType = z.infer<typeof PresentObjShema>;
