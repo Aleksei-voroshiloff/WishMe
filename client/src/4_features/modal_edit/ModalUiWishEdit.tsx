@@ -23,7 +23,6 @@ export default function ModalUiWishEdit(): React.JSX.Element {
       ...dataForm,
       wishListId: Number(listId),
     });
-    console.log(validDate, 'ModalUiWishEdit');
 
     try {
       if (wish?.id !== undefined) {

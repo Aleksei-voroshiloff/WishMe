@@ -56,6 +56,7 @@ export default function ModalPage(): React.JSX.Element {
       const formData = new FormData(e.currentTarget);
       const data = formData.get('birthday') as string;
       const inputDate = new Date(data);
+      
       // Получаем текущую дату
       const today = new Date();
       // Сбрасываем время для корректного сравнения
