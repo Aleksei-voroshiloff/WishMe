@@ -64,11 +64,11 @@ export const getOneUser = createAsyncThunk(
   async (id: number, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get<OneUserType>(`/users/${String(id)}`);
-      console.log(response)
+
       const filteredData = OneUserShema.parse(response.data);
       return filteredData;
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return rejectWithValue((error as Error).message);
     }
   },
@@ -103,7 +103,7 @@ export const getUserByWishlistThunk = createAsyncThunk(
   async (id: number, { rejectWithValue }) => {
     try {
       const { data } = await axiosInstance.get<getUserType | null>(`/users/wishlist/${String(id)}`);
-      const user = OneUserShema.parse(data?.User)
+      const user = OneUserShema.parse(data?.User);
       return user;
     } catch (error) {
       return rejectWithValue((error as Error).message);

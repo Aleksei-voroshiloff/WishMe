@@ -11,15 +11,9 @@ function App(): React.JSX.Element {
 
   useEffect(() => {
     void dispatch(fetchUser());
-    void dispatch(getAllPresent())
+    void dispatch(getAllPresent());
     if (data?.id !== undefined) void dispatch(myCabinetInfo(data.id));
   }, [dispatch, data?.id]);
-
-  // useEffect(() => {
-  //   if (userId) {
-  //     void dispatch(myCabinetInfo(userId));
-  //   }
-  // }, [dispatch, userId]); // Следим только за userId
 
   return <RouterProvider router={router} />;
 }

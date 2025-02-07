@@ -28,6 +28,7 @@ export default function LoginPage(): React.JSX.Element {
     await loginHandler(data);
     reset();
     await navigate('/myList');
+    
   }
 
   return (
