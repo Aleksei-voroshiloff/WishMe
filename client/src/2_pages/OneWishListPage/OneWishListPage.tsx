@@ -33,45 +33,53 @@ export default function OneWishListPage(): React.ReactElement {
 
   return (
     <main className={style.main}>
-      <div className={style.panel}>
+      <div>
         {user?.id === wishList?.userId ? (
-          <div className={style.functionalPage}>
-            <div className={style.redax}>
-              <div>
-                <Icon
-                  className={style.back_button}
-                  name="chevron left"
-                  size="large"
-                  onClick={() => navigate(-1)}
-                />
+          <div className={style.panel}>
+            <div className={style.functionalPage}>
+              <div className={style.redax}>
+                <div>
+                  <Icon
+                    className={style.back_button}
+                    name="chevron left"
+                    size="large"
+                    onClick={() => navigate(-1)}
+                  />
+                </div>
               </div>
-            </div>
-            <div className={style.redaxText}>Режим редакции:</div>
-            <div className={style.redaxToggle}>
-              <div>
-                <Checkbox
-                  name="read"
-                  value={1}
-                  checked={showButton}
-                  onClick={() => dispatch(setShowButton())}
-                  label={showButton}
-                  toggle
-                />
+              <div className={style.redaxText}>Режим редакции:</div>
+              <div className={style.redaxToggle}>
+                <div>
+                  <Checkbox
+                    name="read"
+                    value={1}
+                    checked={showButton}
+                    onClick={() => dispatch(setShowButton())}
+                    label={showButton}
+                    toggle
+                  />
+                </div>
               </div>
             </div>
           </div>
         ) : (
-          <>
-            <div>
-              <Icon
-                className={style.back_button}
-                name="chevron left"
-                size="huge"
-                onClick={() => navigate(-2)}
-              />
+          <div className={style.panel1}>
+            <div className={style.functionalPage}>
+              <div className={style.redax}>
+                <div>
+                  <Icon
+                    className={style.back_button}
+                    name="chevron left"
+                    size="large"
+                    onClick={() => navigate(`/friends/${String(oneUser?.id)}`)}
+                  />
+                </div>
+              </div>
+              <div className={style.user}>
+                {oneUser ? <FriendProfileComponent friend={oneUser} /> : 'Информация не найдена'}
+              </div>
             </div>
-            <FriendProfileComponent friend={oneUser} />
-          </>
+          </div>
         )}
       </div>
 

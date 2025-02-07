@@ -1,5 +1,5 @@
 .main {
-  padding: 10px;
+  
   flex-grow: 1;
 }
 
@@ -14,7 +14,23 @@
   display: flex;
   border-bottom: 1px solid rgba(128, 128, 128, 0.311);
   height: 50px;
-  z-index: 1000;
+}
+// Стили для юзера
+.user {
+  right: 420px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5px;
+ 
+}
+.panel1 {
+  display: flex;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.311);
+  height: 10vh;
+  
   
 }
 
@@ -33,7 +49,7 @@
   padding-bottom: 5px;
 }
 .redaxToggle {
-padding-top: 1px;
+  padding-top: 1px;
   position: absolute;
   right: 290px;
   display: flex;
