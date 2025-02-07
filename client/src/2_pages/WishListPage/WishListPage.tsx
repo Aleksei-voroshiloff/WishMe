@@ -25,7 +25,9 @@ export default function WishListPage(): React.JSX.Element {
   return (
     <main className={style.main}>
       <div className={style.panel}>
-        <div className={style.check}>Режим редакции:</div>
+        <div className={style.check}>
+          <div>Режим редакции:</div>
+        </div>
         <div className={style.redaxToggle}>
           <div>
             <Checkbox

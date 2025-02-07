@@ -7,7 +7,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  margin-top: 65px;
+  padding-top: 65px;
+  // height: calc(100vh - 100px); /* Высота за вычетом высоты заголовка */
+  // overflow-y: auto; /* Включаем вертикальную прокрутку */
+  // overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
 }
 
 .first_div {
@@ -55,6 +58,8 @@
 }
 
 .panel {
+  padding-top: 12px;
+  position: relative;
   display: flex;
   border-bottom: 1px solid rgba(128, 128, 128, 0.311);
   height: 50px;
@@ -72,17 +77,25 @@
 }
 
 .check {
-  font-weight: 500;
-  width: 100%;
+  font-family: 'Nunito';
+  font-weight: 900;
+  position: absolute;
+  right: 251px;
+  padding-bottom: 5px;
+}
+
+.redaxToggle {
+  position: absolute;
+  right: 181px;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
 }
 
 .gift_box {
-  width: 200px;
-  height: 150px;
+  width: 251px;
+  min-height: 150px;
   background: linear-gradient(135deg, #b65555, #ff8e8e);
   border-radius: 20px;
   position: relative;

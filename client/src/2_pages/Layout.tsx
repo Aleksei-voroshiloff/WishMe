@@ -20,7 +20,11 @@ export default function Layout(): React.JSX.Element {
     <div className={style.main}>
       <div className={style.header}>
         <div className={style.wishme}>WishMe 🎁</div>
-        <div onClick={()=> dispatch(openWindow())} className={style.search}>Найти друзей <Icon className={style.icon} name='search'/></div>
+        {status === 'logged' && (
+          <div onClick={() => dispatch(openWindow())} className={style.search}>
+            Найти друзей <Icon className={style.icon} name="search" />
+          </div>
+        )}
       </div>
       <div className={style.home}>
         <NavBar />
@@ -30,7 +34,7 @@ export default function Layout(): React.JSX.Element {
         <ModalPage />
         <ToastContainer />
         <ModalFindFriends />
-        <ModalDeleteFriend/>
+        <ModalDeleteFriend />
       </div>
     </div>
   );
