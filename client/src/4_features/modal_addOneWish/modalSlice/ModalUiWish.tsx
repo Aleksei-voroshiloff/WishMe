@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../../1_app/store/hooks';
 import { useParams } from 'react-router-dom';
 import { addWish } from '../../../5_entities/wish/lib/wishThunk';
 import { WishObjectSchema } from '../../../5_entities/wish/types/types';
-import { closeModal } from '../../../5_entities/modal_window/modalSlice';
+import { closeModal} from '../../../5_entities/modal_window/modalSlice';
 
 export default function ModalUiWish(): React.JSX.Element {
   const dispatch = useAppDispatch();
@@ -23,7 +23,6 @@ export default function ModalUiWish(): React.JSX.Element {
       ...dataForm,
       wishListId: Number(listId),
     });
-    console.log(validDate, 'qqqqqqqqqqqq');
 
     try {
       await dispatch(addWish(validDate));
@@ -31,6 +30,7 @@ export default function ModalUiWish(): React.JSX.Element {
       console.error('Error dispatching addWishList:', error);
     }
     dispatch(closeModal());
+    
   };
 
   return (

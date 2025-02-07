@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from '../../../1_app/store/hooks';
 import { deleteWishList } from '../lib/wishListThunk';
 import { useNavigate } from 'react-router-dom';
 import { openEditListModal } from '../model/wishListSlice';
+import { TelegramShareButton, WhatsappShareButton } from 'react-share';
+import { GridColumn, Grid, Popup } from 'semantic-ui-react';
 
 type Props = {
   list: WishListObjectType;
@@ -25,9 +27,12 @@ export default function WishListCardUi({ list, showButton }: Props): React.JSX.E
       console.error('Ошибка удаления:', error);
     }
   };
+
   const handleCardClick = (id: number): void => {
     void navigate(`/wishlist/${String(id)}`);
   };
+
+  const shareUrl = `${window.location.origin}/wishlist/${String(list.id)}`;
 
   return (
     <div className={style.card1}>
@@ -55,8 +60,41 @@ export default function WishListCardUi({ list, showButton }: Props): React.JSX.E
             name="x"
             size="big"
           />
+          <div className={style.share}></div>
         </div>
       )}
+      {<div>
+        <Popup wide trigger={<button className={style.batn}>Поделиться</button>} on="click">
+          <Grid divided columns="equal">
+            <GridColumn>
+              <Popup
+                trigger={
+                  <TelegramShareButton
+                    url={shareUrl}
+                    title={`Посмотрите мой вишлист: ${list.title}`}
+                  >
+                    <Icon color="blue" name="telegram" size="big" />
+                  </TelegramShareButton>
+                }
+                content="Поделиться через телеграмм"
+              />
+            </GridColumn>
+            <GridColumn>
+              <Popup
+                trigger={
+                  <WhatsappShareButton
+                    url={shareUrl}
+                    title={`Посмотрите мой вишлист: ${list.title}`}
+                  >
+                    <Icon color="green" name="whatsapp" size="big" />
+                  </WhatsappShareButton>
+                }
+                content="Поделиться через WhatsUp"
+              />
+            </GridColumn>
+          </Grid>
+        </Popup>
+      </div>}
     </div>
   );
 }
