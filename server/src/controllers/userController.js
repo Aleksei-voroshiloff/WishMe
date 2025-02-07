@@ -60,7 +60,7 @@ class UserController {
     try {
       const { search } = req.query;
       const allUsers = await this.service.findAllUsers(search);
-      return res.status(200).json(allUsers);
+      return setTimeout(()=> {res.status(200).json(allUsers)}, 1000);
     } catch (error) {
       console.log(error);
       return res.status(500).json({ message: 'Ошибка при выведении друзей' });

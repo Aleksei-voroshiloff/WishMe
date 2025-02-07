@@ -24,6 +24,9 @@
 }
 
 .button_green, .button_red {
+  color: white;
+  width: 100px;
+  height: 30px;
   padding: 5px 10px;
   font-family: 'Nunito';
   font-weight: 800;
@@ -37,11 +40,11 @@ transform: scale(1.10);
 }
 
 .button_green{
-  background-color: rgb(20, 185, 14);
+  background-color: rgb(9, 109, 78);
 }
 
 .button_red{
-  background-color: rgb(245, 29, 29);
+  background-color: rgb(160, 18, 18);
 }
 
 .profile_wrapper{

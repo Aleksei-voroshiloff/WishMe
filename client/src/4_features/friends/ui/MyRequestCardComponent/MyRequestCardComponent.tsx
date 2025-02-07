@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom';
 import { Popup } from 'semantic-ui-react';
 import style from './MyRequestCardComponent.module.scss';
 import { useFriend } from '../../lib/useFriends';
+import { useAppSelector } from '../../../../1_app/store/hooks';
+import Spinner from '../../../../6_shared/ui/Spinner';
 
 type FriendProp = {
   myRequest: {
@@ -14,6 +16,7 @@ type FriendProp = {
 
 export default function MyRequestCardComponent({ myRequest }: FriendProp): React.JSX.Element {
   const { cancelRequest } = useFriend();
+  const {loading} = useAppSelector(store => store.friend)
 
   return (
     <>
@@ -44,8 +47,8 @@ export default function MyRequestCardComponent({ myRequest }: FriendProp): React
             <button
               className={style.button_gray}
               onClick={() => cancelRequest(myRequest.id, myRequest.name)}
-            >
-              Отмена
+            >{loading ? <Spinner/> : 'Отмена'}
+              
             </button>
           }
         />

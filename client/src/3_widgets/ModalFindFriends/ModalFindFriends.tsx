@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '../../1_app/store/hooks';
 import { findFriendsThunk } from '../../4_features/friends/lib/friendsThunk';
 import FriendCardComponent from '../../4_features/friends/ui/FriendCardComponent/FriendCardComponent';
 import style from './ModalFindFriends.module.scss'
+import Loader from '../loader/Loader';
 
 export default function ModalFindFriends(): React.JSX.Element {
   const dispatch = useAppDispatch();
@@ -24,7 +25,7 @@ export default function ModalFindFriends(): React.JSX.Element {
   useEffect(() => {
     const timeOut = setTimeout(() => {
       void dispatch(findFriendsThunk(search));
-    }, 1500);
+    }, 2000);
     return () => clearTimeout(timeOut);
   }, [search]);
 
@@ -43,12 +44,12 @@ export default function ModalFindFriends(): React.JSX.Element {
               onChange={(e) => dispatch(setSearch(e.currentTarget.value))}
             />
             {foundFriendsLoading ? (
-              <p>Идет поиск</p>
+              <Loader />
             ) : (
               <div className={style.container}>
-                {foundFriends.map((foundFriend) => (
+                {foundFriends.length > 0 ? foundFriends.map((foundFriend) => (
                   <FriendCardComponent key={foundFriend.id} friend={foundFriend} />
-                ))}
+                )) : <p>Ничего не найдено</p>}
               </div>
             )}
           </FormField>

@@ -7,6 +7,7 @@ import style from './OneFriendPage.module.scss';
 import { getOneUser } from '../../5_entities/user/lib/userThunks';
 import FriendProfileComponent from '../../4_features/friends/ui/FriendProfileComponent/FriendProfileComponent';
 import { Icon } from 'semantic-ui-react';
+import { setActiveItem } from '../../5_entities/Navbar/model/navbarSlice';
 import Loader from '../../3_widgets/loader/Loader';
 
 export default function OneFriendPage(): React.JSX.Element {
@@ -28,12 +29,9 @@ export default function OneFriendPage(): React.JSX.Element {
   const { wishListCards, loading } = useAppSelector((store) => store.wishlist);
   const showButton = useAppSelector((state) => state.redaction.showButton);
 
-  if (error)
-    return (
-      <div className={style.error} onClick={() => void navigate('/')}>
-        Перейти на страницу входа
-      </div>
-    );
+  if (error)  {
+    dispatch(setActiveItem('Мои вишлисты'))
+    void navigate('/')}
 
   return (
     <main>
