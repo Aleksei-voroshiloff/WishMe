@@ -43,7 +43,7 @@ export default function OneFriendPage(): React.JSX.Element {
                 className={style.back_button}
                 name="chevron left"
                 size="large"
-                onClick={() => navigate(-1)}
+                onClick={() => navigate('/friends')}
               />
             </div>
           </div>
