@@ -5,7 +5,6 @@ import type { PresentObjType, UpdatewishForm, WishObjectType } from '../types/ty
 import { WishObjectSchema, WishSchema } from '../types/types';
 import axiosInstance from '../../../6_shared/api/axiosInstance';
 
-
 export const getWish = createAsyncThunk(
   'wish/getWish',
   async (wishListId: number, { rejectWithValue }) => {
@@ -90,16 +89,18 @@ export const postReservation = createAsyncThunk(
 
 export const deleteReservation = createAsyncThunk(
   'wish/deleteReservation',
-  async (wishId: number, { rejectWithValue }) => {
+  async (wishId: number) => {
     try {
       const { data } = await axiosInstance.delete(`/present/${String(wishId)}`);
       console.log(data, 'deleted present');
       return wishId;
     } catch (error) {
-      return rejectWithValue(error instanceof Error ? error.message : 'Ошибка бронирования');
+      console.log(error);
+      return 'Подарок забронирован';
     }
   },
 );
+
 
 // export const toggleReservation = createAsyncThunk(
 //   'wish/toggleReservation',

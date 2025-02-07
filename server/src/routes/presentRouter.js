@@ -14,4 +14,8 @@ presentRouter
   .get(presentController.getAllpresent)
   .delete(verifyAccessToken, presentController.deletePresent);
 
+  presentRouter
+  .route('/wish/:id')
+  .get(presentController.getUserIdByWishId);
+
 module.exports = presentRouter;

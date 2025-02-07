@@ -34,6 +34,15 @@ class PresentService {
       },
     });
   }
+
+  findUserId(wishId) {
+    return this.model.Present.findOne({
+      where: { wishId },
+      attributes: ['userId'],
+    });
+  }
 }
+
+
 const presService = new PresentService(allModels);
 module.exports = presService;

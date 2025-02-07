@@ -12,6 +12,7 @@ import { setShowButton } from '../../5_entities/delete/redactionSlice';
 import ModalUiWishEdit from '../../4_features/modal_edit/ModalUiWishEdit';
 import { getUserByWishlistThunk } from '../../5_entities/user/lib/userThunks';
 import FriendProfileComponent from '../../4_features/friends/ui/FriendProfileComponent/FriendProfileComponent';
+import { getAllFriends } from '../../4_features/friends/lib/friendsThunk';
 
 export default function OneWishListPage(): React.ReactElement {
   const { listId } = useParams();
@@ -22,13 +23,17 @@ export default function OneWishListPage(): React.ReactElement {
   const { wishCards } = useAppSelector((state) => state.wish);
   const showButton = useAppSelector((state) => state.redaction.showButton);
   const { oneUser } = useAppSelector((state) => state.user);
+const {friends} = useAppSelector((state) => state.friend);
+
 
   useEffect(() => {
     void dispatch(getOneWishList(Number(listId)));
     void dispatch(getWish(Number(listId)));
     void dispatch(getUserByWishlistThunk(Number(listId)));
+    void dispatch(getAllFriends());
   }, [dispatch, listId]);
 
+  const IsFriends = friends.some((friend) => friend.id === oneUser?.id);
   const filteredWishCards = wishCards.filter((wish) => wish.wishListId === Number(listId));
 
   return (
@@ -94,7 +99,7 @@ export default function OneWishListPage(): React.ReactElement {
         {filteredWishCards.length > 0 ? (
           filteredWishCards.map((wish) => (
             <div key={wish.id}>
-              <WishCardUi wish={wish} showButton={showButton} />
+              <WishCardUi wish={wish} showButton={showButton} IsFriends={IsFriends}/>
             </div>
           ))
         ) : (

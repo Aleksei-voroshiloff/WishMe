@@ -61,6 +61,17 @@ class PresentController {
       console.log(error);
     }
   };
+
+  getUserIdByWishId = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const userId = await presentService.findUserId(id);
+      res.json(userId);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'Ошибка сервера get' });
+    }
+  };
 }
 
 const presentController = new PresentController();

@@ -8,7 +8,7 @@ import {
   updateWish,
 } from '../lib/wishThunk';
 import { createSlice } from '@reduxjs/toolkit';
-import type { PresentObjType, WishObjectType, WishTypeArray } from '../types/types';
+import type { WishObjectType, WishTypeArray } from '../types/types';
 
 type NoteState = {
   wishCards: WishTypeArray;
@@ -108,7 +108,11 @@ const wishSlice = createSlice({
       })
       .addCase(deleteReservation.fulfilled, (state) => {
         state.loading = false;
-        
+        state.error = null;     
+      })
+      .addCase(deleteReservation.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string
       });
   },
 });
