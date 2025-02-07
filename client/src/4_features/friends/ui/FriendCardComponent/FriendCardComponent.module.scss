@@ -31,8 +31,11 @@
 }
 
 .button_red{
+  color: white;
   padding: 5px 10px;
-  background-color: rgb(245, 29, 29);
+  width: 100px;
+  height: 30px;
+  background-color: rgb(160, 18, 18);
   font-family: 'Nunito';
   font-weight: 800;
   border-radius: 10px;
@@ -45,8 +48,11 @@ transform: scale(1.10);
 }
 
 .button_green{
+  color: white;
+  width: 100px;
+  height: 30px;
   padding: 5px 10px;
-  background-color: rgb(20, 185, 14);
+  background-color: rgb(9, 109, 78);
   font-family: 'Nunito';
   font-weight: 800;
   border-radius: 10px;

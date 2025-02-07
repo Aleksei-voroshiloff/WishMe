@@ -8,7 +8,7 @@ class FriendController {
 
   getAllFriend = async (req, res) => {
     try {
-      const userId = res.locals.user.id
+      const userId = res.locals.user.id;
       const allFriend = await this.service.findAllFriend(userId);
       res.json(allFriend);
     } catch (error) {
@@ -19,10 +19,12 @@ class FriendController {
 
   deleteFriend = async (req, res) => {
     try {
-      const userId = res.locals.user.id
+      const userId = res.locals.user.id;
       const { id } = req.params;
       await this.service.destroyFriend(userId, id);
-      res.status(200).json({ message: 'Друг удален' });
+      setTimeout(() => {
+        res.status(200).json({ message: 'Друг удален' });
+      }, 1000);
     } catch (error) {
       console.log(error);
       res.json({ message: 'Ошибка при delete друзей' });
@@ -34,22 +36,31 @@ class FriendController {
       const userId = res.locals.user.id;
       const { id } = req.params;
       const newFriend = await this.service.addFriend(userId, id);
-      res.status(201).json(newFriend);
+      setTimeout(() => {
+        res.status(201).json(newFriend);
+      }, 1000);
     } catch (error) {
       console.log(error);
-      res.status(500).json({ message: 'Ошибка при добавлении друга' });
+      setTimeout(() => {
+        res.status(500).json({ message: 'Ошибка при добавлении друга' });
+      }, 1000);
     }
   };
-  
+
   acceptFriend = async (req, res) => {
     try {
       const userId = res.locals.user.id;
       const { id } = req.params;
       const newFriend = await this.service.acceptFriend(userId, id);
-      res.status(200).json(newFriend);
+      setTimeout(() => {
+
+        res.status(200).json(newFriend);
+      }, 1000);
     } catch (error) {
       console.log(error);
-      res.status(500).json({ message: 'Ошибка при принятии заявки' });
+      setTimeout(() => {
+        res.status(500).json({ message: 'Ошибка при принятии заявки' });
+      }, 1000);
     }
   };
 
@@ -63,7 +74,7 @@ class FriendController {
       res.json({ message: 'Ошибка при выведении заявок' });
     }
   };
-  
+
   findAllFriendRequests = async (req, res) => {
     try {
       const userId = res.locals.user.id;
