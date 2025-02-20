@@ -3,6 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { useAppSelector } from '../store/hooks';
 import { RingLoader } from 'react-spinners';
 
+
 type ProtectedRouteProps = {
   allowedStatuses: ('loading' | 'logged' | 'guest')[];
   redirectTo: string;
