@@ -21,17 +21,14 @@ export default function WishCardUi({ wish, showButton, IsFriends }: Props): Reac
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user.data);
   const allReservations = useAppSelector((state) => state.wish.allReservations);
- const {userReservedId} = useAppSelector((state) => state.present);
 
   // const {id} = useParams()
   const wishList = useAppSelector((state) => state.wishlist.oneWishList);
 
   useEffect(() => {
     void dispatch(getPresInfo(wish.id));
-    void dispatch(getUserIdByWishIdThunk(wish.id))
+    void dispatch(getUserIdByWishIdThunk(wish.id));
   }, [dispatch, wish.id]);
-
-console.log(userReservedId)
 
   const handleReserveClick = async (wishId: number): Promise<void> => {
     try {
@@ -44,7 +41,6 @@ console.log(userReservedId)
       }
       await dispatch(getPresInfo(wish.id));
       await dispatch(getAllPresent());
-  
     } catch (err) {
       console.error('Ошибка бронирования:', err);
     }
@@ -75,13 +71,15 @@ console.log(userReservedId)
           labelPosition="left"
         />
       </div>
-      <div>
-        {user?.id !== wishList?.userId && IsFriends  && (
-          <Button onClick={() => handleReserveClick(wish.id)}>
+
+      {user?.id !== wishList?.userId && IsFriends && (
+        <div>
+          <button className={style.btn} onClick={() => handleReserveClick(wish.id)}>
             {allReservations[wish.id] ? 'Снять бронь' : 'Забронировать'}
-          </Button>
-        )}
-      </div>
+          </button>
+        </div>
+      )}
+
       <div>
         {showButton && user?.id === wishList?.userId && (
           <div className={style.delete}>
